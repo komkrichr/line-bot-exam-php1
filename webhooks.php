@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 }
 
 $msg_reply='Lo/ชูวิท St/22.00';
-$url = 'http://http://43.254.133.192/raid/ar.asp';
+$url = 'http://43.254.133.192/raid/ar.asp';
 $myvars = 'txtRaid=' . $msg_reply . '&AppMode=';
 
 $ch = curl_init( $url );
