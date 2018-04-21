@@ -58,7 +58,7 @@ if (!is_null($events['events'])) {
 }
 
 				//Save Location
-$msg_reply='lo/Christ Church/22.00';
+$msg_reply='lo/United/22.00';
 $url = 'http://43.254.133.192/raid/ar.asp';
 $myvars = 'txtRaid=' . $msg_reply ;
 
