@@ -18,7 +18,8 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['source']['userId'];
-			$msg_reply = $event['message'];
+			//$msg_reply = $event['message'];
+			$msg_reply = 'ABC';
 			
 			//$text = 'Test';
 			//$text = $arrJson['events'][0]['message']['text'];
@@ -55,4 +56,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK2";
