@@ -19,6 +19,9 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['source']['userId'];
 			$msg_reply = $event['message']['text'];
+			if (strpos($msg_reply, 'lo/') !== false) {
+				$msg_reply='send location';
+			}
 			//$msg_reply = 'ABC';
 			
 			//$text = 'Test';
