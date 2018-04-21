@@ -60,11 +60,13 @@ if (!is_null($events['events'])) {
 				//Save Location
 $msg_reply='lo/BTS Mo Chit N8/08.00';
 $url = 'http://43.254.133.192/raid/ar.asp';
-$myvars = 'txtRaid=' . $msg_reply ;
+//$myvars = 'txtRaid=' . $msg_reply ;
 
 $ch = curl_init( $url );
-//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-curl_setopt( $ch, CURLOPT_ENCODING, 'tis-620');
+
+$myvars =  curl_escape($curl ,'txtRaid=' . $msg_reply);
+curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
+//curl_setopt( $ch, CURLOPT_ENCODING, 'tis-620');
 curl_setopt( $ch, CURLOPT_POST, 1);
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -74,4 +76,4 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 //echo $response . "\r\n";
 
-echo "OK5";
+echo "OK4";
