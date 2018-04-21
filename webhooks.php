@@ -20,7 +20,8 @@ if (!is_null($events['events'])) {
 			//$text = $event['message'];
 			//$text = 'Test';
 			//$text = $arrJson['events'][0]['message']['text'];
-			if (strpos($text, 'Lo/') !== false) {
+			//if (strpos($text, 'Lo/') !== false) {
+			if ($text=='Lo') {
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 
