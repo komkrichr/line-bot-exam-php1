@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 			$msg_reply = $event['message']['text'];
 			if ((strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 				$msg_reply='send location';
-			}
+			
 			//$msg_reply = 'ABC';
 			
 			//$text = 'Test';
@@ -36,7 +36,8 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => $msg_reply 
 				];
-
+				//Save Location
+			
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
@@ -56,14 +57,9 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 			//}
 			echo $result . "\r\n";
+		     }		
 		}
 	}
 }
 
-echo "OK6";
-$msg_reply='lo/';
-if (strpos($msg_reply, 'lo/') !== false) {
-	echo "Fund";
-}else{
-	echo "Not Fund";
-}
+echo "OK7";
