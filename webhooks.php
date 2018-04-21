@@ -60,3 +60,10 @@ if (!is_null($events['events'])) {
 	}
 }
 echo "OK4";
+
+$msg_reply='lo/';
+if (strpos($msg_reply, 'lo/') !== false) {
+	echo "Fund";
+}else{
+	echo "Not Fund";
+}
