@@ -71,4 +71,4 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 echo $response . "\r\n";
 
-echo "OK8";
+echo "OK7";
