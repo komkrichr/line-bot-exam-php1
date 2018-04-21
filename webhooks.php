@@ -60,6 +60,9 @@ if (!is_null($events['events'])) {
 				//Save Location
 $msg_reply='lo/BTS Mo Chit N8/08.00';
 $url = 'http://43.254.133.192/raid/ar.asp';
+
+$msg_reply=str_replace(' ','A-A-A',$msg_reply);
+
 $myvars = 'txtRaid=' . $msg_reply ;
 
 $ch = curl_init( $url );
@@ -76,4 +79,4 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 //echo $response . "\r\n";
 
-echo "OK9";
+echo "OK10";
