@@ -31,20 +31,7 @@ if (!is_null($events['events'])) {
 					'text' => $msg_reply 
 				];
 				
-				//Save Location
-$msg_reply='lo/Christ Church/22.00';
-$url = 'http://43.254.133.192/raid/ar.asp';
-$myvars = 'txtRaid=' . $msg_reply ;
 
-$ch = curl_init( $url );
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt( $ch, CURLOPT_HEADER, 0);
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-
-$response = curl_exec( $ch );
-//echo $response . "\r\n";
 			
 				
 				// Make a POST Request to Messaging API to reply to sender
@@ -70,6 +57,19 @@ $response = curl_exec( $ch );
 	}
 }
 
+				//Save Location
+$msg_reply='lo/Christ Church/22.00';
+$url = 'http://43.254.133.192/raid/ar.asp';
+$myvars = 'txtRaid=' . $msg_reply ;
 
+$ch = curl_init( $url );
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
-echo "OK5";
+$response = curl_exec( $ch );
+//echo $response . "\r\n";
+
+echo "OK4";
