@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 			//$text = 'Test';
 			//$text = $arrJson['events'][0]['message']['text'];
 			//if (strpos($text, 'Lo/') !== false) {
-			if ($text=='Lo') {
+			//if ($text=='Lo') {
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 
@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 
 				echo $result . "\r\n";
-			}
+			//}
 		}
 	}
 }
