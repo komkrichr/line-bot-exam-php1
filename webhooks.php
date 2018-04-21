@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 			//$text = 'Test';
 			//$text = $arrJson['events'][0]['message']['text'];
 			//if (strpos($text, 'Lo/') !== false) {
-			//if ($text=='Lo') {
+			if ($text=='Lo') {
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 
@@ -48,9 +48,9 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$result = curl_exec($ch);
 				curl_close($ch);
-
-				echo $result . "\r\n";
-			//}
+			}
+			
+			echo $result . "\r\n";
 		}
 	}
 }
