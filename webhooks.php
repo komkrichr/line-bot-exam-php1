@@ -43,7 +43,7 @@ curl_setopt( $ch, CURLOPT_HEADER, 0);
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
 $response = curl_exec( $ch );
-echo $response . "\r\n";
+//echo $response . "\r\n";
 			
 				
 				// Make a POST Request to Messaging API to reply to sender
@@ -63,8 +63,7 @@ echo $response . "\r\n";
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$result = curl_exec($ch);
 				curl_close($ch);
-			//}
-			echo $result . "\r\n";
+			//echo $result . "\r\n";
 		     }		
 		}
 	}
@@ -72,4 +71,4 @@ echo $response . "\r\n";
 
 
 
-echo "OK5";
+echo "OK4";
