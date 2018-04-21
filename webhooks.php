@@ -69,7 +69,7 @@ $ch = curl_init( $url );
 
 //$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
 //curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-curl_setopt( $ch, CURLOPT_ENCODING, 'tis-620');
+curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 curl_setopt( $ch, CURLOPT_POST, 1);
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -79,4 +79,4 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 //echo $response . "\r\n";
 
-echo "OK11";
+echo "OK12";
