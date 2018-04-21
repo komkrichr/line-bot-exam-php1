@@ -60,7 +60,7 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "OK5";
+echo "OK6";
 $msg_reply='lo/';
 if (strpos($msg_reply, 'lo/') !== false) {
 	echo "Fund";
