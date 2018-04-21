@@ -63,6 +63,8 @@ $url = 'http://43.254.133.192/raid/ar.asp';
 $myvars = 'txtRaid=' . $msg_reply ;
 
 $ch = curl_init( $url );
+//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
+curl_setopt( $ch, CURLOPT_ENCODING, 'tis-620');
 curl_setopt( $ch, CURLOPT_POST, 1);
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
