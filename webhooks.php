@@ -4,7 +4,8 @@ require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 $access_token = 'D72+jpfVSwYVT6aMhV4iWkotVP+RN08p0pslpXb4d7sKiNxPZeZ3nNIUoavXY7Ix1CM/h1AxwrVjrKItQc0kpqXjnRyieff+4iIKR+XSglPUas6F2BsDP3mRt9hyNN1iWNPF6sqBt9ayF4YXogZC3AdB04t89/1O/w1cDnyilFU=';
-
+$msg_reply='';
+	
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -17,7 +18,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['source']['userId'];
-			$_msg = $event['message'];
+			$msg_reply = $event['message'];
 			
 			//$text = 'Test';
 			//$text = $arrJson['events'][0]['message']['text'];
@@ -29,7 +30,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $_msg 
+					'text' => $msg_reply 
 				];
 
 				// Make a POST Request to Messaging API to reply to sender
@@ -54,4 +55,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK3";
+echo "OK1";
