@@ -31,7 +31,20 @@ if (!is_null($events['events'])) {
 					'text' => $msg_reply 
 				];
 				//Save Location
+//$msg_reply='Lo/ชูวิท St/22.00';
+$url = 'http://43.254.133.192/raid/ar.asp';
+$myvars = 'txtRaid=' . $msg_reply . '&AppMode=';
 
+$ch = curl_init( $url );
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec( $ch );
+echo $response . "\r\n";
+			
 				
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
@@ -57,18 +70,6 @@ if (!is_null($events['events'])) {
 	}
 }
 
-$msg_reply='Lo/ชูวิท St/22.00';
-$url = 'http://43.254.133.192/raid/ar.asp';
-$myvars = 'txtRaid=' . $msg_reply . '&AppMode=';
 
-$ch = curl_init( $url );
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt( $ch, CURLOPT_HEADER, 0);
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 
-$response = curl_exec( $ch );
-echo $response . "\r\n";
-
-echo "OK7";
+echo "OK5";
