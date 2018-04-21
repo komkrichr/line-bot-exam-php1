@@ -32,7 +32,28 @@ if (!is_null($events['events'])) {
 				];
 				
 
-			
+//Save Location
+//$msg_reply='lo/ราช องค์/08.00';
+$url = 'http://43.254.133.192/raid/ar.asp';
+
+$msg_reply=str_replace(' ','A-A-A',$msg_reply);
+
+$myvars = 'txtRaid=' . $msg_reply ;
+
+$ch = curl_init( $url );
+
+//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
+//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
+curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec( $ch );
+//echo $response . "\r\n";
+				
 				
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
@@ -57,26 +78,6 @@ if (!is_null($events['events'])) {
 	}
 }
 
-				//Save Location
-$msg_reply='lo/ราช องค์/08.00';
-$url = 'http://43.254.133.192/raid/ar.asp';
 
-$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 
-$myvars = 'txtRaid=' . $msg_reply ;
-
-$ch = curl_init( $url );
-
-//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
-//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt( $ch, CURLOPT_HEADER, 0);
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-
-$response = curl_exec( $ch );
-//echo $response . "\r\n";
-
-echo "OK12";
+echo "OK13";
