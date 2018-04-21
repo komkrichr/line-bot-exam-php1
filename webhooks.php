@@ -30,10 +30,11 @@ if (!is_null($events['events'])) {
 					'type' => 'text',
 					'text' => $msg_reply 
 				];
+				
 				//Save Location
-//$msg_reply='Lo/ชูวิท St/22.00';
+$msg_reply='lo/Christ Church/22.00';
 $url = 'http://43.254.133.192/raid/ar.asp';
-$myvars = 'txtRaid=' . $msg_reply . '&AppMode=';
+$myvars = 'txtRaid=' . $msg_reply ;
 
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_POST, 1);
@@ -71,4 +72,4 @@ $response = curl_exec( $ch );
 
 
 
-echo "OK4";
+echo "OK5";
