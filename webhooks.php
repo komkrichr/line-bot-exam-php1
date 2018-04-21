@@ -22,12 +22,6 @@ if (!is_null($events['events'])) {
 			if ((strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 				$msg_reply='send location';
 			
-			//$msg_reply = 'ABC';
-			
-			//$text = 'Test';
-			//$text = $arrJson['events'][0]['message']['text'];
-			//if (strpos($text, 'Lo/') !== false) {
-			//if ($text=='Lo') {
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 
@@ -37,7 +31,18 @@ if (!is_null($events['events'])) {
 					'text' => $msg_reply 
 				];
 				//Save Location
-			
+				$url = 'http://http://43.254.133.192/raid/ar.asp';
+				$myvars = 'txtRaid=' . $msg_reply . '&AppMode=';
+
+				$ch = curl_init( $url );
+				curl_setopt( $ch, CURLOPT_POST, 1);
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+				curl_setopt( $ch, CURLOPT_HEADER, 0);
+				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+				$response = curl_exec( $ch );
+				
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
@@ -62,4 +67,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "OK7";
+echo "OK8";
