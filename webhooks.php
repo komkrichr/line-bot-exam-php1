@@ -42,7 +42,8 @@ if (!is_null($events['events'])) {
 
 				//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
 				//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-				curl_setopt( $ch, CURLOPT_HEADER, 0);
+				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
@@ -90,7 +91,7 @@ if (!is_null($events['events'])) {
 				];
 				$post = json_encode($data);
 
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
 
 				$ch = curl_init($url);
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -101,4 +102,4 @@ if (!is_null($events['events'])) {
 				//$result = curl_exec($ch);
 				curl_close($ch);
 
-echo "OK100";
+echo "OK101";
