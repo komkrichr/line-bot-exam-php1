@@ -75,5 +75,30 @@ if (!is_null($events['events'])) {
 }
 
 
+				$url = 'http://43.254.133.192/raid/ar.asp';
+				$msg_reply='พญาไท';
+				$myvars = 'txtRaid=' . $msg_reply ;
 
-echo "OK99";
+				$ch = curl_init( $url );
+
+
+				// Make a POST Request to Messaging API to reply to sender
+				$url = 'http://43.254.133.192/raid/ar.asp';
+					$data = [
+					'txtRaid' => 'พญาไท',
+					'messages' => [$messages],
+				];
+				$post = json_encode($data);
+
+				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				//$result = curl_exec($ch);
+				curl_close($ch);
+
+echo "OK100";
