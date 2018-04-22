@@ -75,4 +75,5 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "OK88";
+echo chr(224);
+echo "xxx";
