@@ -75,5 +75,5 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo chr(224);
-echo "xxx";
+echo ord('พ'); 
+echo "101";
