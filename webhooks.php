@@ -75,20 +75,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-
-				$url = 'http://43.254.133.192/raid/ar.asp';
-				$msg_reply='พญาไท';
-
-				$myvars = 'txtRaid=' . $msg_reply ;
-				$ch = curl_init( $url );
-				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'utf-8'];
-				curl_setopt($ch, CURLOPT_ENCODING, 'utf-8');
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $myvars);
-				$response = curl_exec( $ch );
-
-echo "OK88";
+echo "OK707";
