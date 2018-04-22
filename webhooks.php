@@ -87,6 +87,7 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $myvars);
 				$response = curl_exec( $ch );
 
-echo "OK104";
+echo "OK105";
