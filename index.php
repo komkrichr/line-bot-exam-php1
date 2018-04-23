@@ -1,7 +1,7 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
 
-echo "Hello LINE BOT V2. <br>";
+echo "Hello LINE BOT V3. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
@@ -13,6 +13,8 @@ for ($x = 0; $x <= $iCount; $x++) {
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
     //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
     echo $x.": ". substr($sMessage,$x,1) ."<br>";
+    echo json_encode(substr($sMessage,$x,1))."<br>";
+
 }
 echo $AscMessage;
 
