@@ -25,6 +25,7 @@ if (!is_null($events['events'])) {
 			
 				// Get replyToken
 				$replyToken = $event['replyToken'];
+				$replyToken = str_replace('ดาว','',$replyToken);
 
 				// Build message to reply back
 				$messages = [
