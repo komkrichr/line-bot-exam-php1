@@ -4,6 +4,7 @@ echo "Hello LINE BOT V1. <br>";
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
+echo "$sMessage <br>";
 
 for ($x = 0; $x <= 200; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
