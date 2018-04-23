@@ -21,6 +21,18 @@ if (!is_null($events['events'])) {
 			$msg_reply = $event['message']['text'];
 			//$msg_reply = $msg_reply. '///'. strlen($msg_reply);
 			
+			if (strpos($msg_reply, '/Send') !== false) {
+				$url = 'http://43.254.133.192/raid/send.asp';
+				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+				curl_setopt( $ch, CURLOPT_POST, 1);
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
+				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+				$response = curl_exec( $ch );
+			}
+			
 			if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
 				// Get replyToken
@@ -78,5 +90,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo ord('พ'); 
-echo "104";
+echo "105";
