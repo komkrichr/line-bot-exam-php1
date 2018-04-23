@@ -59,10 +59,6 @@ $offset = 0;
 while ($offset >= 0) {
     echo $offset.": ".ordutf8($sMessage, $offset)."<br>";
 }
-
-echo 'ท'. ord('ท')."<br>";
-echo 'ด'. ord('ด')."<br>";
-
 echo $AscMessage;
 
 $url = 'http://43.254.133.192/raid/ar.asp';
