@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>ThaiCreate.Com PHP & TIS-620</title>
-<meta http-equiv=Content-Type content="text/html; charset=tis-620">
+<title>TIS-620</title>
+<meta http-equiv=Content-Type content="text/html; charset-utf-8">
 </head>
 <body>
 
