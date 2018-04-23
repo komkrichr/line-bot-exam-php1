@@ -50,7 +50,7 @@ echo "$sMessage <br>";
 
 while ($offset >= 0) {
         $AscMessage.=ordutf8($sMessage, $offset)."|";
-        echo $offset.": UNI:".ordutf8($sMessage, $offset)."<br>";
+        //echo $offset.": UNI:".ordutf8($sMessage, $offset)."<br>";
 }
 
 echo "----- <br>";
