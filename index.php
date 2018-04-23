@@ -19,8 +19,8 @@ for ($x = 0; $x <= $iCount; $x++) {
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
     //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
 }
-echo asc('ท')."<br>";
-echo asc('ด')."<br>";
+echo ord('ท')."<br>";
+echo ord('ด')."<br>";
 
 echo $AscMessage;
 
