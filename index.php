@@ -1,5 +1,5 @@
 <?php
-echo "Hello LINE BOT 10. <br>";
+echo "Hello LINE BOT 1. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
@@ -10,7 +10,7 @@ $AscMessage="";
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
     if (ord(substr($sMessage,$x,1)) >122) {   
-         echo $x.": ". substr($sMessage,$x,3) . " UTF:" ."<br>";
+         echo $x.": ". substr($sMessage,$x,3) . " UTF:" . ord(substr($sMessage,$x,3)) . "<br>"; 
          $x=$x+2;
     }else{
         echo $x.": ". substr($sMessage,$x,1). " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";      
