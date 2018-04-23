@@ -1,5 +1,5 @@
 <?php
-echo "Hello LINE BOT V6. <br>";
+echo "Hello LINE BOT 7. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
