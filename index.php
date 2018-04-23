@@ -1,5 +1,24 @@
 <?php
 
+function ordutf8($string, &$offset) {
+    $code = ord(substr($string, $offset,1)); 
+    if ($code >= 128) {        //otherwise 0xxxxxxx
+        if ($code < 224) $bytesnumber = 2;                //110xxxxx
+        else if ($code < 240) $bytesnumber = 3;        //1110xxxx
+        else if ($code < 248) $bytesnumber = 4;    //11110xxx
+        $codetemp = $code - 192 - ($bytesnumber > 2 ? 32 : 0) - ($bytesnumber > 3 ? 16 : 0);
+        for ($i = 2; $i <= $bytesnumber; $i++) {
+            $offset ++;
+            $code2 = ord(substr($string, $offset, 1)) - 128;        //10xxxxxx
+            $codetemp = $codetemp*64 + $code2;
+        }
+        $code = $codetemp;
+    }
+    $offset += 1;
+    if ($offset >= strlen($string)) $offset = -1;
+    return $code;
+}
+
 function _uniord($c) {
     if (ord($c{0}) >=0 && ord($c{0}) <= 127)
         return ord($c{0});
@@ -18,7 +37,7 @@ function _uniord($c) {
     return 0;
 }   //  function _uniord()
 
-echo "Hello LINE BOT 2. <br>";
+echo "Hello LINE BOT 3. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
@@ -38,8 +57,14 @@ for ($x = 0; $x <= $iCount; $x++) {
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
     //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
 }
-echo ord('ท')."<br>";
-echo ord('ด')."<br>";
+
+$offset = 0;
+while ($offset >= 0) {
+    echo $offset.": ".ordutf8($sMessage, $offset)."\n";
+}
+
+echo 'ท'. ord('ท')."<br>";
+echo 'ด'. ord('ด')."<br>";
 
 echo $AscMessage;
 
