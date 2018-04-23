@@ -37,27 +37,21 @@ function _uniord($c) {
     return 0;
 }   //  function _uniord()
 
-echo "Hello LINE BOT 5. <br>";
+echo "Hello LINE BOT 6. <br>";
 
 $sMessage='กขคงจฉอฮ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
                                                                  
 
-//echo mb_strlen($sMessage) . "<br>";                                               
-                                                                 
-//for ($x = 0; $x <= $iCount; $x++) {
-//    if (ord(substr($sMessage,$x,1)) >122) {   
-//         echo $x.": ". substr($sMessage,$x,3) . " UTF:" . _uniord(substr($sMessage,$x,3)) . "<br>"; 
-//         $x=$x+2;
-//    }else{
-//        echo $x.": ". substr($sMessage,$x,1). " Asc:" . _uniord(substr($sMessage,$x,1)) . "<br>";      
-//    }
-//}
-
 $offset = 0;
+$AsCon=3424;
 while ($offset >= 0) {
-    echo $offset.": ".ordutf8($sMessage, $offset)."<br>";
+    if (ordutf8($sMessage, $offset)>255) {
+        echo $offset.": ".ordutf8($sMessage, $offset)-$AsCon."<br>";
+    }else{
+        echo $offset.": ".ordutf8($sMessage, $offset)."<br>";
+    }
 }
 echo $AscMessage;
 
