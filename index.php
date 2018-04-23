@@ -37,7 +37,7 @@ function _uniord($c) {
     return 0;
 }   //  function _uniord()
 
-echo "Hello LINE BOT 3. <br>";
+echo "Hello LINE BOT 4. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
