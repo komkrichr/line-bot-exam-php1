@@ -47,11 +47,7 @@ $AscMessage="";
 $offset = 0;
 $AsCon=3424;
 while ($offset >= 0) {
-    if (ordutf8($sMessage, $offset)>255) {
-        echo $offset.": ".ordutf8($sMessage, $offset)-$AsCon."<br>";
-    }else{
         echo $offset.": ".ordutf8($sMessage, $offset)."<br>";
-    }
 }
 echo $AscMessage;
 
