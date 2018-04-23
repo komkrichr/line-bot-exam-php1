@@ -19,7 +19,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['source']['userId'];
 			$msg_reply = $event['message']['text'];
-			$msg_reply = $msg_reply. '///'. strlen($msg_reply);
+			//$msg_reply = $msg_reply. '///'. strlen($msg_reply);
 			
 			if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
