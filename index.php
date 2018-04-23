@@ -13,8 +13,6 @@ for ($x = 0; $x <= $iCount; $x++) {
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
     //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
     echo $x.": ". substr($sMessage,$x,1) ."<br>";
-    echo json_encode(substr($sMessage,$x,1))."<br>";
-
 }
 echo $AscMessage;
 
