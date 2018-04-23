@@ -1,3 +1,10 @@
+<html>
+<head>
+<title>ThaiCreate.Com PHP & TIS-620</title>
+<meta http-equiv=Content-Type content="text/html; charset=tis-620">
+</head>
+<body>
+
 <?php
 header('Content-type: text/html; charset=utf-8');
 
@@ -30,5 +37,8 @@ curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 //$response = curl_exec( $ch );
-
 ?>
+    
+</body>
+</html>
+
