@@ -23,6 +23,7 @@ if (!is_null($events['events'])) {
 			
 			if (strpos($msg_reply, '/Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
+				$ch = curl_init( $url );
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
 				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
