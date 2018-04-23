@@ -39,7 +39,7 @@ function _uniord($c) {
 
 echo "Hello LINE BOT 4. <br>";
 
-$sMessage='ทดสอบ ARL';
+$sMessage='กขคงจฉอฮ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
                                                                  
