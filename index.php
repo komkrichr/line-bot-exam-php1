@@ -46,21 +46,18 @@ $AscMessage="";
 
 //echo mb_strlen($sMessage) . "<br>";                                               
                                                                  
-for ($x = 0; $x <= $iCount; $x++) {
-    if (ord(substr($sMessage,$x,1)) >122) {   
-         echo $x.": ". substr($sMessage,$x,3) . " UTF:" . _uniord(substr($sMessage,$x,3)) . "<br>"; 
-         $x=$x+2;
-    }else{
-        echo $x.": ". substr($sMessage,$x,1). " Asc:" . _uniord(substr($sMessage,$x,1)) . "<br>";      
-    }
-    //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
-    //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
-    //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
-}
+//for ($x = 0; $x <= $iCount; $x++) {
+//    if (ord(substr($sMessage,$x,1)) >122) {   
+//         echo $x.": ". substr($sMessage,$x,3) . " UTF:" . _uniord(substr($sMessage,$x,3)) . "<br>"; 
+//         $x=$x+2;
+//    }else{
+//        echo $x.": ". substr($sMessage,$x,1). " Asc:" . _uniord(substr($sMessage,$x,1)) . "<br>";      
+//    }
+//}
 
 $offset = 0;
 while ($offset >= 0) {
-    echo $offset.": ".ordutf8($sMessage, $offset)."\n";
+    echo $offset.": ".ordutf8($sMessage, $offset)."<br>";
 }
 
 echo 'ท'. ord('ท')."<br>";
