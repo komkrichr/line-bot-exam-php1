@@ -8,8 +8,7 @@
 <?php
 //mb_internal_encoding("UTF-8");
 //mb_http_output('UTF-8');
-    
-header('Content-type: text/html; charset=utf-8');
+//header('Content-type: text/html; charset=utf-8');
 
 echo "Hello LINE BOT V5. <br>";
 
@@ -23,9 +22,7 @@ echo $x.": ". substr($sMessage,0,3) ."<br>";
 echo $x.": ". substr($sMessage,3,3) ."<br>";
 echo ord(substr($sMessage,0,3)) . "<br>";
 
-echo mb_strlen($sMessage) . "<br>";
-
-                                                 
+//echo mb_strlen($sMessage) . "<br>";                                               
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
