@@ -49,21 +49,11 @@ $AsCon=3424;
 echo "$sMessage <br>";
 
 while ($offset >= 0) {
-        if (ordutf8($sMessage, $offset)>255){
-            echo $offset.": UNI:".ordutf8($sMessage, $offset)."<br>";
-        }else{
-            echo $offset.": ASC:".ordutf8($sMessage, $offset)."<br>";
-        }
-           
+        $AscMessage.=ordutf8($sMessage, $offset)."|";
+        echo $offset.": UNI:".ordutf8($sMessage, $offset)."<br>";
 }
 
 echo "----- <br>";
-
-$sMessage='กขคงจฉอฮ ARL';
-while ($offset >= 0) {
-            echo $offset.": ASC:".ordutf8($sMessage, $offset)."<br>";           
-}
-
 echo $AscMessage;
 
 $url = 'http://43.254.133.192/raid/ar.asp';
