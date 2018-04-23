@@ -10,10 +10,10 @@ $AscMessage="";
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
     if ((ord(substr($sMessage,$x,1)) <40) && (ord(substr($sMessage,$x,1)) >122)) {   
-         echo $x.": ". substr($sMessage,$x,3) ."<br>";
+         echo $x.": ". substr($sMessage,$x,3) . " UTF:" ."<br>";
          $x=$x+3;
     }else{
-        echo $x.": ". substr($sMessage,$x,1) ."<br>" . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";      
+        echo $x.": ". substr($sMessage,$x,1). " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";      
     }
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
