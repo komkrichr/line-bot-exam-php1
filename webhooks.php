@@ -91,4 +91,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "105";
+echo "106";
