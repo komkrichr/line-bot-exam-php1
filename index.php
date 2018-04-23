@@ -16,11 +16,15 @@ echo "Hello LINE BOT V5. <br>";
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
-echo "$sMessage <br>";
+                                                                 
+                                                                 
+echo $sMessage <br>";
 echo $x.": ". substr($sMessage,0,3) ."<br>";
 echo $x.": ". substr($sMessage,3,3) ."<br>";
 echo ord(substr($sMessage,0,3)) . "<br>";
-                                                                 
+
+echo mb_strlen($sMessage) . "<br>";
+
                                                  
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
