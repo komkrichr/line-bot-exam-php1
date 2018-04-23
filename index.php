@@ -56,6 +56,13 @@ while ($offset >= 0) {
         }
            
 }
+
+echo "----- <br>";
+
+while ($offset >= 0) {
+            echo $offset.": ASC:".ordutf8($sMessage, $offset)."<br>";           
+}
+
 echo $AscMessage;
 
 $url = 'http://43.254.133.192/raid/ar.asp';
