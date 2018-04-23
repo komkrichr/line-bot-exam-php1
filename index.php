@@ -1,5 +1,5 @@
 <?php
-echo "Hello LINE BOT V3. <br>";
+echo "Hello LINE BOT V4. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
@@ -7,12 +7,13 @@ $AscMessage="";
 
 $str = mb_convert_encoding($sMessage, "UTF-8", "windows-874");
 
-echo strlen($sMessage) ." : $str <br>";
+echo strlen($str) ." : $str <br>";
+
 for ($x = 0; $x <= $iCount; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
     //echo substr("000".ord(substr($sMessage,$x,1)),-3,3). "<br>";
-    echo substr($str,$x,1) ."<br>";
+    echo substr($sMessage,$x,1) ."<br>";
 } 
 echo $AscMessage;
 
