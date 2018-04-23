@@ -77,4 +77,4 @@ if (!is_null($events['events'])) {
 }
 
 echo ord('พ'); 
-echo "101";
+echo "102";
