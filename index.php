@@ -17,7 +17,14 @@ $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
 echo "$sMessage <br>";
+echo $x.": ". substr($sMessage,0,1) ."<br>";
+echo $x.": ". substr($sMessage,0,2) ."<br>";
+echo $x.": ". substr($sMessage,0,3) ."<br>";
 
+echo $x.": ". substr($sMessage,1,1) ."<br>";
+echo $x.": ". substr($sMessage,1,2) ."<br>";
+echo $x.": ". substr($sMessage,1,3) ."<br>";                                                                 
+                                                                 
 for ($x = 0; $x <= $iCount; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
     //$AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
