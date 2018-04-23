@@ -17,12 +17,7 @@ $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
 echo "$sMessage <br>";
-//echo $x.": ". substr($sMessage,0,1) ."<br>";
-//echo $x.": ". substr($sMessage,0,2) ."<br>";
 echo $x.": ". substr($sMessage,0,3) ."<br>";
-
-//echo $x.": ". substr($sMessage,1,1) ."<br>";
-//echo $x.": ". substr($sMessage,1,2) ."<br>";
 echo $x.": ". substr($sMessage,3,3) ."<br>";                                                                 
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
