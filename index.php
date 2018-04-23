@@ -1,10 +1,10 @@
 <?php
-echo "Hello LINE BOT V2. <br>";
+echo "Hello LINE BOT V3. <br>";
 
 $sMessage='พญาไท ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
-echo "$iCount : $sMessage <br>";
+echo strlen($sMessage) ." : $sMessage <br>";
 for ($x = 0; $x <= $iCount; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
     $AscMessage.=substr("000".ord(substr($sMessage,$x,1)),-3,3);
