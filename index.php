@@ -1,7 +1,7 @@
 <?php
 echo "Hello LINE BOT V3. <br>";
 
-$sMessage='พญาไท ARL';
+$sMessage='ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
 echo strlen($sMessage) ." : $sMessage <br>";
