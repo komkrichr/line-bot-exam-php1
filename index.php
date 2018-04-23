@@ -59,6 +59,7 @@ while ($offset >= 0) {
 
 echo "----- <br>";
 
+$sMessage='กขคงจฉอฮ ARL';
 while ($offset >= 0) {
             echo $offset.": ASC:".ordutf8($sMessage, $offset)."<br>";           
 }
