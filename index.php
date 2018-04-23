@@ -11,14 +11,17 @@
     
 header('Content-type: text/html; charset=utf-8');
 
-echo "Hello LINE BOT V4. <br>";
+echo "Hello LINE BOT V5. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
 echo "$sMessage <br>";
 echo $x.": ". substr($sMessage,0,3) ."<br>";
-echo $x.": ". substr($sMessage,3,3) ."<br>";                                                                 
+echo $x.": ". substr($sMessage,3,3) ."<br>";
+echo ord(substr($sMessage,0,3)) . "<br>";
+                                                                 
+                                                 
                                                                  
 for ($x = 0; $x <= $iCount; $x++) {
     //echo "The number is: $x string: " . substr($sMessage,$x,1) . " Asc:" . ord(substr($sMessage,$x,1)) . "<br>";
