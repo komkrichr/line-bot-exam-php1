@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>TIS-620</title>
-<meta http-equiv=Content-Type content="text/html; charset-utf-8">
+<meta http-equiv=Content-Type content="text/html; charset="utf-8">
 </head>
 <body>
 
@@ -11,7 +11,7 @@ mb_http_output('UTF-8');
     
 header('Content-type: text/html; charset=utf-8');
 
-echo "Hello LINE BOT V3. <br>";
+echo "Hello LINE BOT V4. <br>";
 
 $sMessage='ทดสอบ ARL';
 $iCount=strlen($sMessage)-1;
