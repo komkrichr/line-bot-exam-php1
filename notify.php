@@ -39,7 +39,7 @@
   <div class="row content">
   <form class="form-horizontal" method="post">
   <fieldset>
-    <legend>PHP Line Notify ???????????????????????? PHP</legend>
+    <legend>PLine Notify</legend>
     <div class="form-group">
       <label for="inputimage" class="col-lg-2 control-label">Photo URL</label>
       <div class="col-lg-10">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">???????(Name)</label>
+      <label for="textArea" class="col-lg-2 control-label">Message</label>
       <div class="col-lg-10">
         <textarea class="form-control" rows="3" id="textArea"  name="textArea"></textarea>
         <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
@@ -71,25 +71,25 @@ $name =  trim($_POST['textArea']);
 $inputimage =  trim($_POST['inputimage']);
    
 //Mysql
-include("config.ini.php");
-$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
-mysql_select_db($dbname);
-mysql_query("SET NAMES UTF8");
-mysql_query("SET character_set_results=utf8");
-mysql_query("SET character_set_client=utf8");
-mysql_query("SET character_set_connection=utf8");
+//include("config.ini.php");
+//$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
+//mysql_select_db($dbname);
+//mysql_query("SET NAMES UTF8");
+//mysql_query("SET character_set_results=utf8");
+//mysql_query("SET character_set_client=utf8");
+//mysql_query("SET character_set_connection=utf8");
 
 //$strSQL = "INSERT INTO `test_line` (`name`, `status`) VALUES ('$name', 'N')";
-$strSQL = "INSERT INTO test_line ";
-$strSQL .="(name,status) ";
-$strSQL .="VALUES ";
-$strSQL .="('".$_POST["textArea"]."','N' )";
-$objQuery = mysql_query($strSQL);
-if($objQuery)
-{
- echo "Save Done.";
+//$strSQL = "INSERT INTO test_line ";
+//$strSQL .="(name,status) ";
+//$strSQL .="VALUES ";
+//$strSQL .="('".$_POST["textArea"]."','N' )";
+//$objQuery = mysql_query($strSQL);
+//if($objQuery)
+//{
+// echo "Save Done.";
 
-$mms = "Save Done. : Name= $name";
+//$mms = "Save Done. : Name= $name";
    
 date_default_timezone_set("Asia/Bangkok");
 //line Send
@@ -118,12 +118,13 @@ echo "status : ".$result_['status']; echo "message : ". $result_['message']; }
 //Close connect 
 curl_close( $chOne );      
 
-}
-else
-{
- echo "Error Save [".$strSQL."]";
-}
-mysql_close($objConnect);
+//}
+//else
+//{
+// echo "Error Save [".$strSQL."]";
+//}
+//mysql_close($objConnect);
+  
 }
 ?>
 </div>
