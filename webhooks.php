@@ -89,7 +89,7 @@ if (!is_null($events['events'])) {
 				
 				//Save Location
 				//$msg_reply='lo/ราช องค์/08.00';
-				$url = 'http://43.254.133.192/raid/ar.asp';
+				$url = 'http://43.254.133.192/raid/ar1.asp';
 
 				$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 
