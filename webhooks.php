@@ -42,11 +42,11 @@ if (!is_null($events['events'])) {
 
 			$AscMessage="";
 			$offset = 0;
-
+			$Message1=$msg_reply;
+			
 			while ($offset >= 0) {
-				$AscMessage.=ordutf8($msg_reply, $offset)."|";
+				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
-			//$msg_reply=$AscMessage;
 
 			if (strpos($msg_reply, '/Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
@@ -132,4 +132,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "102";
+echo "103";
