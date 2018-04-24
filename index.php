@@ -37,7 +37,7 @@ function _uniord($c) {
     return 0;
 }   //  function _uniord()
 
-echo "Hello LINE BOT 7. <br>";
+echo "Hello LINE BOT 9. <br>";
 
 $sMessage='กข อฮ ดีดี่ดี้ดี๊ดี๋ ABXYZ 0189';
 
