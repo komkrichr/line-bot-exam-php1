@@ -57,7 +57,7 @@ while ($offset >= 0) {
 echo "----- <br>";
 echo $AscMessage;
 
-$url = 'http://43.254.133.192/raid/ar.asp';
+$url = 'http://43.254.133.192/raid/ar1.asp';
 $msg_reply=$AscMessage;
 $myvars = 'txtRaid=' . $msg_reply ;
 $ch = curl_init( $url );
