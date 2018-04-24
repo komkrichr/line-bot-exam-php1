@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 			while ($offset >= 0) {
 				$AscMessage.=ordutf8($msg_reply, $offset)."|";
 			}
-			$msg_reply=$AscMessage
+			$msg_reply=$AscMessage;
 
 			if (strpos($msg_reply, '/Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
