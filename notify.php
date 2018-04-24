@@ -39,7 +39,7 @@
   <div class="row content">
   <form class="form-horizontal" method="post">
   <fieldset>
-    <legend>PLine Notify</legend>
+    <legend>GoRaid Notify</legend>
     <div class="form-group">
       <label for="inputimage" class="col-lg-2 control-label">Photo URL</label>
       <div class="col-lg-10">
