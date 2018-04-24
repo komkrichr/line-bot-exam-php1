@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GoRaid Message</title>
+  <title>PHP Line Notify ???????????????????????? PHP</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
   <div class="row content">
   <form class="form-horizontal" method="post">
   <fieldset>
-    <legend>GoRaid Message</legend>
+    <legend>PHP Line Notify ???????????????????????? PHP</legend>
     <div class="form-group">
       <label for="inputimage" class="col-lg-2 control-label">Photo URL</label>
       <div class="col-lg-10">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="textArea" class="col-lg-2 control-label">ข้อความ(Name)</label>
+      <label for="textArea" class="col-lg-2 control-label">???????(Name)</label>
       <div class="col-lg-10">
         <textarea class="form-control" rows="3" id="textArea"  name="textArea"></textarea>
         <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
@@ -63,68 +63,70 @@
 </form>
 <?php 
 if ($_POST) { 
-  //Setting
-  $lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
 
-  $name =  trim($_POST['textArea']);
-  $inputimage =  trim($_POST['inputimage']);
+//Setting
+$lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
+
+$name =  trim($_POST['textArea']);
+$inputimage =  trim($_POST['inputimage']);
    
-  //Mysql
-  //include("config.ini.php");
-  //$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
-  //mysql_select_db($dbname);
-  //mysql_query("SET NAMES UTF8");
-  //mysql_query("SET character_set_results=utf8");
-  //mysql_query("SET character_set_client=utf8");
-  //mysql_query("SET character_set_connection=utf8");
+//Mysql
+include("config.ini.php");
+$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
+mysql_select_db($dbname);
+mysql_query("SET NAMES UTF8");
+mysql_query("SET character_set_results=utf8");
+mysql_query("SET character_set_client=utf8");
+mysql_query("SET character_set_connection=utf8");
 
-  //$strSQL = "INSERT INTO `test_line` (`name`, `status`) VALUES ('$name', 'N')";
-  //$strSQL = "INSERT INTO test_line ";
-  //$strSQL .="(name,status) ";
-  //$strSQL .="VALUES ";
-  //$strSQL .="('".$_POST["textArea"]."','N' )";
-  //$objQuery = mysql_query($strSQL);
-  //if($objQuery)
-  //{
-  // echo "Save Done.";
+//$strSQL = "INSERT INTO `test_line` (`name`, `status`) VALUES ('$name', 'N')";
+$strSQL = "INSERT INTO test_line ";
+$strSQL .="(name,status) ";
+$strSQL .="VALUES ";
+$strSQL .="('".$_POST["textArea"]."','N' )";
+$objQuery = mysql_query($strSQL);
+if($objQuery)
+{
+ echo "Save Done.";
 
-  //$mms = "Save Done. : Name= $name";
+$mms = "Save Done. : Name= $name";
+   
+date_default_timezone_set("Asia/Bangkok");
+//line Send
 
-  date_default_timezone_set("Asia/Bangkok");
-  //line Send
+$chOne = curl_init(); 
+curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+// SSL USE 
+curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+//POST 
+curl_setopt( $chOne, CURLOPT_POST, 1); 
+// Message 
+curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$mms&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+// follow redirects 
+curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+//ADD header array 
+$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$lineapi.'', ); 
+curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+//RETURN 
+curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+$result = curl_exec( $chOne ); 
+//Check error 
+if(curl_error($chOne)) { echo 'error:' . curl_error($chOne); } 
+else { $result_ = json_decode($result, true); 
+echo "status : ".$result_['status']; echo "message : ". $result_['message']; } 
+//Close connect 
+curl_close( $chOne );      
 
-  $chOne = curl_init(); 
-  curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-  // SSL USE 
-  curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-  curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-  //POST 
-  curl_setopt( $chOne, CURLOPT_POST, 1); 
-  // Message 
-  curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$mms&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-  // follow redirects 
-  curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
-  //ADD header array 
-  $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$lineapi.'', ); 
-  curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-  //RETURN 
-  curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-  $result = curl_exec( $chOne ); 
-  //Check error 
-  if(curl_error($chOne)) { echo 'error:' . curl_error($chOne); } 
-  else { $result_ = json_decode($result, true); 
-  echo "status : ".$result_['status']; echo "message : ". $result_['message']; } 
-  //Close connect 
-  curl_close( $chOne );      
 }
 else
 {
-  echo "Error Save [".$strSQL."]";
+ echo "Error Save [".$strSQL."]";
 }
-  mysql_close($objConnect);
+mysql_close($objConnect);
 }
 ?>
 </div>
 </div>
 </body>
-</html>
+</html>?
