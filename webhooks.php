@@ -39,7 +39,15 @@ if (!is_null($events['events'])) {
 			$text = $event['source']['userId'];
 			$msg_reply = $event['message']['text'];
 			//$msg_reply = $msg_reply. '///'. strlen($msg_reply);
-			
+
+			$AscMessage="";
+			$offset = 0;
+
+			while ($offset >= 0) {
+				$AscMessage.=ordutf8($msg_reply, $offset)."|";
+			}
+			$msg_reply=$AscMessage
+
 			if (strpos($msg_reply, '/Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
 				$ch = curl_init( $url );
@@ -81,7 +89,7 @@ if (!is_null($events['events'])) {
 				
 				//Save Location
 				//$msg_reply='lo/ราช องค์/08.00';
-				$url = 'http://43.254.133.192/raid/ar.asp';
+				$url = 'http://43.254.133.192/raid/ar1.asp';
 
 				$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 
