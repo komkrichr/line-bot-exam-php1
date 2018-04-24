@@ -84,7 +84,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $AscMessage 
+					'text' => $msg_reply 
 				];
 				
 				//Save Location
@@ -93,7 +93,7 @@ if (!is_null($events['events'])) {
 
 				$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 
-				$myvars = 'txtRaid=' . $msg_reply ;
+				$myvars = 'txtRaid=' . $AscMessage  ;
 
 				$ch = curl_init( $url );
 
@@ -132,4 +132,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "103";
+echo "104";
