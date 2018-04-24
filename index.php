@@ -39,7 +39,8 @@ function _uniord($c) {
 
 echo "Hello LINE BOT 7. <br>";
 
-$sMessage='กขคงจฉอฮ ARL';
+$sMessage='ผู้ใหญ่หาผ้าใหม่   ให้สะใภ้ใช้คล้องคอ ใฝ่ใจเอาใส่ห่อ   มิหลงใหลใครขอดู ABXYZ 0189';
+
 $iCount=strlen($sMessage)-1;
 $AscMessage="";
                                                                  
