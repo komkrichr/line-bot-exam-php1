@@ -65,7 +65,7 @@
 if ($_POST) { 
 
 //Setting
-$lineapi = "jttA2ar4eHYLkszZDi62P9sF216OgwY8cZJB2oVB2Jxxxcxcxcxcxcxcxc";
+$lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
 
 $name =  trim($_POST['textArea']);
 $inputimage =  trim($_POST['inputimage']);
