@@ -39,7 +39,7 @@
   <div class="row content">
   <form class="form-horizontal" method="post">
   <fieldset>
-    <legend>PHP Line Notify ทดสอบส่งไลน์ผ่านเว็บด้วย PHP</legend>
+    <legend>GoRaid Message</legend>
     <div class="form-group">
       <label for="inputimage" class="col-lg-2 control-label">Photo URL</label>
       <div class="col-lg-10">
@@ -63,70 +63,68 @@
 </form>
 <?php 
 if ($_POST) { 
+  //Setting
+  $lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
 
-//Setting
-$lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
-
-$name =  trim($_POST['textArea']);
-$inputimage =  trim($_POST['inputimage']);
+  $name =  trim($_POST['textArea']);
+  $inputimage =  trim($_POST['inputimage']);
    
-//Mysql
-include("config.ini.php");
-$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
-mysql_select_db($dbname);
-mysql_query("SET NAMES UTF8");
-mysql_query("SET character_set_results=utf8");
-mysql_query("SET character_set_client=utf8");
-mysql_query("SET character_set_connection=utf8");
+  //Mysql
+  //include("config.ini.php");
+  //$objConnect = mysql_connect($host,$user,$passwd)  or die("Error Connect to Database");
+  //mysql_select_db($dbname);
+  //mysql_query("SET NAMES UTF8");
+  //mysql_query("SET character_set_results=utf8");
+  //mysql_query("SET character_set_client=utf8");
+  //mysql_query("SET character_set_connection=utf8");
 
-//$strSQL = "INSERT INTO `test_line` (`name`, `status`) VALUES ('$name', 'N')";
-$strSQL = "INSERT INTO test_line ";
-$strSQL .="(name,status) ";
-$strSQL .="VALUES ";
-$strSQL .="('".$_POST["textArea"]."','N' )";
-$objQuery = mysql_query($strSQL);
-if($objQuery)
-{
- echo "Save Done.";
+  //$strSQL = "INSERT INTO `test_line` (`name`, `status`) VALUES ('$name', 'N')";
+  //$strSQL = "INSERT INTO test_line ";
+  //$strSQL .="(name,status) ";
+  //$strSQL .="VALUES ";
+  //$strSQL .="('".$_POST["textArea"]."','N' )";
+  //$objQuery = mysql_query($strSQL);
+  //if($objQuery)
+  //{
+  // echo "Save Done.";
 
-$mms = "Save Done. : Name= $name";
-   
-date_default_timezone_set("Asia/Bangkok");
-//line Send
+  //$mms = "Save Done. : Name= $name";
 
-$chOne = curl_init(); 
-curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-// SSL USE 
-curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-//POST 
-curl_setopt( $chOne, CURLOPT_POST, 1); 
-// Message 
-curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$mms&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-// follow redirects 
-curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
-//ADD header array 
-$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$lineapi.'', ); 
-curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-//RETURN 
-curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-$result = curl_exec( $chOne ); 
-//Check error 
-if(curl_error($chOne)) { echo 'error:' . curl_error($chOne); } 
-else { $result_ = json_decode($result, true); 
-echo "status : ".$result_['status']; echo "message : ". $result_['message']; } 
-//Close connect 
-curl_close( $chOne );      
+  date_default_timezone_set("Asia/Bangkok");
+  //line Send
 
+  $chOne = curl_init(); 
+  curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+  // SSL USE 
+  curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+  curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+  //POST 
+  curl_setopt( $chOne, CURLOPT_POST, 1); 
+  // Message 
+  curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$mms&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+  // follow redirects 
+  curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+  //ADD header array 
+  $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$lineapi.'', ); 
+  curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+  //RETURN 
+  curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+  $result = curl_exec( $chOne ); 
+  //Check error 
+  if(curl_error($chOne)) { echo 'error:' . curl_error($chOne); } 
+  else { $result_ = json_decode($result, true); 
+  echo "status : ".$result_['status']; echo "message : ". $result_['message']; } 
+  //Close connect 
+  curl_close( $chOne );      
 }
 else
 {
- echo "Error Save [".$strSQL."]";
+  echo "Error Save [".$strSQL."]";
 }
-mysql_close($objConnect);
+  mysql_close($objConnect);
 }
 ?>
 </div>
 </div>
 </body>
-</html>﻿
+</html>
