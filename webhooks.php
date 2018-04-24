@@ -74,8 +74,8 @@ if (!is_null($events['events'])) {
 				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec( $ch );
 			}
-			
-			if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
+			if (strlen($msg_reply)<200) {
+				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
 				// Get replyToken
 				$replyToken = $event['replyToken'];
@@ -126,8 +126,9 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				//$result = curl_exec($ch);
 				curl_close($ch);
-			//echo $result . "\r\n";
-		     }		
+				//echo $result . "\r\n";
+		     		}	
+			}
 		}
 	}
 }
