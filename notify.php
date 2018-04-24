@@ -102,8 +102,8 @@ curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0);
 //POST 
 curl_setopt( $chOne, CURLOPT_POST, 1); 
 // Message 
-//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$mms&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
 // follow redirects 
 curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
 //ADD header array 
