@@ -84,7 +84,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $msg_reply 
+					'text' => $AscMessage 
 				];
 				
 				//Save Location
