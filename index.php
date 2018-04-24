@@ -37,7 +37,7 @@ function _uniord($c) {
     return 0;
 }   //  function _uniord()
 
-echo "Hello LINE BOT 9. <br>";
+echo "Hello LINE BOT 10. <br>";
 
 $sMessage='สวนสันติภาพ (ยิมนก)';
 
