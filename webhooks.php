@@ -74,7 +74,7 @@ if (!is_null($events['events'])) {
 				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec( $ch );
 			}
-			if (strlen($msg_reply)<200) {
+			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
 				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
 				// Get replyToken
