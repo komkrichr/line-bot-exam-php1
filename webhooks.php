@@ -74,6 +74,34 @@ if (!is_null($events['events'])) {
 				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec( $ch );
 			}
+			
+			if (strpos($msg_reply, '/!Reply') !== false) {
+				// Get replyToken
+				$replyToken = $event['replyToken'];
+				$msg_reply = str_replace('/!Reply','',$msg_reply);
+				$messages = [
+					'type' => 'text',
+					'text' => $msg_reply 
+				];
+				// Make a POST Request to Messaging API to reply to sender
+				$url = 'https://api.line.me/v2/bot/message/reply';
+					$data = [
+					'replyToken' => $replyToken,
+					'messages' => [$messages],
+				];
+				$post = json_encode($data);
+				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				$result = curl_exec($ch);
+				curl_close($ch);
+				
+			}
 			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
 				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
@@ -133,4 +161,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "88";
+echo "100";
