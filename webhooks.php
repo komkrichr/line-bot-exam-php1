@@ -80,29 +80,64 @@ if (!is_null($events['events'])) {
 				$Token = "K6R3pKOXUxu4eh84eivsUTZRZL6lDzt7n8LvB8x88Uv";
 				$Token1 = "IRBcmOtiPol9awe67vgeNpOupkfcDUmLCGsEXn0TdWK" ;
 				
-				$replyToken = $event['replyToken'];
 				$msg_reply = str_replace('/!Reply','',$msg_reply);
-				$messages = [
-					'type' => 'text',
-					'text' => $msg_reply 
-				];
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/multicast';
-					$data = [
-					'to' => $Token,	
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
+				$chOne = curl_init(); 
+				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+				// SSL USE 
+				curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+				curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+				//POST 
+				curl_setopt( $chOne, CURLOPT_POST, 1); 
+				// Message 
+				curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$msg_reply&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+				//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+				// follow redirects 
+				curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+				//ADD header array 
+				$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
+				curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+				//RETURN 
+				curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+				$result = curl_exec( $chOne ); 
+				//Check error 
+				if(curl_error($chOne)) {
+				    echo 'error:' . curl_error($chOne); } 
+				else {
+				  $result_ = json_decode($result, true); 
+				  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
+				} 
+				
+				$chOne = curl_init(); 
+				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+				// SSL USE 
+				curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+				curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+				//POST 
+				curl_setopt( $chOne, CURLOPT_POST, 1); 
+				// Message 
+				curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$msg_reply&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+				//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+				// follow redirects 
+				curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+				//ADD header array 
+				$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token1.'', ); 
+				curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+				//RETURN 
+				curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+				$result = curl_exec( $chOne ); 
+				//Check error 
+				if(curl_error($chOne)) {
+				    echo 'error:' . curl_error($chOne); } 
+				else {
+				  $result_ = json_decode($result, true); 
+				  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
+				}   
+
+				//Close connect 
+
+				curl_close( $chOne );  
+				
 				
 			}
 			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
@@ -164,4 +199,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "102";
+echo "101";
