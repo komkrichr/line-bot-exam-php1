@@ -84,9 +84,8 @@ if (!is_null($events['events'])) {
 					'text' => $msg_reply 
 				];
 				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
+				$url = 'https://api.line.me/v2/bot/message/multicast';
 					$data = [
-					'replyToken' => $replyToken,
 					'messages' => [$messages],
 				];
 				$post = json_encode($data);
@@ -161,4 +160,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "100";
+echo "101";
