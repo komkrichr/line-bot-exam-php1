@@ -146,7 +146,7 @@ if (!is_null($events['events'])) {
 				curl_close( $chOne );  
 			}
 			
-			if  ((strpos($msg_reply, '/!Reply') !== false) && (strpos($msg_reply, '/!Reply1') == false) && (strpos($msg_reply, '/!Reply2') !== false)) {
+			if  ((strpos($msg_reply, '/!Reply') !== false) && (strpos($msg_reply, '/!Reply1') == false) && (strpos($msg_reply, '/!Reply2') == false)) {
 				// Get replyToken
 				$Token = "K6R3pKOXUxu4eh84eivsUTZRZL6lDzt7n8LvB8x88Uv";
 				$Token1 = "IRBcmOtiPol9awe67vgeNpOupkfcDUmLCGsEXn0TdWK" ;
@@ -270,4 +270,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "102";
+echo "100";
