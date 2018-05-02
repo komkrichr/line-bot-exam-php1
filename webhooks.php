@@ -77,6 +77,9 @@ if (!is_null($events['events'])) {
 			
 			if (strpos($msg_reply, '/!Reply') !== false) {
 				// Get replyToken
+				$Token = "K6R3pKOXUxu4eh84eivsUTZRZL6lDzt7n8LvB8x88Uv";
+				$Token1 = "IRBcmOtiPol9awe67vgeNpOupkfcDUmLCGsEXn0TdWK" ;
+				
 				$replyToken = $event['replyToken'];
 				$msg_reply = str_replace('/!Reply','',$msg_reply);
 				$messages = [
@@ -86,6 +89,7 @@ if (!is_null($events['events'])) {
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/multicast';
 					$data = [
+					'to' => $Token,	
 					'messages' => [$messages],
 				];
 				$post = json_encode($data);
@@ -160,4 +164,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "101";
+echo "102";
