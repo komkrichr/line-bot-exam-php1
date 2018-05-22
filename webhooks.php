@@ -48,7 +48,7 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
-			if (strpos($msg_reply, '/!Cancel') !== false) {
+			if (strpos($msg_reply, '/Cancel') !== false) {
 				$url = 'http://43.254.133.192/raid/delete.asp';
 				$ch = curl_init( $url );
 				$myvars = 'GymsName='.$AscMessage;
