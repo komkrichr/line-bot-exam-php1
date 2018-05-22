@@ -48,6 +48,19 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
+			if (strpos($msg_reply, '/!Cancel') !== false) {
+				$url = 'http://43.254.133.192/raid/delete.asp';
+				$ch = curl_init( $url );
+				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+				curl_setopt( $ch, CURLOPT_POST, 1);
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
+				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+				$response = curl_exec( $ch );
+			}
+			
 			if (strpos($msg_reply, '/!Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
 				$ch = curl_init( $url );
@@ -270,4 +283,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "100";
+echo "101";
