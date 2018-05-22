@@ -51,8 +51,9 @@ if (!is_null($events['events'])) {
 			if (strpos($msg_reply, '/!Cancel') !== false) {
 				$url = 'http://43.254.133.192/raid/delete.asp';
 				$ch = curl_init( $url );
+				$myvars = 'GymsName=$AscMessage';
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-				curl_setopt( $ch, CURLOPT_HEADER, $headers);
+				curl_setopt( $chy, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
@@ -283,4 +284,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "101";
+echo "100";
