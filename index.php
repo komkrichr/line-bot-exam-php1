@@ -38,37 +38,4 @@ function _uniord($c) {
 }   //  function _uniord()
 
 echo "Hello LINE BOT 7. <br>";
-
-$sMessage='พญาไท/.';
-
-$iCount=strlen($sMessage)-1;
-$AscMessage="";
-                                                                 
-
-$offset = 0;
-$AsCon=3424;
-echo "$sMessage <br>";
-
-while ($offset >= 0) {
-        $AscMessage.=ordutf8($sMessage, $offset)."|";
-        //echo $offset.": UNI:".ordutf8($sMessage, $offset)."<br>";
-}
-
-echo "----- <br>";
-echo $AscMessage;
-
-$url = 'http://43.254.133.192/raid/ar1.asp';
-$msg_reply=$AscMessage;
-$myvars = 'txtRaid=' . $msg_reply ;
-$ch = curl_init( $url );
-//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
-//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-curl_setopt( $ch, CURLOPT_HEADER, $headers);
-curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-//$response = curl_exec( $ch );
 ?>
