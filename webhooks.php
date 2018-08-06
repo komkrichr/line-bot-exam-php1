@@ -25,20 +25,7 @@ function ordutf8($string, &$offset) {
 $access_token = 'MFFmuhxVsj5vCPrHZ7i2dKBNsg0ksdE36S2OuxYEEuFQ2zN5Uc2sQpsYD6/L5y201CM/h1AxwrVjrKItQc0kpqXjnRyieff+4iIKR+XSglNKGAIZZ9pb9jRyMyweJ/KxfNom4LHazjILRJXRiNyQBwdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
-$curlSession = curl_init();
-curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
-curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-$jsonData = json_decode(curl_exec($curlSession));
-curl_close($curlSession);
-$arr = explode(' ',$jsonData->{'Raids'});
-$msg='';
-foreach ($arr as &$value) {
-	$msg=$msg.chr($value);
-}
-echo $msg;
-echo "<br>";
-echo $jsonData->{'Raids'};
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -71,10 +58,24 @@ if (!is_null($events['events'])) {
 			if (strpos($msg_reply, 'Raid Boss') !== false) {
 				//echo 'JASON:';
 				//echo $jsonData->{'Raids'}; 
+$curlSession = curl_init();
+curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
+curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+$jsonData = json_decode(curl_exec($curlSession));
+curl_close($curlSession);
+$arr = explode(' ',$jsonData->{'Raids'});
+$msg='';
+foreach ($arr as &$value) {
+	$msg=$msg.chr($value);
+}
+//echo $msg;
+//echo "<br>";
+//echo $jsonData->{'Raids'};
 				
 				// Get text sent
 				//$text = $event['source']['userId'];
-				$text = 'Raid Boss List';
+				$text = $msg;
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 				// Build message to reply back
@@ -337,4 +338,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>103";
+echo "<br>104";
