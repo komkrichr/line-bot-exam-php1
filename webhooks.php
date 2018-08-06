@@ -50,7 +50,8 @@ if (!is_null($events['events'])) {
 
 			if (strpos($msg_reply, 'Raid Boss') !== false) {
 				// Get text sent
-				$text = $event['source']['userId'];
+				//$text = $event['source']['userId'];
+				$text = 'Raid Boss List';
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 				// Build message to reply back
@@ -313,4 +314,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "107";
+echo "108";
