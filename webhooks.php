@@ -48,31 +48,33 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
-			if (strpos($msg_reply, '/Location') !== false) {
-				// Build message to reply back
+			if (strpos($msg_reply, '/Get') !== false) {
+				// Get text sent
 				$text = $event['source']['userId'];
+				// Get replyToken
 				$replyToken = $event['replyToken'];
+				// Build message to reply back
 				$messages = [
 					'type' => 'text',
 					'text' => $text
 				];
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
+				$data = [
 					'replyToken' => $replyToken,
 					'messages' => [$messages],
 				];
 				$post = json_encode($data);
 				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
 				$ch = curl_init($url);
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				//$result = curl_exec($ch);
+				$result = curl_exec($ch);
 				curl_close($ch);
+				echo $result . "\r\n";
 			}
 			
 			if (strpos($msg_reply, '/Cancel') !== false) {
@@ -311,4 +313,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "104";
+echo "105";
