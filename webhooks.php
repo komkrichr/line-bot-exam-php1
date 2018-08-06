@@ -25,6 +25,14 @@ function ordutf8($string, &$offset) {
 $access_token = 'MFFmuhxVsj5vCPrHZ7i2dKBNsg0ksdE36S2OuxYEEuFQ2zN5Uc2sQpsYD6/L5y201CM/h1AxwrVjrKItQc0kpqXjnRyieff+4iIKR+XSglNKGAIZZ9pb9jRyMyweJ/KxfNom4LHazjILRJXRiNyQBwdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
+$curlSession = curl_init();
+curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
+curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+$jsonData = json_decode(curl_exec($curlSession));
+curl_close($curlSession);
+$msg = explode(' ',$jsonData->{'Raid'});
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -54,13 +62,6 @@ if (!is_null($events['events'])) {
 			//}
 			
 			if (strpos($msg_reply, 'Raid Boss') !== false) {
-				
-				$curlSession = curl_init();
-				curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
-				curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-				curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-				$jsonData = json_decode(curl_exec($curlSession));
-				curl_close($curlSession);
 				//echo 'JASON:';
 				//echo $jsonData->{'Raids'}; 
 				
@@ -72,7 +73,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $jsonData->{'Raids'}
+					'text' => $text;
 				];
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
@@ -329,4 +330,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "105";
+echo "106";
