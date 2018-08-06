@@ -48,14 +48,15 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
+			$curlSession = curl_init();
+			curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
+			curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+			curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+			$jsonData = json_decode(curl_exec($curlSession));
+			curl_close($curlSession);
+			echo $jsonData . "\r\n";
+			
 			if (strpos($msg_reply, 'Raid Boss') !== false) {
-				$curlSession = curl_init();
-				curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
-				curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-				curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-				$jsonData = json_decode(curl_exec($curlSession));
-				curl_close($curlSession);
-
 				// Get text sent
 				//$text = $event['source']['userId'];
 				$text = 'Raid Boss List';
@@ -64,7 +65,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $jsonData
+					'text' => $text
 				];
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
@@ -321,4 +322,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "109";
+echo "101";
