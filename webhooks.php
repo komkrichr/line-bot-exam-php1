@@ -54,7 +54,7 @@ if (!is_null($events['events'])) {
 				$replyToken = $event['replyToken'];
 				$messages = [
 					'type' => 'text',
-					'text' => $raids_message
+					'text' => $msg_reply
 				];
 				
 				// Make a POST Request to Messaging API to reply to sender
@@ -312,4 +312,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "102";
+echo "103";
