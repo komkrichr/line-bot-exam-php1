@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 			$text = $event['source']['userId'];
 			$msg_reply = $event['message']['text'];
 			//$msg_reply = $msg_reply. '///'. strlen($msg_reply);
-
+			
 			$AscMessage="";
 			$offset = 0;
 			$Message1=$msg_reply;
@@ -48,15 +48,14 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
-			if (strpos($msg_reply, 'Raids') !== false) {
+			//if (strpos($msg_reply, 'Raids') !== false) {
 				// Build message to reply back
-				$raids_message='goBot Location';
+				$text = $event['source']['userId'];
 				$replyToken = $event['replyToken'];
 				$messages = [
 					'type' => 'text',
-					'text' => $msg_reply
+					'text' => $text
 				];
-				
 				// Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
 					$data = [
@@ -73,8 +72,8 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				//$result = curl_exec($ch);
-				curl_close($ch);				
-			}
+				curl_close($ch);
+			//}
 			
 			if (strpos($msg_reply, '/Cancel') !== false) {
 				$url = 'http://43.254.133.192/raid/delete.asp';
