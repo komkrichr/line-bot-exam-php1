@@ -37,7 +37,7 @@ foreach ($arr as &$value) {
 	$msg+=$value;
 }
 echo $msg;
-echo "<br>"
+echo "<br>";
 echo $jsonData->{'Raids'};
 
 // Get POST body content
