@@ -37,6 +37,8 @@ foreach ($arr as &$value) {
 	$msg+=$value;
 }
 echo $msg;
+echo "<br>"
+echo $jsonData->{'Raids'};
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -335,4 +337,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "101";
+echo "<br>102";
