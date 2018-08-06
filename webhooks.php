@@ -34,7 +34,7 @@ curl_close($curlSession);
 $arr = explode(' ',$jsonData->{'Raids'});
 $msg='';
 foreach ($arr as &$value) {
-	$msg+=$value;
+	$msg=$msg.$value;
 }
 echo $msg;
 echo "<br>";
