@@ -48,7 +48,7 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 
-			if (strpos($msg_reply, '/Get') !== false) {
+			if (strpos($msg_reply, 'Raid Boss') !== false) {
 				// Get text sent
 				$text = $event['source']['userId'];
 				// Get replyToken
@@ -313,4 +313,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "105";
+echo "107";
