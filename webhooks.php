@@ -54,7 +54,9 @@ if (!is_null($events['events'])) {
 			curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 			$jsonData = json_decode(curl_exec($curlSession));
 			curl_close($curlSession);
+			echo 'JASON:';
 			echo $jsonData->{'Raids'}; 
+			
 
 			//if (!is_null($jsonData['Raids'])) {
 			//	foreach ($jsonData['Raids'] as $event) {
