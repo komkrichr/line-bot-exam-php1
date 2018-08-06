@@ -31,7 +31,12 @@ curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
 curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 $jsonData = json_decode(curl_exec($curlSession));
 curl_close($curlSession);
-$msg = explode(' ',$jsonData->{'Raids'});
+$arr = explode(' ',$jsonData->{'Raids'});
+$msg='';
+foreach ($arr as &$value) {
+	$msg+=$value;
+}
+echo $msg;
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -330,4 +335,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "108";
+echo "101";
