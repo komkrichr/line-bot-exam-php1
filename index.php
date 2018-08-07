@@ -25,7 +25,7 @@ $msg_reply='';
 // Get POST body content
 $content = file_get_contents('php://input');
 
-echo "Hello LINE BOT 3. <br>";
+echo "Hello LINE BOT 4. <br>";
 
 $curlSession = curl_init();
 curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
