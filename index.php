@@ -8,7 +8,7 @@ curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 $jsonData = json_decode(curl_exec($curlSession));
 curl_close($curlSession);
 echo $jsonData->{'Raids'};
-ecot '<br>';
+echo '<br>';
 $msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
 echo $msg;
 ?>
