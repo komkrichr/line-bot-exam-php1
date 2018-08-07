@@ -1,5 +1,5 @@
 <?php
-echo "Hello LINE BOT 10. <br>";
+echo "Hello LINE BOT 1. <br>";
 
 $curlSession = curl_init();
 curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
