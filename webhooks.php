@@ -64,12 +64,14 @@ curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
 curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 $jsonData = json_decode(curl_exec($curlSession));
 curl_close($curlSession);
-$arr = explode(' ',$jsonData->{'Raids'});
-$msg='';
-foreach ($arr as &$value) {
+$msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
+				
+//$arr = explode(' ',$jsonData->{'Raids'});
+//$msg='';
+//foreach ($arr as &$value) {
 	//$msg=$msg.chr($value);
-	$msg=$msg.($value);
-}
+	//$msg=$msg.($value);
+//}
 //echo $msg;
 //echo "<br>";
 //echo $jsonData->{'Raids'};
@@ -339,4 +341,4 @@ foreach ($arr as &$value) {
 	}
 }
 
-echo "<br>105";
+echo "<br>107";
