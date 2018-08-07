@@ -40,7 +40,8 @@ echo '<br>';
 $arr = explode(' ',$jsonData->{'Raids'});
 $msg='';
 foreach ($arr as &$value) {
-	$msg=$msg.iconv('ASCII', 'UTF-8//IGNORE',chr($value));
+	//$msg=$msg.iconv('ASCII', 'UTF-8//IGNORE',chr($value));
+	$msg=$msg.$value;
 }
 //echo $msg;
 //echo "<br>";
