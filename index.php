@@ -25,7 +25,7 @@ $msg_reply='';
 // Get POST body content
 $content = file_get_contents('php://input');
 
-echo "Hello LINE BOT 2. <br>";
+echo "Hello LINE BOT 3. <br>";
 
 $curlSession = curl_init();
 curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
@@ -40,13 +40,13 @@ echo '<br>';
 $arr = explode(' ',$jsonData->{'Raids'});
 $msg='';
 foreach ($arr as &$value) {
-	$msg=$msg.chr($value);
+	$msg=$msg.iconv('ASCII', 'UTF-8//IGNORE',chr($value));
 }
 //echo $msg;
 //echo "<br>";
 //echo $jsonData->{'Raids'};
-
-$msg = iconv('ASCII', 'UTF-8//IGNORE', $msg);
+//$msg = iconv('ASCII', 'UTF-8//IGNORE', $msg);
+echo "utf8<br>";
 echo $msg;
 
 echo 'stop';
