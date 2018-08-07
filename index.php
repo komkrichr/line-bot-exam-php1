@@ -25,7 +25,7 @@ $msg_reply='';
 // Get POST body content
 $content = file_get_contents('php://input');
 
-echo "Hello LINE BOT 1. <br>";
+echo "Hello LINE BOT 2. <br>";
 
 $curlSession = curl_init();
 curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
@@ -49,6 +49,6 @@ foreach ($arr as &$value) {
 //$msg = iconv('ASCII', 'UTF-8//IGNORE', $msg);
 echo "utf8<br>";
 echo $msg;
-echo iconv('ASCII', 'UTF-8//IGNORE',chr(190));
+echo chr(3614);
 echo 'stop';
 ?>
