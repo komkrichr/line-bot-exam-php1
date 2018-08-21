@@ -69,7 +69,11 @@ $lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
 
 $Token = "K6R3pKOXUxu4eh84eivsUTZRZL6lDzt7n8LvB8x88Uv";
 $Token1 = "IRBcmOtiPol9awe67vgeNpOupkfcDUmLCGsEXn0TdWK" ;
+
+$Token = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
+$Token1 = "xNxsyQNaXSeI59vk5cK5Ui2U28zQuw51DFDMDq55Hk8" ;  
   
+    
 $name =  trim($_POST['textArea']);
 $inputimage =  trim($_POST['inputimage']);
    
