@@ -55,7 +55,7 @@ if (!is_null($events['events'])) {
 			//	}
 			//}
 			
-			if (strpos($msg_reply, 'Raid Boss') !== false) {
+			if (strpos($msg_reply, '##Raid Boss##') !== false) {
 				//echo 'JASON:';
 				//echo $jsonData->{'Raids'}; 
 $curlSession = curl_init();
