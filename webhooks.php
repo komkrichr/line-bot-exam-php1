@@ -284,61 +284,62 @@ if (!is_null($events['events'])) {
 
 			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
 				//if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
-			
-				// Get replyToken
-				$replyToken = $event['replyToken'];
-				$replyToken = str_replace('ดาว','',$replyToken);
+				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, '//') !== false)) {
 
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' => $msg_reply 
-				];
-				
-				//Save Location
-				//$msg_reply='lo/ราช องค์/08.00';
-				$url = 'http://43.254.133.192/raid/ar1.asp';
+					// Get replyToken
+					$replyToken = $event['replyToken'];
+					$replyToken = str_replace('ดาว','',$replyToken);
 
-				$msg_reply=str_replace(' ','A-A-A',$msg_reply);
+					// Build message to reply back
+					$messages = [
+						'type' => 'text',
+						'text' => $msg_reply 
+					];
 
-				$myvars = 'txtRaid=' . $AscMessage  ;
+					//Save Location
+					//$msg_reply='lo/ราช องค์/08.00';
+					$url = 'http://43.254.133.192/raid/ar1.asp';
 
-				$ch = curl_init( $url );
+					$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 
-				//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
-				//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
-				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-				curl_setopt( $ch, CURLOPT_HEADER, $headers);
-				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
-				curl_setopt( $ch, CURLOPT_POST, 1);
-				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
-				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-				$response = curl_exec( $ch );
-				//echo $response . "\r\n";				
-				
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-					$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+					$myvars = 'txtRaid=' . $AscMessage  ;
 
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				//$result = curl_exec($ch);
-				curl_close($ch);
-				//echo $result . "\r\n";
-		     		//}	
+					$ch = curl_init( $url );
+
+					//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
+					//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
+					$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+					curl_setopt( $ch, CURLOPT_HEADER, $headers);
+					curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+					curl_setopt( $ch, CURLOPT_POST, 1);
+					curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+					curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
+					curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+					$response = curl_exec( $ch );
+					//echo $response . "\r\n";				
+
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://api.line.me/v2/bot/message/reply';
+						$data = [
+						'replyToken' => $replyToken,
+						'messages' => [$messages],
+					];
+					$post = json_encode($data);
+					$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+					$ch = curl_init($url);
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+					//$result = curl_exec($ch);
+					curl_close($ch);
+					//echo $result . "\r\n";
+		     		}	
 			}
 		}
 	}
 }
 
-echo "<br>109";
+echo "<br>110";
