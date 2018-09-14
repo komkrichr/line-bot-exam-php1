@@ -58,23 +58,23 @@ if (!is_null($events['events'])) {
 			if (strpos($msg_reply, '##Raid Boss##') !== false) {
 				//echo 'JASON:';
 				//echo $jsonData->{'Raids'}; 
-$curlSession = curl_init();
-curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
-curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-$jsonData = json_decode(curl_exec($curlSession));
-curl_close($curlSession);
-$msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
-				
-//$arr = explode(' ',$jsonData->{'Raids'});
-//$msg='';
-//foreach ($arr as &$value) {
-	//$msg=$msg.chr($value);
-	//$msg=$msg.($value);
-//}
-//echo $msg;
-//echo "<br>";
-//echo $jsonData->{'Raids'};
+				$curlSession = curl_init();
+				curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
+				curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+				curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+				$jsonData = json_decode(curl_exec($curlSession));
+				curl_close($curlSession);
+				$msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
+
+				//$arr = explode(' ',$jsonData->{'Raids'});
+				//$msg='';
+				//foreach ($arr as &$value) {
+					//$msg=$msg.chr($value);
+					//$msg=$msg.($value);
+				//}
+				//echo $msg;
+				//echo "<br>";
+				//echo $jsonData->{'Raids'};
 				
 				// Get text sent
 				//$text = $event['source']['userId'];
@@ -282,8 +282,8 @@ $msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
 			}
 				
 
-			if ((strlen($msg_reply)<400) && (strpos($msg_reply, 'http') == false))  {
-				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
+			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
+				//if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
 				// Get replyToken
 				$replyToken = $event['replyToken'];
@@ -335,10 +335,10 @@ $msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
 				//$result = curl_exec($ch);
 				curl_close($ch);
 				//echo $result . "\r\n";
-		     		}	
+		     		//}	
 			}
 		}
 	}
 }
 
-echo "<br>108";
+echo "<br>109";
