@@ -282,7 +282,7 @@ $msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
 			}
 				
 
-			if ((strlen($msg_reply)<200) && (strpos($msg_reply, 'http') == false))  {
+			if ((strlen($msg_reply)<300) && (strpos($msg_reply, 'http') == false))  {
 				if (((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, ':') !== false)) || ((strpos($msg_reply, '/') !== false) && (strpos($msg_reply, '.') !== false)) || (strpos($msg_reply, 'lo/') !== false) || (strpos($msg_reply, 'Lo/') !== false) || (strpos($msg_reply, 'LO/') !== false)) {
 			
 				// Get replyToken
