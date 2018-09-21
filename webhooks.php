@@ -133,6 +133,20 @@ if (!is_null($events['events'])) {
 				$response = curl_exec( $ch );
 			}
 			
+			if (strpos($msg_reply, '/CancelExRaid') !== false) {
+				$url = 'http://43.254.133.192/raid/cancel_exraid.asp';
+				$ch = curl_init( $url );
+				$myvars = 'GymsName='.$AscMessage;
+				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $chy, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+				curl_setopt( $ch, CURLOPT_POST, 1);
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
+				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+				$response = curl_exec( $ch );
+			}
+			
 			if (strpos($msg_reply, '/!Send') !== false) {
 				$url = 'http://43.254.133.192/raid/send.asp';
 				$ch = curl_init( $url );
@@ -356,4 +370,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>111";
+echo "<br>112";
