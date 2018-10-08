@@ -1,6 +1,6 @@
 <?php
 $url = 'http://43.254.133.192/raid/ar1.asp';
-$url = 'http://siamchart.com';
+$url = 'https://www.settrade.com/settrade/#/home';
 
 $AscMessage='Wannasorn/11.30';
 $myvars = 'txtRaid=' . $AscMessage  ;
