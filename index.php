@@ -1,6 +1,6 @@
 <?php
-//$url = 'http://43.254.133.192/raid/ar1.asp';
-$url = 'https://www.google.com';
+$url = 'http://43.254.133.192/raid/ar1.asp';
+$url = 'http://siamchart.com';
 
 $AscMessage='Wannasorn/11.30';
 $myvars = 'txtRaid=' . $AscMessage  ;
@@ -17,5 +17,5 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 //echo $response . "\r\n";				
 
-echo 'GoRaid V7';
+echo 'GoRaid V8';
 ?>
