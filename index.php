@@ -1,10 +1,6 @@
 <?php
-require "vendor/autoload.php";
-require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
-
 $url = 'http://43.254.133.192/raid/ar1.asp';
 
-$msg_reply=str_replace(' ','A-A-A',$msg_reply);
 $AscMessage='Wannasorn/11.30';
 $myvars = 'txtRaid=' . $AscMessage  ;
 
