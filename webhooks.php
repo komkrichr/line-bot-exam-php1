@@ -56,9 +56,10 @@ if (!is_null($events['events'])) {
 			//}
 			
 			if (strpos($msg_reply, '##Raid Boss##') !== false) {
-				//echo 'JASON:';
+				//eho 'JASON:';
 				//echo $jsonData->{'Raids'}; 
 				$curlSession = curl_init();
+				curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
 				curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
 				curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
 				curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
@@ -94,7 +95,7 @@ if (!is_null($events['events'])) {
 				];
 				$post = json_encode($data);
 				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-				$ch = curl_init($url);
+				$ch = curl_init($url);				
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -110,7 +111,8 @@ if (!is_null($events['events'])) {
 				$ch = curl_init( $url );
 				$myvars = 'GymsName='.$AscMessage;
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-				curl_setopt( $chy, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
@@ -124,7 +126,8 @@ if (!is_null($events['events'])) {
 				$ch = curl_init( $url );
 				$myvars = 'GymsName='.$AscMessage;
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-				curl_setopt( $chy, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
@@ -138,7 +141,8 @@ if (!is_null($events['events'])) {
 				$ch = curl_init( $url );
 				$myvars = 'GymsName='.$AscMessage;
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-				curl_setopt( $chy, CURLOPT_HEADER, $headers);
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
@@ -151,6 +155,7 @@ if (!is_null($events['events'])) {
 				$url = 'http://43.254.133.192/raid/send.asp';
 				$ch = curl_init( $url );
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
 				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
@@ -165,6 +170,7 @@ if (!is_null($events['events'])) {
 				$myvars = 'chkNew=Y';
 				$ch = curl_init( $url );
 				$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+				curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
 				curl_setopt( $ch, CURLOPT_HEADER, $headers);
 				curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 				curl_setopt( $ch, CURLOPT_POST, 1);
@@ -337,6 +343,7 @@ if (!is_null($events['events'])) {
 					//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
 					//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
 					$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+					curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
 					curl_setopt( $ch, CURLOPT_HEADER, $headers);
 					curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
 					curl_setopt( $ch, CURLOPT_POST, 1);
@@ -370,4 +377,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>112";
+echo "<br>113";
