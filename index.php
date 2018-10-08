@@ -1,6 +1,6 @@
 <?php
 $url = 'http://43.254.133.192/raid/ar1.asp';
-//$url = 'https://pantip.com';
+$url = 'https://pantip.com';
 $myvars = 'txtRaid=' . 'Wannasorn/15.00'  ;
 
 $ch = curl_init( $url );
