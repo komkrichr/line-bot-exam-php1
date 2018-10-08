@@ -10,8 +10,6 @@ $myvars = 'txtRaid=' . $AscMessage  ;
 
 $ch = curl_init( $url );
 
-//$myvars =  curl_escape($ch ,'txtRaid=' . $msg_reply);
-//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8');
 $headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
 curl_setopt( $ch, CURLOPT_HEADER, $headers);
 curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
@@ -19,8 +17,8 @@ curl_setopt( $ch, CURLOPT_POST, 1);
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-$response = curl_exec( $ch );
+//$response = curl_exec( $ch );
 echo $response . "\r\n";				
 
-echo 'GoRaid V2';
+echo 'GoRaid V4';
 ?>
