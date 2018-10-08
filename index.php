@@ -1,5 +1,5 @@
 <?php
-$url = 'http://43.254.133.192/raid/ar1.asp';
+$url = 'https://43.254.133.192/raid/ar1.asp';
 //$url = 'https://pantip.com';
 
 $ch = curl_init( $url );
@@ -14,5 +14,5 @@ curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec( $ch );
 echo $url;
 echo '<br>';
-echo 'GoRaid VG1-4';
+echo 'GoRaid VG1-5';
 ?>
