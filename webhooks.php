@@ -22,7 +22,7 @@ function ordutf8($string, &$offset) {
     return $code;
 }
 
-$access_token = 'MFFmuhxVsj5vCPrHZ7i2dKBNsg0ksdE36S2OuxYEEuFQ2zN5Uc2sQpsYD6/L5y201CM/h1AxwrVjrKItQc0kpqXjnRyieff+4iIKR+XSglNKGAIZZ9pb9jRyMyweJ/KxfNom4LHazjILRJXRiNyQBwdB04t89/1O/w1cDnyilFU=';
+$access_token = 'iDajrSSMIRGaGQgv3AbuFaKHlDH6fU35m216/2T0Bb9MX/egR0Mm4ZrkTmUGeHqA1CM/h1AxwrVjrKItQc0kpqXjnRyieff+4iIKR+XSglOaSRnSloWn8arnI3LQxZy9KFfLArzYYf85Lvq6ZLISIwdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
 
