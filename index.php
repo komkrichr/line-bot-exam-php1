@@ -17,7 +17,7 @@ curl_setopt( $ch, CURLOPT_POST, 1);
 curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-//$response = curl_exec( $ch );
+$response = curl_exec( $ch );
 echo $response . "\r\n";				
 
 echo 'GoRaid V4';
