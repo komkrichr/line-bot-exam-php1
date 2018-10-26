@@ -327,7 +327,7 @@ if (!is_null($events['events'])) {
 					// Build message to reply back
 					$messages = [
 						'type' => 'text',
-						'text' => $replyToken.':'.$msg_reply 
+						'text' => $msg_reply 
 					];
 
 					//Save Location
