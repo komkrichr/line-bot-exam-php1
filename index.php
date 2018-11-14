@@ -1,19 +1,14 @@
 <?php
-$url = 'http://43.254.133.192/raid/ar1.asp';
-$url = 'https://pantip.com';
-$myvars = 'txtRaid=' . 'Wannasorn/15.00'  ;
 
-$ch = curl_init( $url );
-$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
-curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt( $ch, CURLOPT_HEADER, $headers);
-curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
-curl_setopt( $ch, CURLOPT_POST, 1);
-curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
-curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-$response = curl_exec( $ch );
-echo $url;
-echo '<br>';
-echo 'GoRaid VG1-8';
+$Data="Warp Driver: 🇺🇸 #100IV 💯 Turtwig CP1102 IV100.0 LVL35
+COORDINATES 🔽
+42.588611,-88.359865
+GOOGLE MAPS 🔽
+https://t.co/IUnQ2uQ37J";
+
+
+$line = split("\\n", $Data);
+echo $line[0];
+echo $line[1];
+echo $line[3];
 ?>
