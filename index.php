@@ -1,6 +1,3 @@
 <?php
-
-$Data= "";
-$line = split("\\n", $Data);
-
+echo "V1";
 ?>
