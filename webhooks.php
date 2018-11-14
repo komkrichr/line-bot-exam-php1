@@ -106,7 +106,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 
-			if (strpos($msg_reply, 'IV100') !== false) {
+			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, 'EX RAID GYM') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
 				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
