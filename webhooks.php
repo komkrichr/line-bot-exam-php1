@@ -105,6 +105,10 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				echo $result . "\r\n";
 			}
+
+			if (strpos($msg_reply, 'IV100') !== false) {
+
+			}
 			
 			if (strpos($msg_reply, '/Cancel') !== false) {
 				$url = 'http://43.254.133.192/raid/delete.asp';
