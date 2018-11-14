@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
 			if (strpos($msg_reply, 'IV100') !== false) {
 				$name =  $msg_reply;
 				$inputimage =  "";
-				$sTokenDev="UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";			
+				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 				$chOne = curl_init(); 
 				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
 				// SSL USE 
@@ -135,6 +135,7 @@ if (!is_null($events['events'])) {
 				  $result_ = json_decode($result, true); 
 				  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
 				} 
+				$msg_reply="";
 			}
 			
 			if (strpos($msg_reply, '/Cancel') !== false) {
