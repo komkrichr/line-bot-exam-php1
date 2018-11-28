@@ -138,7 +138,7 @@ if (!is_null($events['events'])) {
 				$msg_reply="";
 			}
 			
-			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false)) {
+			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
 				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
@@ -441,4 +441,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>007";
+echo "<br>008";
