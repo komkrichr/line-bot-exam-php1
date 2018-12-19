@@ -65,7 +65,7 @@
 <?php 
 if ($_POST) { 
   $name =  trim($_POST['textArea']);
-  $adata = explode(" ", $name);
+  $adata = explode("\n", $name);
   foreach($adata as $key => $val) {
       if (strpos($adata[$key], ',') !== false) {
              echo $adata[$key]."<br><br>" ;
