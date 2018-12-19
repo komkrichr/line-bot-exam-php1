@@ -112,29 +112,49 @@ if (!is_null($events['events'])) {
 				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 				$chOne = curl_init(); 
 				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-				// SSL USE 
 				curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
 				curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-				//POST 
 				curl_setopt( $chOne, CURLOPT_POST, 1); 
-				// Message 
-				curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-				//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
-				// follow redirects 
+				curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage");  
 				curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
-				//ADD header array 
 				$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sTokenDev.'', ); 
 				curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-				//RETURN 
 				curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
 				$result = curl_exec( $chOne ); 
-				//Check error 
 				if(curl_error($chOne)) {
 				    echo 'error:' . curl_error($chOne); } 
 				else {
 				  $result_ = json_decode($result, true); 
 				  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
 				} 
+				
+				$adata = explode("\n", $msg_reply);
+				foreach($adata as $key => $val) {
+					if (strpos($adata[$key], ',') !== false) {
+						$name =  $adata[$key];
+						$inputimage =  "";
+						$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
+						$chOne = curl_init(); 
+						curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+						curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+						curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+						curl_setopt( $chOne, CURLOPT_POST, 1); 
+						curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage");  
+						curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+						$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sTokenDev.'', ); 
+						curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+						curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+						$result = curl_exec( $chOne ); 
+						if(curl_error($chOne)) {
+						    echo 'error:' . curl_error($chOne); } 
+						else {
+						  $result_ = json_decode($result, true); 
+						  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
+						} 
+						
+					}
+				}
+				
 				$msg_reply="";
 			}
 			
@@ -167,6 +187,33 @@ if (!is_null($events['events'])) {
 				  $result_ = json_decode($result, true); 
 				  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
 				} 
+
+				$adata = explode("\n", $msg_reply);
+				foreach($adata as $key => $val) {
+					if (strpos($adata[$key], ',') !== false) {
+						$name =  $adata[$key];
+						$inputimage =  "";
+						$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
+						$chOne = curl_init(); 
+						curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+						curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+						curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+						curl_setopt( $chOne, CURLOPT_POST, 1); 
+						curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage");  
+						curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+						$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sTokenDev.'', ); 
+						curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+						curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+						$result = curl_exec( $chOne ); 
+						if(curl_error($chOne)) {
+						    echo 'error:' . curl_error($chOne); } 
+						else {
+						  $result_ = json_decode($result, true); 
+						  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
+						} 
+						
+					}
+				}				
 				$msg_reply="";
 			}
 			
@@ -441,4 +488,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>004";
+echo "<br>007";
