@@ -65,7 +65,10 @@
 <?php 
 if ($_POST) { 
   $name =  trim($_POST['textArea']);
-  echo $name;
+  $adata = explode(" ", $name);
+  foreach($adata as $key => $val) {
+             echo $adata[$key] ;
+  }
 }
 ?>
 </div>
