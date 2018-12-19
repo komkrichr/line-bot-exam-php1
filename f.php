@@ -67,7 +67,7 @@ if ($_POST) {
   $name =  trim($_POST['textArea']);
   $adata = explode(" ", $name);
   foreach($adata as $key => $val) {
-             echo $adata[$key] ;
+             echo $adata[$key]."<br><br>" ;
   }
 }
 ?>
