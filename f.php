@@ -72,7 +72,7 @@ if ($_POST) {
       }
   }
 }
-echo "<br>ok1";
+echo "<br>ok2";
 ?>
 </div>
 </div>
