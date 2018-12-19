@@ -63,7 +63,10 @@
   </fieldset>
 </form>
 <?php 
-
+if ($_POST) { 
+  $name =  trim($_POST['textArea']);
+  echo $name;
+}
 ?>
 </div>
 </div>
