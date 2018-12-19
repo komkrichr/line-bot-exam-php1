@@ -67,13 +67,15 @@ if ($_POST) {
   $name =  trim($_POST['textArea']);
   $adata = explode("\n", $name);
   echo sizeof($adata);
-  foreach($adata as $key => $val) {
+  if (sizeof($adata)>1) {
+    foreach($adata as $key => $val) {
       if (strpos($adata[$key], ',') !== false) {
              echo $adata[$key]."<br><br>" ;
       }
+    }
   }
 }
-echo "<br>ok3";
+echo "<br>ok4";
 ?>
 </div>
 </div>
