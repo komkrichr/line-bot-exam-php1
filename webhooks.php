@@ -134,7 +134,6 @@ if (!is_null($events['events'])) {
 						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
 						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
-							$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 							$chOne = curl_init(); 
 							curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
 							curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
@@ -194,7 +193,6 @@ if (!is_null($events['events'])) {
 						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
 						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
-							$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 							$chOne = curl_init(); 
 							curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
 							curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
@@ -489,4 +487,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>009";
+echo "<br>010";
