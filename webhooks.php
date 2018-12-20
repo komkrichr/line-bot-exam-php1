@@ -109,7 +109,7 @@ if (!is_null($events['events'])) {
 			if ((strpos($msg_reply, 'Co-ords') !== false) || (strpos($msg_reply, 'Exraid') !== false) || (strpos($msg_reply, 'Ex Raid Gym') !== false) || (strpos($msg_reply, 'EX RAID GYM') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
-				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
+				$sTokenDev="NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";			
 				$chOne = curl_init(); 
 				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
 				curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
@@ -161,7 +161,7 @@ if (!is_null($events['events'])) {
 			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false) || (strpos($msg_reply, 'L3') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
-				$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
+				$sTokenDev="NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";			
 				$chOne = curl_init(); 
 				curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
 				// SSL USE 
