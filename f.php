@@ -70,11 +70,13 @@ if ($_POST) {
   if (sizeof($adata)>1) {
     foreach($adata as $key => $val) {
       $data = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
-      echo $data;
       if (strpos($data, ',') !== false) {
-             echo $adata[$key]."<br><br>" ;
+        echo $data;
       }
     }
+  }else{
+     $data = preg_replace("/[^0-9.,^]/", "", $adata[0]);
+     echo $data;
   }
 }
 echo "<br>ok1";
