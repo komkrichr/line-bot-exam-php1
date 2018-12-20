@@ -131,8 +131,8 @@ if (!is_null($events['events'])) {
 				$adata = explode("\n", $msg_reply);
 				if (sizeof($adata)>1) {
 					foreach($adata as $key => $val) {
-						if (strpos($adata[$key], ',') !== false) {
-							$name =  $adata[$key];
+						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
+						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
 							$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 							$chOne = curl_init(); 
@@ -190,9 +190,9 @@ if (!is_null($events['events'])) {
 
 				$adata = explode("\n", $msg_reply);
 				if (sizeof($adata)>1) {
-					foreach($adata as $key => $val) {
-						if (strpos($adata[$key], ',') !== false) {
-							$name =  $adata[$key];
+					foreach($adata as $key => $val) {						
+						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
+						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
 							$sTokenDev="sRCa53zmuuPNdZqvXtUYX2IxB24SlPpJd5V4VClZovv";			
 							$chOne = curl_init(); 
@@ -489,4 +489,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>008";
+echo "<br>009";
