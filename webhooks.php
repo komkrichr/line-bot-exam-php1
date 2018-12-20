@@ -131,7 +131,7 @@ if (!is_null($events['events'])) {
 				$adata = explode("\n", $msg_reply);
 				if (sizeof($adata)>1) {
 					foreach($adata as $key => $val) {
-						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
+						$name = preg_replace("/[^0-9.,-^]/", "", $adata[$key]);
 						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
 							$chOne = curl_init(); 
@@ -190,7 +190,7 @@ if (!is_null($events['events'])) {
 				$adata = explode("\n", $msg_reply);
 				if (sizeof($adata)>1) {
 					foreach($adata as $key => $val) {						
-						$name = preg_replace("/[^0-9.,^]/", "", $adata[$key]);
+						$name = preg_replace("/[^0-9.,-^]/", "", $adata[$key]);
 						if (strpos($name, ',') !== false) {
 							$inputimage =  "";
 							$chOne = curl_init(); 
@@ -487,4 +487,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>010";
+echo "<br>011";
