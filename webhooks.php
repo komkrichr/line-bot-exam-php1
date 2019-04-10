@@ -151,6 +151,19 @@ if (!is_null($events['events'])) {
 							  $result_ = json_decode($result, true); 
 							  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
 							} 
+
+							$url = 'http://43.254.133.192/raid/add_location.asp';
+							$ch = curl_init( $url );
+							$myvars = 'txtlocation_desc='.$name;
+							$headers = ['Content-Type' => 'application/x-www-form-urlencoded', 'charset' => 'windows-874'];
+							curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false);
+							curl_setopt( $ch, CURLOPT_HEADER, $headers);
+							curl_setopt( $ch, CURLOPT_ENCODING, 'windows-874');
+							curl_setopt( $ch, CURLOPT_POST, 1);
+							curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+							curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
+							curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+							$response = curl_exec( $ch );
 							
 						}
 					}
@@ -212,7 +225,6 @@ if (!is_null($events['events'])) {
 							  echo "status : ".$result_['status']; echo "message : ". $result_['message']; 
 							} 
 							
-							
 							$url = 'http://43.254.133.192/raid/add_location.asp';
 							$ch = curl_init( $url );
 							$myvars = 'txtlocation_desc='.$name;
@@ -225,8 +237,6 @@ if (!is_null($events['events'])) {
 							curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);				
 							curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 							$response = curl_exec( $ch );
-							
-							
 							
 						}
 					}
