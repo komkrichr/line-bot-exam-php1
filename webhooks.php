@@ -106,7 +106,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 
-			if ((strpos($msg_reply, 'Co-ords') !== false) || (strpos($msg_reply, 'Exraid') !== false) || (strpos($msg_reply, 'Ex Raid') !== false) || (strpos($msg_reply, 'EX RAID') !== false)) {
+			if ((strpos($msg_reply, 'Co-ords') !== false) || (strpos($msg_reply, 'EXGYM') !== false)  || (strpos($msg_reply, 'Boosted') !== false)  || (strpos($msg_reply, 'Exraid') !== false) || (strpos($msg_reply, 'Ex Raid') !== false) || (strpos($msg_reply, 'EX RAID') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
 				$sTokenDev="NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";			
