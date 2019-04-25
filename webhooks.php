@@ -171,7 +171,7 @@ if (!is_null($events['events'])) {
 				$msg_reply="";
 			}
 			
-			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false) || (strpos($msg_reply, 'L3') !== false)) {
+			if ((strpos($msg_reply, 'Lapras') !== false) || (strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false) || (strpos($msg_reply, 'L3') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
 				$sTokenDev="NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";			
