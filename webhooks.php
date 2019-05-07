@@ -50,61 +50,6 @@ if (!is_null($events['events'])) {
 				$AscMessage.=ordutf8($Message1, $offset)."|";
 			}
 			
-			//if (!is_null($jsonData['Raids'])) {
-			//	foreach ($jsonData['Raids'] as $event) {
-			//	}
-			//}
-			
-			if (strpos($msg_reply, '##Raid Boss##') !== false) {
-				//eho 'JASON:';
-				//echo $jsonData->{'Raids'}; 
-				$curlSession = curl_init();
-				curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($curlSession, CURLOPT_URL, 'http://43.254.133.192/raid/botgo.asp');
-				curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-				curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-				$jsonData = json_decode(curl_exec($curlSession));
-				curl_close($curlSession);
-				$msg = iconv('ASCII', 'UTF-8//IGNORE', $jsonData->{'Raids'});
-
-				//$arr = explode(' ',$jsonData->{'Raids'});
-				//$msg='';
-				//foreach ($arr as &$value) {
-					//$msg=$msg.chr($value);
-					//$msg=$msg.($value);
-				//}
-				//echo $msg;
-				//echo "<br>";
-				//echo $jsonData->{'Raids'};
-				
-				// Get text sent
-				//$text = $event['source']['userId'];
-				$text = $msg;
-				// Get replyToken
-				$replyToken = $event['replyToken'];
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' => $text,
-				];
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-				$ch = curl_init($url);				
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-				echo $result . "\r\n";
-			}
 
 			if ((strpos($msg_reply, 'Co-ords') !== false) || (strpos($msg_reply, 'EXGYM') !== false)  || (strpos($msg_reply, 'Boosted') !== false)  || (strpos($msg_reply, 'Exraid') !== false) || (strpos($msg_reply, 'Ex Raid') !== false) || (strpos($msg_reply, 'EX RAID') !== false)) {
 				$name =  $msg_reply;
@@ -171,7 +116,7 @@ if (!is_null($events['events'])) {
 				$msg_reply="";
 			}
 			
-			if ((strpos($msg_reply, 'Lapras') !== false) || (strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false) || (strpos($msg_reply, 'L3') !== false)) {
+			if ((strpos($msg_reply, 'IV100') !== false) || (strpos($msg_reply, '100IV') !== false) || (strpos($msg_reply, 'LV3') !== false) || (strpos($msg_reply, 'L3') !== false)) {
 				$name =  $msg_reply;
 				$inputimage =  "";
 				$sTokenDev="NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";			
@@ -515,4 +460,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>011";
+echo "<br>007";
