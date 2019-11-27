@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>GoRaid</title>
+  <title>Notify</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -68,7 +68,7 @@ if ($_POST) {
 $lineapi = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
 
 
-$Token = "UjHSi0jzuaGgX7kLvlbuBYoMzbo98eiD9doYdhTeb2F";
+$Token = "NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";
  
     
 $name =  trim($_POST['textArea']);
