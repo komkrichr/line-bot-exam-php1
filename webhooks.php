@@ -17,6 +17,14 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+			// Get replyToken
+			$replyToken = $event['replyToken'];
+			// Build message to reply back
+			$messages = [
+				'type' => 'text',
+				'text' => $msg_reply 
+			];
+			
 			// Get text sent
 			$text = $event['source']['userId'];
 			$msg_reply = $event['message']['text'];
@@ -27,6 +35,7 @@ if (!is_null($events['events'])) {
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
 			];
+			
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
@@ -43,4 +52,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>Fresh me 1";
+echo "<br>Fresh me 2";
