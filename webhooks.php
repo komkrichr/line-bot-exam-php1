@@ -7,6 +7,8 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 $access_token = '1653577809 69d91fafb082e44307f374646698b32b';
 $msg_reply='';
 
+file_put_contents('log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -52,4 +54,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>Fresh me 2";
+echo "<br>Fresh me 4";
