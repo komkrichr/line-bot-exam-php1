@@ -18,7 +18,7 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "โปรเด็ด",
+            "text" => "ซื้อเมนู Premium",
             "size" => "3xl",
             "align" => "start",
             "weight" => "bold",
@@ -26,14 +26,7 @@ $jsonFlex1 = [
           ],
           [
             "type" => "text",
-            "text" => "ซื้อเมนู Premium ในราคา",
-            "size" => "lg",
-            "weight" => "bold",
-            "color" => "#000000"
-          ],
-          [
-            "type" => "text",
-            "text" => "1 บาท",
+            "text" => "ราคา 1 บาท",
             "size" => "3xl",
             "align" => "start",
             "weight" => "bold",
@@ -44,7 +37,7 @@ $jsonFlex1 = [
             "text" => "เพียงสั่งซื้อผ่าน Klook",
             "size" => "lg",
             "weight" => "bold",
-            "color" => "#000000"
+            "color" => "#DC5200"
           ]
         ]
       ],
