@@ -37,13 +37,6 @@ $jsonFlex1 = [
             "size" => "lg",
             "weight" => "bold",
             "color" => "#000000"
-          ],
-          [
-            "type" => "text",
-            "text" => "รายการที่ร่วม / จากราคา",
-            "margin" => "lg",
-            "size" => "lg",
-            "color" => "#000000"
           ]
         ]
       ],
@@ -51,6 +44,13 @@ $jsonFlex1 = [
         "type" => "box",
         "layout" => "vertical",
         "contents" => [
+          [
+            "type" => "text",
+            "text" => "รายการที่ร่วม / จากราคา",
+            "margin" => "lg",
+            "size" => "lg",
+            "color" => "#000000"
+          ],      
           [
             "type" => "separator",
             "color" => "#C3C3C3"
