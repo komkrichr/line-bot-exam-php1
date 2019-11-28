@@ -12,5 +12,5 @@ foreach ($client->parseEvents() as $event) {
 
 };
 
-echo "<br>LINEBotTiny-2";
+echo "<br>LINEBotTiny-3";
 ?>
