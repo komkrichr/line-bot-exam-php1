@@ -51,7 +51,7 @@ $jsonSpecialOffer = [
             "action" => [
               "type" => "uri",
               "label" => "View Details",
-              "uri" => "https://www.facebook.com/BUFreshme/photos/pcb.802678023500471/802677690167171/?type=3&theater"
+              "uri" => "https://www.facebook.com/BUFreshme/photos/a.754557021645905/805391143229159/?type=3&theater"
             ]
           ]
         ]
