@@ -8,9 +8,9 @@ $password = "8b0430ea";
 $db = "heroku_a797b8e9f9df240";
 
 $conn = new mysqli($server, $username, $password, $db);
-echo "srv:". $server . "<br>";
-echo "usr:".$username . "<br>";
-echo "pw:".$password . "<br>";
-echo "db:".$db . "<br>";
-echo "Clear DB";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully"
 ?>
