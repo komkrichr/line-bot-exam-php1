@@ -18,29 +18,29 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "โปรโมชั่นซื้อเมนู Premium ได้ในราคา",
-            "size" => "lg",
+            "text" => "โปรโมชั่น",
+            "size" => "3xl",
             "align" => "start",
             "weight" => "bold",
             "color" => "#009813"
           ],
           [
             "type" => "text",
-            "text" => "฿ 1.00",
-            "size" => "3xl",
-            "weight" => "bold",
-            "color" => "#000000"
-          ],
-          [
-            "type" => "text",
-            "text" => "เพียงสั่งซื้อผ่าน Application Klook",
+            "text" => "ซื้อในราคา ฿ 1.00",
             "size" => "lg",
             "weight" => "bold",
             "color" => "#000000"
           ],
           [
             "type" => "text",
-            "text" => "รายการสินค้าที่ร่วมรายสามารถซื้อได้",
+            "text" => "เพียงสั่งซื้อผ่าน Klook",
+            "size" => "lg",
+            "weight" => "bold",
+            "color" => "#000000"
+          ],
+          [
+            "type" => "text",
+            "text" => "รายการที่ร่วม / จากราคา",
             "margin" => "lg",
             "size" => "lg",
             "color" => "#000000"
