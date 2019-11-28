@@ -6,6 +6,30 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
+$jsonFlex1 = [
+      "type": "flex",
+      "altText": "this is a carousel template",
+      "template": {
+        "type": "carousel",
+        "actions": [],
+        "columns": [
+          {
+            "thumbnailImageUrl": "http://cliparting.com/wp-content/uploads/2016/06/Snoopy-happy-new-year-clipart-clipart-free-clipart-microsoft-image.png",
+            "title": "          Happy New Year",
+            "text": "         Happy 2019 Event",
+            "actions": [
+              {
+                "type": "message",
+                "label": "New Year Promotion",
+                "text": "ีรับส่วนลด 10 บาท"
+              }
+            ]
+          }
+        ]
+      }
+    }
+]
+    
 $jsonFlex = [
     "type" => "flex",
     "altText" => "Hello Flex Message",
@@ -147,7 +171,7 @@ if (!is_null($events['events'])) {
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$jsonFlex]
+                'messages' => [$jsonFlex1]
                 //'messages' => [$messages]
             ];
        
