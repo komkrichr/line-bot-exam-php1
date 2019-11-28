@@ -8,5 +8,9 @@ $channelSecret = '69d91fafb082e44307f374646698b32b';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
 
+foreach ($client->parseEvents() as $event) {
+
+};
+
 echo "<br>LINEBotTiny-2";
 ?>
