@@ -17,29 +17,6 @@ $jsonFlex1 = [
         "layout" => "vertical",
         "contents" => [
           [
-            "type" => "text",
-            "text" => "ซื้อเมนู Premium",
-            "size" => "3xl",
-            "align" => "start",
-            "weight" => "bold",
-            "color" => "#FF0000"
-          ],
-          [
-            "type" => "text",
-            "text" => "ราคา 1 บาท",
-            "size" => "3xl",
-            "align" => "start",
-            "weight" => "bold",
-            "color" => "#FF0000"
-          ],  
-          [
-            "type" => "text",
-            "text" => "เพียงสั่งซื้อผ่าน Klook",
-            "size" => "lg",
-            "weight" => "bold",
-            "color" => "#DC5200"
-          ],
-          [
               "type"=> "image",
               "url"=> "https://scontent-kut2-1.xx.fbcdn.net/v/t1.0-9/p960x960/72621156_2359379364189164_6729822528555974656_o.jpg?_nc_cat=107&_nc_eui2=AeGJAMhb70mXeIf4YHlUkocsvhJLHDM-z3yY7qOpUEb0Ek6EbzNnIJZbk1QPiox9TP6KxSJtorDSD6MRBp7AwsYPWCLEvyB0eCjCSVsZGB562g&_nc_ohc=eUvOC_2FcnYAQmQIzAa4C4tAvKCZnKF8INfeWmQ7F4_kUuVhvYh0NpuzQ&_nc_ht=scontent-kut2-1.xx&oh=afec2f0052738c07c63b424e081143bd&oe=5E441FDD",
               "size"=> "full",
