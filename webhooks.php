@@ -8,7 +8,7 @@ $msg_reply='';
 
 $jsonFlex1 = [
     "type" => "flex",
-    "altText" => "Promotions",
+    "altText" => "SPECIAL OFFER",
     "contents" => [
       "type" => "bubble",
       "direction" => "ltr",
@@ -31,11 +31,18 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "สินค้าที่ร่วมรายการ",
+            "text" => "ซื้อเมนู Premium ในราคา 1 บาท",
             "margin" => "lg",
             "size" => "lg",
             "color" => "#000000"
           ],      
+          [
+            "type" => "text",
+            "text" => "สินค้าที่ร่วมรายการ",
+            "margin" => "lg",
+            "size" => "lg",
+            "color" => "#000000"
+          ],            
           [
             "type" => "separator",
             "color" => "#C3C3C3"
