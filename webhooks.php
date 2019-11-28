@@ -2,12 +2,13 @@
 
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
-
+	
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('69d91fafb082e44307f374646698b32b');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '1653577809']);
 
 $Token = "NEvWA3b8STpVWM3HOFUVwulGlzQPWnnw5m0xNlXw8MW";
 $name =  "..";
 $inputimage =  "";
-
 date_default_timezone_set("Asia/Bangkok");
 //line Send
 $chOne = curl_init(); 
@@ -89,4 +90,4 @@ if (!is_null($events['events'])) {
 	}
 }
 
-echo "<br>Fresh me 5";
+echo "<br>Fresh me 7";
