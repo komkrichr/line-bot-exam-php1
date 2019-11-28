@@ -68,7 +68,14 @@ if (!is_null($events['events'])) {
         
         if ($event['type'] == 'beacon') {
             $replyToken = $event['replyToken'];
-            $text = $event['message']['type'];
+            $text = $event['beacon']['type'];
+            if ($event['beacon']['type'] =='enter')
+            {
+                $text = 'สวัสดีค่ะ ยินดีต้อนรับ';
+            }else if ($event['beacon']['type'] =='leave'){
+                $text = 'โอกาสหน้าเชิญใหม่นะคะ';    
+            }
+            
             // Build message to reply back
             $messages = [
                 'type' => 'text',
@@ -96,4 +103,4 @@ if (!is_null($events['events'])) {
     }
 }
 
-echo "<br>Beacons";
+echo "<br>Beacons-101";
