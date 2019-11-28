@@ -70,7 +70,7 @@ if (!is_null($events['events'])) {
             
             $replyToken = $event['replyToken'];
             $text = $event['beacon']['hwid'];
-            //$text = $event['beacon']['source']['userId'];
+            $text = $text.' '.$event['source']['userId'];
             
             if ($event['beacon']['type'] =='enter')
             {
@@ -106,4 +106,4 @@ if (!is_null($events['events'])) {
     }
 }
 
-echo "<br>Beacons-103";
+echo "<br>Beacons-104";
