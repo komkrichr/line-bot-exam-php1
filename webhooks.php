@@ -14,29 +14,6 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
-        // Reply only when message sent is in 'text' format
-        
-        $Token='O0rzEarg2qtBbDTWfxefXF4usrHdrlTHzs9yNvtNVYh';
-        $name = $event['type'];
-        $chOne = curl_init(); 
-        curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-        // SSL USE 
-        curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-        curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-        //POST 
-        curl_setopt( $chOne, CURLOPT_POST, 1); 
-        // Message 
-        curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-        //curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
-        // follow redirects 
-        curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
-        //ADD header array 
-        $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
-        curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-        //RETURN 
-        curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-        $result = curl_exec( $chOne ); 
-        
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
             $text = $event['message']['text'];
@@ -107,3 +84,25 @@ if (!is_null($events['events'])) {
 }
 
 echo "<br>Beacons-104";
+
+//** Reply only when message sent is in 'text' format
+//$Token='O0rzEarg2qtBbDTWfxefXF4usrHdrlTHzs9yNvtNVYh';
+//$name = $event['type'];
+//$chOne = curl_init(); 
+//curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+//** SSL USE 
+//curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+//curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+//**POST 
+//curl_setopt( $chOne, CURLOPT_POST, 1); 
+//** Message 
+//curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+//**curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+//** follow redirects 
+//curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+//**ADD header array 
+//$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
+//curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+//**RETURN 
+//curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+//$result = curl_exec( $chOne ); 
