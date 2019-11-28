@@ -6,7 +6,7 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
-$jsonFlex1 = [
+$jsonSpecialOffer = [
     "type" => "flex",
     "altText" => "SPECIAL OFFER",
     "contents" => [
@@ -201,8 +201,8 @@ if (!is_null($events['events'])) {
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$jsonFlex1]
-                //'messages' => [$messages]
+                //'messages' => [$jsonFlex1]
+                'messages' => [$messages]
             ];
        
 
@@ -241,7 +241,7 @@ if (!is_null($events['events'])) {
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$jsonFlex]    
+                'messages' => [$jsonSpecialOffer]    
                 //'messages' => [$messages]
             ];
             $post = json_encode($data);
