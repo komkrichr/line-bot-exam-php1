@@ -92,7 +92,8 @@ $jsonFlex1 [
       ]
     ]
   ]
-]
+];
+
 
 $jsonFlex = [
     "type" => "flex",
