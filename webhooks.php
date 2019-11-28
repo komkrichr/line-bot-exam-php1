@@ -74,9 +74,9 @@ if (!is_null($events['events'])) {
             
             if ($event['beacon']['type'] =='enter')
             {
-                $text = .' สวัสดีค่ะ ยินดีต้อนรับ';
+                $text = $text.' สวัสดีค่ะ ยินดีต้อนรับ';
             }else if ($event['beacon']['type'] =='leave'){
-                $text = .' โอกาสหน้าเชิญใหม่นะคะ';    
+                $text = $text.' โอกาสหน้าเชิญใหม่นะคะ';    
             }
             
             // Build message to reply back
