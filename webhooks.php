@@ -68,7 +68,7 @@ if (!is_null($events['events'])) {
         
         if ($event['type'] == 'beacon') {
             $replyToken = $event['replyToken'];
-            $text ='ซื้อ Dark Coco Brown Sugar ได้ในราคา 1 บาท ผ่าน Application Klook';
+            $text = $event['message']['type'];
             // Build message to reply back
             $messages = [
                 'type' => 'text',
@@ -96,4 +96,4 @@ if (!is_null($events['events'])) {
     }
 }
 
-echo "<br>0012";
+echo "<br>Beacons";
