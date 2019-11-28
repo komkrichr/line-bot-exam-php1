@@ -35,48 +35,7 @@ $jsonFlex1 = [
             "margin" => "lg",
             "size" => "lg",
             "color" => "#000000"
-          ],      
-          [
-            "type" => "text",
-            "text" => "สินค้าที่ร่วมรายการ",
-            "margin" => "lg",
-            "size" => "lg",
-            "color" => "#000000"
-          ],            
-          [
-            "type" => "separator",
-            "color" => "#C3C3C3"
-          ],
-          [
-            "type" => "box",
-            "layout" => "baseline",
-            "margin" => "lg",
-            "contents" => [
-              [
-                "type" => "text",
-                "text" => "Freshme Milk Tea",
-                "align" => "start",
-                "color" => "#000000"
-              ]
-            ]
-          ],
-          [
-            "type" => "box",
-            "layout" => "baseline",
-            "margin" => "lg",
-            "contents" => [
-              [
-                "type" => "text",
-                "text" => "Fresh Milk Brow Sugar",
-                "color" => "#000000"
-              ]
-            ]
-          ],
-          [
-            "type" => "separator",
-            "margin" => "lg",
-            "color" => "#C3C3C3"
-          ]
+          ]      
         ]
       ],
       "footer" => [
