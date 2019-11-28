@@ -70,7 +70,7 @@ if (!is_null($events['events'])) {
             
             $replyToken = $event['replyToken'];
             $text = $event['beacon']['hwid'];
-            //$text = .' : '.$event['beacon']['source']['userId'];
+            $text = $event['beacon']['source']['userId'];
             
             if ($event['beacon']['type'] =='enter')
             {
