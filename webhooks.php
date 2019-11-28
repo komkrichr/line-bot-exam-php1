@@ -7,26 +7,91 @@ $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7
 $msg_reply='';
 
 $jsonFlex1 = [
-      "type": "flex",
-      "altText": "this is a carousel template",
-      "template": [
-        "type": "carousel",
-        "actions": [],
-        "columns": [
-          [
-            "thumbnailImageUrl": "http://cliparting.com/wp-content/uploads/2016/06/Snoopy-happy-new-year-clipart-clipart-free-clipart-microsoft-image.png",
-            "title": "          Happy New Year",
-            "text": "         Happy 2019 Event",
-            "actions": [
-              [
-                "type": "message",
-                "label": "New Year Promotion",
-                "text": "ีรับส่วนลด 10 บาท"
-              ]
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": [
+    "type": "bubble",
+    "hero": [
+      "type": "image",
+      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+      "size": "full",
+      "aspectRatio": "20:13",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "label": "Line",
+        "uri": "https://linecorp.com/"
+      ]
+    ],
+    "body": [
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        [
+          "type": "text",
+          "text": "Milk Tea Signature",
+          "size": "xl",
+          "weight": "bold"
+        ],
+        [
+          "type": "text",
+          "text": "ชานมไข่มุก นำเข้าจากไต้หวัน กลิ่นหอม"
+        ],
+        [
+          "type": "box",
+          "layout": "horizontal",
+          "margin": "md",
+          "contents": [
+            [
+              "type": "text",
+              "text": "Size M"
+            ],
+            [
+              "type": "text",
+              "text": "45 Bath"
+            ]
+          ]
+        ],
+        [
+          "type": "box",
+          "layout": "horizontal",
+          "margin": "md",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Size L"
+            ],
+            [
+              "type": "text",
+              "text": "55 Bath"
             ]
           ]
         ]
       ]
+    ],
+    "footer": {
+      "type": "box",
+      "layout": "vertical",
+      "flex": 0,
+      "spacing": "sm",
+      "contents": [
+        [
+          "type": "button",
+          "action": {
+            "type": "uri",
+            "label": "CALL",
+            "uri": "https://linecorp.com"
+          ],
+          "height": "sm",
+          "style": "link"
+        ],
+        [
+          "type": "spacer",
+          "size": "sm"
+        ]
+      ]
+    ]
+  ]
 ];
     
 $jsonFlex = [
