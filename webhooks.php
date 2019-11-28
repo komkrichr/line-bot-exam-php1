@@ -7,92 +7,123 @@ $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7
 $msg_reply='';
 
 $jsonFlex1 = [
-  "type" =>  "flex",
-  "altText" =>  "Flex Message",
-  "contents" =>  [
-    "type" =>  "bubble",
-    "hero" =>  [
-      "type" =>  "image",
-      "url" =>  "https => //scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-      "size" =>  "full",
-      "aspectRatio" =>  "20 => 13",
-      "aspectMode" =>  "cover",
-      "action" =>  [
-        "type" =>  "uri",
-        "label" =>  "Line",
-        "uri" =>  "https => //linecorp.com/"
-      ]
-    ],
-    "body" =>  [
-      "type" =>  "box",
-      "layout" =>  "vertical",
-      "contents" =>  [
-        [
-          "type" =>  "text",
-          "text" =>  "Milk Tea Signature",
-          "size" =>  "xl",
-          "weight" =>  "bold"
-        ],
-        [
-          "type" =>  "text",
-          "text" =>  "ชานมไข่มุก นำเข้าจากไต้หวัน กลิ่นหอม"
-        ],
-        [
-          "type" =>  "box",
-          "layout" =>  "horizontal",
-          "margin" =>  "md",
-          "contents" =>  [
-            [
-              "type" =>  "text",
-              "text" =>  "Size M"
-            ],
-            [
-              "type" =>  "text",
-              "text" =>  "45 Bath"
-            ]
-          ]
-        ],
-        [
-          "type" =>  "box",
-          "layout" =>  "horizontal",
-          "margin" =>  "md",
-          "contents" =>  [
-            [
-              "type" =>  "text",
-              "text" =>  "Size L"
-            ],
-            [
-              "type" =>  "text",
-              "text" =>  "55 Bath"
-            ]
+    "type" => "flex",
+    "altText" => "Hello Flex Message",
+    "contents" => [
+      "type" => "bubble",
+      "direction" => "ltr",
+      "header" => [
+        "type" => "box",
+        "layout" => "vertical",
+        "contents" => [
+          [
+            "type" => "text",
+            "text" => "Purchase",
+            "size" => "lg",
+            "align" => "start",
+            "weight" => "bold",
+            "color" => "#009813"
+          ],
+          [
+            "type" => "text",
+            "text" => "฿ 100.00",
+            "size" => "3xl",
+            "weight" => "bold",
+            "color" => "#000000"
+          ],
+          [
+            "type" => "text",
+            "text" => "Rabbit Line Pay",
+            "size" => "lg",
+            "weight" => "bold",
+            "color" => "#000000"
+          ],
+          [
+            "type" => "text",
+            "text" => "2019.02.14 21:47 (GMT+0700)",
+            "size" => "xs",
+            "color" => "#B2B2B2"
+          ],
+          [
+            "type" => "text",
+            "text" => "Payment complete.",
+            "margin" => "lg",
+            "size" => "lg",
+            "color" => "#000000"
           ]
         ]
-      ]
-    ],
-    "footer" =>  [
-      "type" =>  "box",
-      "layout" =>  "vertical",
-      "flex" =>  0,
-      "spacing" =>  "sm",
-      "contents" =>  [
-        [
-          "type" =>  "button",
-          "action" =>  [
-            "type" =>  "uri",
-            "label" =>  "CALL",
-            "uri" =>  "https => //linecorp.com"
+      ],
+      "body" => [
+        "type" => "box",
+        "layout" => "vertical",
+        "contents" => [
+          [
+            "type" => "separator",
+            "color" => "#C3C3C3"
           ],
-          "height" =>  "sm",
-          "style" =>  "link"
-        ],
-        [
-          "type" =>  "spacer",
-          "size" =>  "sm"
+          [
+            "type" => "box",
+            "layout" => "baseline",
+            "margin" => "lg",
+            "contents" => [
+              [
+                "type" => "text",
+                "text" => "Merchant",
+                "align" => "start",
+                "color" => "#C3C3C3"
+              ],
+              [
+                "type" => "text",
+                "text" => "BTS 01",
+                "align" => "end",
+                "color" => "#000000"
+              ]
+            ]
+          ],
+          [
+            "type" => "box",
+            "layout" => "baseline",
+            "margin" => "lg",
+            "contents" => [
+              [
+                "type" => "text",
+                "text" => "New balance",
+                "color" => "#C3C3C3"
+              ],
+              [
+                "type" => "text",
+                "text" => "฿ 45.57",
+                "align" => "end"
+              ]
+            ]
+          ],
+          [
+            "type" => "separator",
+            "margin" => "lg",
+            "color" => "#C3C3C3"
+          ]
+        ]
+      ],
+      "footer" => [
+        "type" => "box",
+        "layout" => "horizontal",
+        "contents" => [
+          [
+            "type" => "text",
+            "text" => "View Details",
+            "size" => "lg",
+            "align" => "start",
+            "color" => "#0084B6",
+            "action" => [
+              "type" => "uri",
+              "label" => "View Details",
+              "uri" => "https://google.co.th/"
+            ]
+          ]
         ]
       ]
     ]
-  ]
-];
+  ];
 
 
 $jsonFlex = [
@@ -276,7 +307,7 @@ if (!is_null($events['events'])) {
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$jsonFlex1]    
+                'messages' => [$jsonFlex]    
                 //'messages' => [$messages]
             ];
             $post = json_encode($data);
