@@ -108,7 +108,7 @@ $jsonFlex1 = [
             "action" => [
               "type" => "uri",
               "label" => "View Details",
-              "uri" => "https://google.co.th/"
+              "uri" => "https://www.facebook.com/BUFreshme/photos/pcb.802678023500471/802677690167171/?type=3&theater"
             ]
           ]
         ]
