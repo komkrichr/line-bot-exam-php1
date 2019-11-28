@@ -12,7 +12,12 @@ $conn = new mysqli($server, $username, $password, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
-$sql = "insert into user(line_id,user_name) values('xxxxx','xxxxxx')";
+    
+$sql = "CREATE TABLE MyGuests (line_id varchar(100) not null,user_name varchar(200)) ";
+if ($conn->query($sql) === TRUE) {
+}
+
+$sql = "insert into MyGuests(line_id,user_name) values('xxxxx','xxxxxx')";
 if ($conn->query($sql) === TRUE) {
     echo "Insert successfully";
 } else {
