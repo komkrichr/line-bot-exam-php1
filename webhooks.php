@@ -41,7 +41,7 @@ $jsonFlex1 = [
           ],
           [
               "type"=> "image",
-              "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+              "url"=> "https://scontent-kut2-1.xx.fbcdn.net/v/t1.0-9/p960x960/72621156_2359379364189164_6729822528555974656_o.jpg?_nc_cat=107&_nc_eui2=AeGJAMhb70mXeIf4YHlUkocsvhJLHDM-z3yY7qOpUEb0Ek6EbzNnIJZbk1QPiox9TP6KxSJtorDSD6MRBp7AwsYPWCLEvyB0eCjCSVsZGB562g&_nc_ohc=eUvOC_2FcnYAQmQIzAa4C4tAvKCZnKF8INfeWmQ7F4_kUuVhvYh0NpuzQ&_nc_ht=scontent-kut2-1.xx&oh=afec2f0052738c07c63b424e081143bd&oe=5E441FDD",
               "size"=> "full",
               "aspectRatio"=> "20:13",
               "aspectMode"=> "cover"
