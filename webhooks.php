@@ -18,19 +18,27 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "โปรโมชั่น",
+            "text" => "โปรเด็ด",
             "size" => "3xl",
             "align" => "start",
             "weight" => "bold",
-            "color" => "#009813"
+            "color" => "#FF0000"
           ],
           [
             "type" => "text",
-            "text" => "ซื้อในราคา ฿ 1.00",
+            "text" => "ซื้อเมนู Premium ในราคา",
             "size" => "lg",
             "weight" => "bold",
             "color" => "#000000"
           ],
+          [
+            "type" => "text",
+            "text" => "1 บาท",
+            "size" => "3xl",
+            "align" => "start",
+            "weight" => "bold",
+            "color" => "#FF0000"
+          ],  
           [
             "type" => "text",
             "text" => "เพียงสั่งซื้อผ่าน Klook",
@@ -65,12 +73,6 @@ $jsonFlex1 = [
                 "text" => "Freshme Milk Tea",
                 "align" => "start",
                 "color" => "#000000"
-              ],
-              [
-                "type" => "text",
-                "text" => "฿ 95.00",
-                "align" => "end",
-                "color" => "#C3C3C3"
               ]
             ]
           ],
@@ -83,12 +85,6 @@ $jsonFlex1 = [
                 "type" => "text",
                 "text" => "Fresh Milk Brow Sugar",
                 "color" => "#000000"
-              ],
-              [
-                "type" => "text",
-                "text" => "฿ 95.00",
-                "align" => "end",
-                 "color" => "#C3C3C3"
               ]
             ]
           ],
