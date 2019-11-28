@@ -6,94 +6,7 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
-$jsonFlex1 = [
-  "type": "flex",
-  "altText": "Flex Message",
-  "contents": [
-    "type": "bubble",
-    "hero": [
-      "type": "image",
-      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-      "size": "full",
-      "aspectRatio": "20:13",
-      "aspectMode": "cover",
-      "action": {
-        "type": "uri",
-        "label": "Line",
-        "uri": "https://linecorp.com/"
-      ]
-    ],
-    "body": [
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        [
-          "type": "text",
-          "text": "Milk Tea Signature",
-          "size": "xl",
-          "weight": "bold"
-        ],
-        [
-          "type": "text",
-          "text": "ชานมไข่มุก นำเข้าจากไต้หวัน กลิ่นหอม"
-        ],
-        [
-          "type": "box",
-          "layout": "horizontal",
-          "margin": "md",
-          "contents": [
-            [
-              "type": "text",
-              "text": "Size M"
-            ],
-            [
-              "type": "text",
-              "text": "45 Bath"
-            ]
-          ]
-        ],
-        [
-          "type": "box",
-          "layout": "horizontal",
-          "margin": "md",
-          "contents": [
-            {
-              "type": "text",
-              "text": "Size L"
-            ],
-            [
-              "type": "text",
-              "text": "55 Bath"
-            ]
-          ]
-        ]
-      ]
-    ],
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "flex": 0,
-      "spacing": "sm",
-      "contents": [
-        [
-          "type": "button",
-          "action": {
-            "type": "uri",
-            "label": "CALL",
-            "uri": "https://linecorp.com"
-          ],
-          "height": "sm",
-          "style": "link"
-        ],
-        [
-          "type": "spacer",
-          "size": "sm"
-        ]
-      ]
-    ]
-  ]
-];
-    
+
 $jsonFlex = [
     "type" => "flex",
     "altText" => "Hello Flex Message",
@@ -235,7 +148,7 @@ if (!is_null($events['events'])) {
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                'messages' => [$jsonFlex1]
+                'messages' => [$jsonFlex]
                 //'messages' => [$messages]
             ];
        
