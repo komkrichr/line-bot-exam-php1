@@ -47,7 +47,7 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "รายการที่ร่วม / จากราคา",
+            "text" => "สินค้าที่ร่วมรายการ",
             "margin" => "lg",
             "size" => "lg",
             "color" => "#000000"
