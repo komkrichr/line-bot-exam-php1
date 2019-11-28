@@ -11,5 +11,5 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
-echo 'go-1';
+echo 'go-2';
 echo $result;
