@@ -14,7 +14,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-require_once('./LINEBotTiny.php');
+require "vendor/autoload.php";
+require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+
 $channelAccessToken = '69d91fafb082e44307f374646698b32b';
 $channelSecret = '1653577809';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
