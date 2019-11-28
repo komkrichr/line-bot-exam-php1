@@ -67,13 +67,16 @@ if (!is_null($events['events'])) {
         }
         
         if ($event['type'] == 'beacon') {
+            
             $replyToken = $event['replyToken'];
-            $text = $event['beacon']['type'];
+            $text = $event['beacon']['hwid'];
+            $text = .' : '.$event['beacon']['source']['userId'];
+            
             if ($event['beacon']['type'] =='enter')
             {
-                $text = 'สวัสดีค่ะ ยินดีต้อนรับ';
+                $text = .' สวัสดีค่ะ ยินดีต้อนรับ';
             }else if ($event['beacon']['type'] =='leave'){
-                $text = 'โอกาสหน้าเชิญใหม่นะคะ';    
+                $text = .' โอกาสหน้าเชิญใหม่นะคะ';    
             }
             
             // Build message to reply back
@@ -103,4 +106,4 @@ if (!is_null($events['events'])) {
     }
 }
 
-echo "<br>Beacons-101";
+echo "<br>Beacons-102";
