@@ -8,7 +8,7 @@ $msg_reply='';
 
 $jsonFlex1 = [
     "type" => "flex",
-    "altText" => "Hello Flex Message",
+    "altText" => "Promotions",
     "contents" => [
       "type" => "bubble",
       "direction" => "ltr",
@@ -18,7 +18,7 @@ $jsonFlex1 = [
         "contents" => [
           [
             "type" => "text",
-            "text" => "Purchase",
+            "text" => "โปรโมชั่นซื้อเมนู Premium ได้ในราคา",
             "size" => "lg",
             "align" => "start",
             "weight" => "bold",
@@ -26,27 +26,21 @@ $jsonFlex1 = [
           ],
           [
             "type" => "text",
-            "text" => "฿ 100.00",
+            "text" => "฿ 1.00",
             "size" => "3xl",
             "weight" => "bold",
             "color" => "#000000"
           ],
           [
             "type" => "text",
-            "text" => "Rabbit Line Pay",
+            "text" => "เพียงสั่งซื้อผ่าน Application Klook",
             "size" => "lg",
             "weight" => "bold",
             "color" => "#000000"
           ],
           [
             "type" => "text",
-            "text" => "2019.02.14 21:47 (GMT+0700)",
-            "size" => "xs",
-            "color" => "#B2B2B2"
-          ],
-          [
-            "type" => "text",
-            "text" => "Payment complete.",
+            "text" => "รายการสินค้าที่ร่วมรายสามารถซื้อได้",
             "margin" => "lg",
             "size" => "lg",
             "color" => "#000000"
@@ -68,15 +62,15 @@ $jsonFlex1 = [
             "contents" => [
               [
                 "type" => "text",
-                "text" => "Merchant",
+                "text" => "Freshme Milk Tea",
                 "align" => "start",
-                "color" => "#C3C3C3"
+                "color" => "#000000"
               ],
               [
                 "type" => "text",
-                "text" => "BTS 01",
+                "text" => "฿ 95.00",
                 "align" => "end",
-                "color" => "#000000"
+                "color" => "#C3C3C3"
               ]
             ]
           ],
@@ -87,13 +81,14 @@ $jsonFlex1 = [
             "contents" => [
               [
                 "type" => "text",
-                "text" => "New balance",
-                "color" => "#C3C3C3"
+                "text" => "Fresh Milk Brow Sugar",
+                "color" => "#000000"
               ],
               [
                 "type" => "text",
-                "text" => "฿ 45.57",
-                "align" => "end"
+                "text" => "฿ 95.00",
+                "align" => "end",
+                 "color" => "#C3C3C3"
               ]
             ]
           ],
