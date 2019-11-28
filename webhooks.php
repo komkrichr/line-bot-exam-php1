@@ -9,26 +9,25 @@ $msg_reply='';
 $jsonFlex1 = [
       "type": "flex",
       "altText": "this is a carousel template",
-      "template": {
+      "template": [
         "type": "carousel",
         "actions": [],
         "columns": [
-          {
+          [
             "thumbnailImageUrl": "http://cliparting.com/wp-content/uploads/2016/06/Snoopy-happy-new-year-clipart-clipart-free-clipart-microsoft-image.png",
             "title": "          Happy New Year",
             "text": "         Happy 2019 Event",
             "actions": [
-              {
+              [
                 "type": "message",
                 "label": "New Year Promotion",
                 "text": "ีรับส่วนลด 10 บาท"
-              }
+              ]
             ]
-          }
+          ]
         ]
-      }
-    }
-]
+      ]
+];
     
 $jsonFlex = [
     "type" => "flex",
