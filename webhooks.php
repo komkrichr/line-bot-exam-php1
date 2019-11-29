@@ -2,6 +2,15 @@
 
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+$access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
+$msg_reply='';
+
+$server = "us-cdbr-iron-east-05.cleardb.net";
+$username = "b4eebb1ab31fba";
+$password = "8b0430ea";
+$db = "heroku_a797b8e9f9df240";
+
+
 
 function SendLineNotify($string) {
     //** Reply only when message sent is in 'text' format
@@ -62,22 +71,10 @@ function getLINEProfile($datas)
    return $datasReturn;
 }
 
-$url = parse_url(getenv("mysql://b4eebb1ab31fba:8b0430ea@us-cdbr-iron-east-05.cleardb.net/heroku_a797b8e9f9df240?reconnect=true"));
-$server = "us-cdbr-iron-east-05.cleardb.net";
-$username = "b4eebb1ab31fba";
-$password = "8b0430ea";
-$db = "heroku_a797b8e9f9df240";
-$conn = new mysqli($server, $username, $password, $db);
-// Check connection
-if ($conn->connect_error) {
-    SendLineNotify("Connection failed: " . $conn->connect_error);
-    die("Connection failed: " . $conn->connect_error."<br>");
-}
 
 
 
-$access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
-$msg_reply='';
+
 
 $jsonSpecialOffer = [
     "type" => "flex",
@@ -252,16 +249,25 @@ $jsonFlex = [
     ]
   ];
 
+$conn = new mysqli($server, $username, $password, $db);
+// Check connection
+if ($conn->connect_error) {
+    SendLineNotify("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error."<br>");
+}
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-
     $userId = $event['source']['userId'];
     $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
     $LINEDatas['token'] = $access_token;
+    SendLineNotify($LINEDatas['url']);
+    SendLineNotify( $LINEDatas['token']);
+    
     $results = getLINEProfile($LINEDatas);
     SendLineNotify($results['message']);
 
@@ -284,7 +290,6 @@ if (!is_null($events['events'])) {
                 //'messages' => [$jsonFlex1]
                 'messages' => [$messages]
             ];
-       
 
             $post = json_encode($data);
             $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -300,8 +305,7 @@ if (!is_null($events['events'])) {
         }
         
         if ($event['type'] == 'beacon') {
-            
-
+           
             $sql = "insert into line_beam_user_transaction "; 
             $sql = $sql . "(line_id,hwid,create_date) ";
             $sql = $sql . "values('".$event['source']['userId']."','".$event['beacon']['hwid']."',curdate()) ";
