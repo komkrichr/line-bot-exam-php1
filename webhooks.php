@@ -265,14 +265,18 @@ if (!is_null($events['events'])) {
     $userId = $event['source']['userId'];
     $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
     $LINEDatas['token'] = $access_token;
-    SendLineNotify($LINEDatas['url']);
-    SendLineNotify( $LINEDatas['token']);
-    
+    SendLineNotify("userId:".$event['source']['userId']);
+
     $results = getLINEProfile($LINEDatas);
     SendLineNotify($results['message']);
 
     // Loop through each event
     foreach ($events['events'] as $event) {
+
+        $userId = $event['source']['userId'];
+        SendLineNotify("userId1:".$event['source']['userId']);
+
+        
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
             $text = $event['message']['text'];
