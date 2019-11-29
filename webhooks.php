@@ -71,11 +71,6 @@ function getLINEProfile($datas)
    return $datasReturn;
 }
 
-
-
-
-
-
 $jsonSpecialOffer = [
     "type" => "flex",
     "altText" => "SPECIAL OFFER",
@@ -363,6 +358,7 @@ if (!is_null($events['events'])) {
             $promotion_id ='1';
             $sql = "SELECT * FROM line_beam_user_log where line_id='".$event['source']['userId']."'";
             $sql = $sql. " and line_beam_promotion_id=".$promotion_id;
+            $result = $conn->query($sql);
             if ($result->num_rows ==0) {     
                 $sql =  "insert into line_beam_user_log ";
                 $sql = $sql . " (line_id,line_beam_promotion_id,create_date) ";
