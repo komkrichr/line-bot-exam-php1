@@ -290,9 +290,17 @@ if (!is_null($events['events'])) {
             $msg_reply=$event['message']['text'];
             $data = explode("/", $msg_reply);
             if ((strpos($msg_reply, 'BotTrain') !== false) && (strpos($msg_reply, '/') !== false)) {
+                $line_ai_id="1";
+                $sql = "select IFNULL(max(line_ai_id),0)+1 as line_ai_id from line_ai";
+                $result = $conn->query($sql);
+                if ($result->num_rows >0) {
+                    while($row = $result->fetch_assoc()) {
+                        $line_ai_id = $row["line_ai_id"];
+                    } 
+                }
                 $sql = "insert into line_ai ";
                 $sql = $sql. " (line_ai_id,line_ai_question,line_ai_answer,create_date) values (" ;
-                $sql = $sql. " 1,'".$data[1]."'";
+                $sql = $sql. $line_ai_id.",'".$data[1]."'";
                 $sql = $sql. " ,'".$data[2]."'";
                 $sql = $sql. " ,curdate())";
                 if ($conn->query($sql) === TRUE) {
