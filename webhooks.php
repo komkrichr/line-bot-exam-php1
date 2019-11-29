@@ -271,6 +271,9 @@ if (!is_null($events['events'])) {
         $results = getLINEProfile($LINEDatas);
         SendLineNotify("results1".$results['message']);
         
+        $profile = json_decode($results['message'], true);
+        SendLineNotify("results2".$profile['displayName']);
+        
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
             $text = $event['message']['text'];
