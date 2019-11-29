@@ -3,6 +3,31 @@
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
+function SendLineNotify($string) {
+    //** Reply only when message sent is in 'text' format
+    $Token='O0rzEarg2qtBbDTWfxefXF4usrHdrlTHzs9yNvtNVYh';
+    $name = $string;
+    $chOne = curl_init(); 
+    curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+    //** SSL USE 
+    curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+    curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+    //**POST 
+    curl_setopt( $chOne, CURLOPT_POST, 1); 
+    //** Message 
+    curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+    //**curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+    //** follow redirects 
+    curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+    //**ADD header array 
+    $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
+    curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+    //**RETURN 
+    curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+    $result = curl_exec( $chOne );     
+}
+
+
 $url = parse_url(getenv("mysql://b4eebb1ab31fba:8b0430ea@us-cdbr-iron-east-05.cleardb.net/heroku_a797b8e9f9df240?reconnect=true"));
 $server = "us-cdbr-iron-east-05.cleardb.net";
 $username = "b4eebb1ab31fba";
@@ -11,6 +36,7 @@ $db = "heroku_a797b8e9f9df240";
 $conn = new mysqli($server, $username, $password, $db);
 // Check connection
 if ($conn->connect_error) {
+    SendLineNotify("Connection failed: " . $conn->connect_error);
     die("Connection failed: " . $conn->connect_error."<br>");
 }
 
@@ -237,9 +263,9 @@ if (!is_null($events['events'])) {
             $sql = "insert into line_users(line_id,first_name,last_name,hwid) ";
             $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."') " ;
             if ($conn->query($sql) === TRUE) {
-                echo "Insert successfully";
+                SendLineNotify("Insert successfully");
             } else {
-                echo "Error : " . $conn->error ."<br>";
+                SendLineNotify("Error : " . $conn->error);
             }
             
             $replyToken = $event['replyToken'];
@@ -284,24 +310,4 @@ if (!is_null($events['events'])) {
 $conn->close();
 echo "<br>Beacons-104";
 
-//** Reply only when message sent is in 'text' format
-$Token='O0rzEarg2qtBbDTWfxefXF4usrHdrlTHzs9yNvtNVYh';
-$name = $sql;
-$chOne = curl_init(); 
-curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-//** SSL USE 
-curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-//**POST 
-curl_setopt( $chOne, CURLOPT_POST, 1); 
-//** Message 
-curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
-//**curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
-//** follow redirects 
-curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
-//**ADD header array 
-$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
-curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-//**RETURN 
-curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-$result = curl_exec( $chOne ); 
+
