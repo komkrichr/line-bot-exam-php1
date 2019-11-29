@@ -321,8 +321,17 @@ if (!is_null($events['events'])) {
                 curl_close($ch);
             }else{
                 // Get text sent
-                //$text = "ไม่รู้จัก ".$event['message']['text'];
-                $text = "ชานมไข่มุกร้านเราอร่อยมากนะ รู้ยัง";
+                
+                $sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
+                $result = $conn->query($sql);
+                if ($result->num_rows >0) {
+                    while($row = $result->fetch_assoc()) {
+                        $text = $row["line_ai_answer"];
+                    }                    
+                }else{
+                    $text = "เราไม่เข้าใจ ".$event['message']['text']. " แต่รู้ใหม ชานมไข่มุกอร่อยจริงๆนะ";
+                }
+                
                 // Get replyToken
                 $replyToken = $event['replyToken'];
                 // Build message to reply back
