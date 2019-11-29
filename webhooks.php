@@ -259,11 +259,19 @@ if (!is_null($events['events'])) {
         }
         
         if ($event['type'] == 'beacon') {
+            $sql = "insert into heroku_a797b8e9f9df240.line_beam_user_transaction "; 
+            $sql = $sql . "(line_id,hwid,create_date) ";
+            $sql = $sql . "values('".$event['source']['userId']."','".$event['beacon']['hwid']."',curdate()) ";
+            if ($conn->query($sql) === TRUE) {
+                 SendLineNotify("user visit");
+            } else {
+                SendLineNotify("Error : " . $conn->error);
+            }
             
             $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date) ";
             $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate()) " ;
             if ($conn->query($sql) === TRUE) {
-                SendLineNotify("Insert successfully");
+                SendLineNotify("new user register");
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
@@ -307,6 +315,7 @@ if (!is_null($events['events'])) {
                 $result = curl_exec($ch);
                 curl_close($ch);
                 echo $result . "";
+                SendLineNotify("send promotion".$promotion_id);
             }else{
                 SendLineNotify("Error : " . $conn->error);
             }
