@@ -264,15 +264,32 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
-
+        
+        //*** GET USER PROFIE AND SAVE DB **** //
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
         $results = getLINEProfile($LINEDatas);
-        SendLineNotify("results1".$results['message']);
-        
         $profile = json_decode($results['message'], true);
-        SendLineNotify("results2".$profile['displayName']);
+        $sql = "SELECT * FROM line_users where line_id='".$userId."'";
+        $result = $conn->query($sql);
+        if ($result->num_rows ==0) {
+            $userId = $event['source']['userId'];
+            $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+            $LINEDatas['token'] = $access_token;
+            $results = getLINEProfile($LINEDatas);
+            $profile = json_decode($results['message'], true);
+            $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
+            $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
+            $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."' ";
+            $sql = $sql . ")";
+
+            if ($conn->query($sql) === TRUE) {
+                SendLineNotify("new user register");
+            } else {
+                SendLineNotify("Error : " . $conn->error);
+            }
+        }
         
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
@@ -306,7 +323,33 @@ if (!is_null($events['events'])) {
         }
         
         if ($event['type'] == 'beacon') {
-           
+            //*** GET USER PROFIE AND SAVE DB **** //
+            $userId = $event['source']['userId'];
+            $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+            $LINEDatas['token'] = $access_token;
+            $results = getLINEProfile($LINEDatas);
+            $profile = json_decode($results['message'], true);
+            $sql = "SELECT * FROM line_users where line_id='".$userId."'";
+            $result = $conn->query($sql);
+            if ($result->num_rows ==0) {
+                $userId = $event['source']['userId'];
+                $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+                $LINEDatas['token'] = $access_token;
+                $results = getLINEProfile($LINEDatas);
+                $profile = json_decode($results['message'], true);
+                $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
+                $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
+                $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."' ";
+                $sql = $sql . ")";
+
+                if ($conn->query($sql) === TRUE) {
+                    SendLineNotify("new user register");
+                } else {
+                    SendLineNotify("Error : " . $conn->error);
+                }
+            }
+            
+            //*** SAVE VISIT LOG ***//
             $sql = "insert into line_beam_user_transaction "; 
             $sql = $sql . "(line_id,hwid,create_date) ";
             $sql = $sql . "values('".$event['source']['userId']."','".$event['beacon']['hwid']."',curdate()) ";
@@ -316,27 +359,7 @@ if (!is_null($events['events'])) {
                 SendLineNotify("Error : " . $conn->error);
             }
 
-            $sql = "SELECT * FROM line_users where line_id='".$event['source']['userId']."'";
-            $result = $conn->query($sql);
-            if ($result->num_rows ==0) {
-                $userId = $event['source']['userId'];
-                $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
-                $LINEDatas['token'] = $access_token;
-                $results = getLINEProfile($LINEDatas);
-                //SendLineNotify("results".$results['displayName'];);
-                    
-                $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
-                $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
-                $sql = $sql .",'display_name','picture_url','status_message' ";
-                $sql = $sql . ")";
-                
-                if ($conn->query($sql) === TRUE) {
-                    SendLineNotify("new user register");
-                } else {
-                    SendLineNotify("Error : " . $conn->error);
-                }
-            }
-            
+            //*** PROMOTION SEND AND KEEP LOG DB ***//
             $promotion_id ='1';
             $sql = "SELECT * FROM line_beam_user_log where line_id='".$event['source']['userId']."'";
             $sql = $sql. " and line_beam_promotion_id=".$promotion_id;
