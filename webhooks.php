@@ -287,15 +287,14 @@ if (!is_null($events['events'])) {
         }
         
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-            
             $msg_reply=$event['message']['text'];
+            $data = explode("/", $msg_reply);
             if ((strpos($msg_reply, 'BotTrain') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $sql = "insert into line_ai ";
                 $sql = $sql. " (line_ai_id,line_ai_question,line_ai_answer,create_date) values (" ;
-                $sql = $sql. " 1,'อะไรอร่อย'";
-                $sql = $sql. " ,'".$msg_reply."'";
+                $sql = $sql. " 1,'".$data[0]."'";
+                $sql = $sql. " ,'".$data[1]."'";
                 $sql = $sql. " ,curdate())";
-                
                 if ($conn->query($sql) === TRUE) {
                     $text ="รับทราบ";
                 } else {
