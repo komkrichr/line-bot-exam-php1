@@ -260,48 +260,56 @@ if (!is_null($events['events'])) {
         
         if ($event['type'] == 'beacon') {
             
-            $sql = "insert into line_users(line_id,first_name,last_name,hwid) ";
-            $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."') " ;
+            $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date) ";
+            $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate()) " ;
             if ($conn->query($sql) === TRUE) {
                 SendLineNotify("Insert successfully");
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
             
-            $replyToken = $event['replyToken'];
-            $text = $event['beacon']['hwid'];
-            $text = $text.' '.$event['source']['userId'];
+            $promotion_id ='1';
+            $sql =  "insert into heroku_a797b8e9f9df240.line_beam_user_log ";
+            $sql = $sql . " (line_id,line_beam_promotion_id,create_date) ";
+            $sql = $sql . " values('".$event['source']['userId']."',".$promotion_id.",curdate()) ";
+            if ($conn->query($sql) === TRUE) {
+                $replyToken = $event['replyToken'];
+                $text = $event['beacon']['hwid'];
+                $text = $text.' '.$event['source']['userId'];
+
+                if ($event['beacon']['type'] =='enter')
+                {
+                    $text = $text.' สวัสดีค่ะ ยินดีต้อนรับ';
+                }else if ($event['beacon']['type'] =='leave'){
+                    $text = $text.' โอกาสหน้าเชิญใหม่นะคะ';    
+                }
             
-            if ($event['beacon']['type'] =='enter')
-            {
-                $text = $text.' สวัสดีค่ะ ยินดีต้อนรับ';
-            }else if ($event['beacon']['type'] =='leave'){
-                $text = $text.' โอกาสหน้าเชิญใหม่นะคะ';    
+                // Build message to reply back
+                $messages = [
+                    'type' => 'text',
+                    'text' => $text,
+                ];
+                // Make a POST Request to Messaging API to reply to sender
+                $url = 'https://api.line.me/v2/bot/message/reply';
+                $data = [
+                    'replyToken' => $replyToken,
+                    'messages' => [$jsonSpecialOffer]    
+                    //'messages' => [$messages]
+                ];
+                $post = json_encode($data);
+                $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                $result = curl_exec($ch);
+                curl_close($ch);
+                echo $result . "";
+            }else{
+                SendLineNotify("Error : " . $conn->error);
             }
-            
-            // Build message to reply back
-            $messages = [
-                'type' => 'text',
-                'text' => $text,
-            ];
-            // Make a POST Request to Messaging API to reply to sender
-            $url = 'https://api.line.me/v2/bot/message/reply';
-            $data = [
-                'replyToken' => $replyToken,
-                'messages' => [$jsonSpecialOffer]    
-                //'messages' => [$messages]
-            ];
-            $post = json_encode($data);
-            $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-            $result = curl_exec($ch);
-            curl_close($ch);
-            echo $result . "";            
         }
        
     }
