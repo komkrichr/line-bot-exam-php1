@@ -264,11 +264,13 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
+
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
         $results = getLINEProfile($LINEDatas);
-        SendLineNotify($results['message']);
+        SendLineNotify("results1".$results['displayName'];);
+        SendLineNotify("results2".$results['message']['displayName'];);
         
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
@@ -311,12 +313,22 @@ if (!is_null($events['events'])) {
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
-            
+
             $sql = "SELECT * FROM line_users where line_id='".$event['source']['userId']."'";
             $result = $conn->query($sql);
-            if ($result->num_rows ==0) {     
-                $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date) ";
-                $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate()) " ;
+            if ($result->num_rows ==0) {
+                $userId = $event['source']['userId'];
+                $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+                $LINEDatas['token'] = $access_token;
+                $results = getLINEProfile($LINEDatas);
+                
+                SendLineNotify("results".$results['displayName'];);
+                    
+                $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
+                $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
+                $sql = $sql .",'display_name','picture_url','status_message' ";
+                $sql = $sql . ")";
+                
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("new user register");
                 } else {
