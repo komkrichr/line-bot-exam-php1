@@ -292,8 +292,8 @@ if (!is_null($events['events'])) {
             if ((strpos($msg_reply, 'BotTrain') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $sql = "insert into line_ai ";
                 $sql = $sql. " (line_ai_id,line_ai_question,line_ai_answer,create_date) values (" ;
-                $sql = $sql. " 1,'".$data[0]."'";
-                $sql = $sql. " ,'".$data[1]."'";
+                $sql = $sql. " 1,'".$data[1]."'";
+                $sql = $sql. " ,'".$data[2]."'";
                 $sql = $sql. " ,curdate())";
                 if ($conn->query($sql) === TRUE) {
                     $text ="รับทราบ";
