@@ -269,8 +269,8 @@ if (!is_null($events['events'])) {
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
         $results = getLINEProfile($LINEDatas);
-        SendLineNotify("results1".$results['displayName'];);
-        SendLineNotify("results2".$results['message']['displayName'];);
+        SendLineNotify("results1".$results['displayName']);
+        SendLineNotify("results2".$results['message']['displayName']);
         
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
@@ -321,8 +321,7 @@ if (!is_null($events['events'])) {
                 $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
                 $LINEDatas['token'] = $access_token;
                 $results = getLINEProfile($LINEDatas);
-                
-                SendLineNotify("results".$results['displayName'];);
+                //SendLineNotify("results".$results['displayName'];);
                     
                 $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
                 $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
