@@ -270,7 +270,7 @@ if (!is_null($events['events'])) {
                 SendLineNotify("Error : " . $conn->error);
             }
             
-            $sql = "SELECT * FROM line_users where line_id='"..$event['source']['userId']."'";
+            $sql = "SELECT * FROM line_users where line_id='".$event['source']['userId']."'";
             $result = $conn->query($sql);
             if ($result->num_rows ==0) {     
                 $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date) ";
@@ -283,7 +283,7 @@ if (!is_null($events['events'])) {
             }
             
             $promotion_id ='1';
-            $sql = "SELECT * FROM line_beam_user_log where line_id='"..$event['source']['userId']."'";
+            $sql = "SELECT * FROM line_beam_user_log where line_id='".$event['source']['userId']."'";
             $sql = $sql. " and line_beam_promotion_id=".$promotion_id;
             if ($result->num_rows ==0) {     
                 $sql =  "insert into line_beam_user_log ";
