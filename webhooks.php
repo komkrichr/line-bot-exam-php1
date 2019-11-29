@@ -326,8 +326,8 @@ if (!is_null($events['events'])) {
                 curl_close($ch);
             }else{
                 // Get text sent              
-                //$sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
-                $sql = "SELECT * FROM line_ai ";
+                $sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
+                //$sql = "SELECT * FROM line_ai ";
                 $result = $conn->query($sql);
                 if ($result->num_rows >0) {
                     while($row = $result->fetch_assoc()) {
