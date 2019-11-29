@@ -290,37 +290,37 @@ if (!is_null($events['events'])) {
             
             $msg_reply=$event['message']['text'];
             if ((strpos($msg_reply, 'BotTrain') !== false) && (strpos($msg_reply, '/') !== false)) {
-                //$sql = "insert into heroku_a797b8e9f9df240.line_ai(line_ai_id,line_ai_question";
-                //$sql = $sql,line_ai_answer,create_date)" ;
-                //$sql = $sqlvalues (1,'อะไรอร่อย','ชานม Signature ใส่ใข่มุกกรุบๆ',curdate())";
-                //if ($conn->query($sql) === TRUE) {
-                //    $text ="รับทราบ";
-                //} else {
-                //    $text ="เกิดปัญหาในการเรียนรู้";
-                //}
+                $sql = "insert into line_ai ";
+                $sql = $sql. " (line_ai_id,line_ai_question,line_ai_answer,create_date) " ;
+                $sql = $sql. " values (1,'อะไรอร่อย','ชานม Signature ใส่ใข่มุกกรุบๆ',curdate())";
+                if ($conn->query($sql) === TRUE) {
+                    $text ="รับทราบ";
+                } else {
+                    $text ="เกิดปัญหาในการเรียนรู้";
+                }
                 // Get replyToken
-                //$replyToken = $event['replyToken'];
+                $replyToken = $event['replyToken'];
                 // Build message to reply back
-                //$messages = [
-                //    'type' => 'text',
-                //    'text' => $text,
-                //];
+                $messages = [
+                    'type' => 'text',
+                    'text' => $text,
+                ];
                 // Make a POST Request to Messaging API to reply to sender
-                //$url = 'https://api.line.me/v2/bot/message/reply';
-                //$data = [
-                //    'replyToken' => $replyToken,
-                //    'messages' => [$messages]
-                //];
-                //$post = json_encode($data);
-                //$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-                //$ch = curl_init($url);
-                //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                //curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-                //curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                //$result = curl_exec($ch);
-                //curl_close($ch);
+                $url = 'https://api.line.me/v2/bot/message/reply';
+                $data = [
+                    'replyToken' => $replyToken,
+                    'messages' => [$messages]
+                ];
+                $post = json_encode($data);
+                $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                $result = curl_exec($ch);
+                curl_close($ch);
             }else{
                 // Get text sent
                 
