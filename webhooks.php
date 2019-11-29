@@ -334,7 +334,7 @@ if (!is_null($events['events'])) {
                         $text = $row["line_ai_answer"];
                     }                    
                 }else{
-                    $text = "เราไม่เข้าใจ ".$event['message']['text']. " แต่รู้ใหม ชานมไข่มุกอร่อยจริงๆนะ";
+                    $text = "ฉันไม่รู่จัก ".$event['message']['text']. " แต่รู้ใหม ชานม Signature ใส่ไข่มุกอร่อยจริงๆนะ";
                 }
                 // Get replyToken
                 $replyToken = $event['replyToken'];
