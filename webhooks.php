@@ -269,8 +269,9 @@ if (!is_null($events['events'])) {
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
         $results = getLINEProfile($LINEDatas);
-        SendLineNotify("results1".$results['displayName']);
-        SendLineNotify("results2".$results['message']['displayName']);
+        $profile = json_decode($results, true);
+        SendLineNotify("results1".$profile['displayName']);
+        SendLineNotify("results2".$profile['pictureUrl']);
         
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             // Get text sent
