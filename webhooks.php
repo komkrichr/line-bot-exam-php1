@@ -234,8 +234,8 @@ if (!is_null($events['events'])) {
         
         if ($event['type'] == 'beacon') {
             
-            $sql = "insert into line_users(line_id,firt_name,last_name,hwid) "
-            $sql = $sql . " values('$event['source']['userId']','','','$event['beacon']['hwid']') " ;
+            $sql = "insert into line_users(line_id,firt_name,last_name,hwid) ";
+            $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."') " ;
             if ($conn->query($sql) === TRUE) {
                 echo "Insert successfully";
             } else {
