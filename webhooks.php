@@ -3,6 +3,19 @@
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
+$url = parse_url(getenv("mysql://b4eebb1ab31fba:8b0430ea@us-cdbr-iron-east-05.cleardb.net/heroku_a797b8e9f9df240?reconnect=true"));
+$server = "us-cdbr-iron-east-05.cleardb.net";
+$username = "b4eebb1ab31fba";
+$password = "8b0430ea";
+$db = "heroku_a797b8e9f9df240";
+$conn = new mysqli($server, $username, $password, $db);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error."<br>");
+}
+
+
+
 $access_token = 'mbyJk3t1tj30YHrDBQN5XExusAPF75q0oI55C7u1r6HZjMYwe3wzGmuaUinkoX7FMv2M6/bc9kf7MlyX+x6JzJooFEDxVCPkIEM5ypt4NRBlY8feWp6Pw1jK7wi0chqwNEShGVtsAEPJothOH/pbbQdB04t89/1O/w1cDnyilFU=';
 $msg_reply='';
 
@@ -221,6 +234,14 @@ if (!is_null($events['events'])) {
         
         if ($event['type'] == 'beacon') {
             
+            $sql = "insert into line_users(line_id,firt_name,last_name,hwid) "
+            $sql = $sql . " values('$event['source']['userId']','','','$event['beacon']['hwid']') " ;
+            if ($conn->query($sql) === TRUE) {
+                echo "Insert successfully";
+            } else {
+                echo "Error : " . $conn->error ."<br>";
+            }
+            
             $replyToken = $event['replyToken'];
             $text = $event['beacon']['hwid'];
             $text = $text.' '.$event['source']['userId'];
@@ -260,6 +281,7 @@ if (!is_null($events['events'])) {
     }
 }
 
+$conn->close();
 echo "<br>Beacons-104";
 
 //** Reply only when message sent is in 'text' format
