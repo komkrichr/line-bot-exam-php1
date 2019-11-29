@@ -27,6 +27,40 @@ function SendLineNotify($string) {
     $result = curl_exec( $chOne );     
 }
 
+function getLINEProfile($datas)
+{
+   $datasReturn = [];
+   $curl = curl_init();
+   curl_setopt_array($curl, array(
+     CURLOPT_URL => $datas['url'],
+     CURLOPT_RETURNTRANSFER => true,
+     CURLOPT_ENCODING => "",
+     CURLOPT_MAXREDIRS => 10,
+     CURLOPT_TIMEOUT => 30,
+     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+     CURLOPT_CUSTOMREQUEST => "GET",
+     CURLOPT_HTTPHEADER => array(
+       "Authorization: Bearer ".$datas['token'],
+       "cache-control: no-cache"
+     ),
+   ));
+   $response = curl_exec($curl);
+   $err = curl_error($curl);
+   curl_close($curl);
+   if($err){
+      $datasReturn['result'] = 'E';
+      $datasReturn['message'] = $err;
+   }else{
+      if($response == "{}"){
+          $datasReturn['result'] = 'S';
+          $datasReturn['message'] = 'Success';
+      }else{
+          $datasReturn['result'] = 'E';
+          $datasReturn['message'] = $response;
+      }
+   }
+   return $datasReturn;
+}
 
 $url = parse_url(getenv("mysql://b4eebb1ab31fba:8b0430ea@us-cdbr-iron-east-05.cleardb.net/heroku_a797b8e9f9df240?reconnect=true"));
 $server = "us-cdbr-iron-east-05.cleardb.net";
@@ -224,6 +258,13 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
+
+    $userId = $event['source']['userId'];
+    $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+    $LINEDatas['token'] = $access_token;
+    $results = getLINEProfile($LINEDatas);
+    SendLineNotify($results['message']);
+
     // Loop through each event
     foreach ($events['events'] as $event) {
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
