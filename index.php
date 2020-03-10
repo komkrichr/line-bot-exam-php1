@@ -26,9 +26,16 @@ if ($conn->connect_error) {
     //*** PROMOTION SEND AND KEEP LOG DB ***//
     $sql = "SELECT * FROM product_price ";
     $result = $conn->query($sql);
-    while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-       echo $row[0];
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "id: " . $row["product_id"]. " - Name: " . $row["product_price_id"]. " " . $row["product_price"]. "<br>";
+        }
+    } else {
+        echo "0 results";
     }
+
 
 $conn->close();
 
