@@ -15,16 +15,16 @@ if ($conn->connect_error) {
     
 
     $sql = "SELECT product_id,product_price_id,product_price ";
-    //$sql = .",product.product_name";
     $sql = ." FROM product_price ";
+    echo $sql;
     //$sql = ." LEFT JOIN product on product.product_id=product_price.product_id ";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+    //$result = $conn->query($sql);
+    //if ($result->num_rows > 0) {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
-           // echo "id: " . $row["product_id"]. " - Name: " . $row["product_price_id"]. " " . $row["product_price"]. "<br>";
-        }
-    }
+    //    while($row = $result->fetch_assoc()) {
+    //       // echo "id: " . $row["product_id"]. " - Name: " . $row["product_price_id"]. " " . $row["product_price"]. "<br>";
+    //    }
+    //}
 
 
 $conn->close();
