@@ -107,7 +107,7 @@ if ($conn->connect_error) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class='card'>";
-            //echo "<img src='images/".$row["product_id"].".jpg' style='width:100%'>";
+            echo "<img src='images/".$row["product_id"].".jpg' style='width:100%'>";
             echo "<h3>".$row["product_name"]."</h3>";
             echo "<h4>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h4>";		
             echo "</div>";
