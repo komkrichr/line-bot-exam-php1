@@ -100,8 +100,8 @@ if ($conn->connect_error) {
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "<div class="""card""">";
-            echo "<img src="""images/".$row["product_id"].".jpg""" style="""width:100%""">";
+            echo "<div class='card'>";
+            echo "<img src='images/".$row["product_id"].".jpg' style='width:100%'>";
             echo "<h2>".$row["product_name"]."</h2>";
             echo "</div>";
         }
