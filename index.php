@@ -13,8 +13,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
     
-    $sql = "SELECT product_id,product_price_id,product_price ";
+    $sql = "SELECT product_price.product_id,product_price.product_price_id,product_price.product_price ";
+    $sql = $sql." product.product_name ";
     $sql = $sql." FROM product_price ";
+    $sql = $sql." LEFT JOIN product on product_price.product_id=product.product_id ";
+
     echo $sql;
     //$sql = ." LEFT JOIN product on product.product_id=product_price.product_id ";
     //$result = $conn->query($sql);
@@ -28,5 +31,5 @@ if ($conn->connect_error) {
 
 $conn->close();
 
-echo "Connected successfully"."<br>";
+echo "<br><br>Connected successfully"."<br>";
 ?>
