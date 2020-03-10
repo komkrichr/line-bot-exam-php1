@@ -19,8 +19,7 @@ if ($conn->connect_error) {
     $sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
     $sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
     $sql = $sql." order by product_order_no,product_id ";
-    
-    echo $sql."<br>";
+    //echo $sql."<br>";
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -29,7 +28,6 @@ if ($conn->connect_error) {
             echo "id: " . $row["product_id"]. " - Name: " . $row["product_price_id"]. " " . $row["product_price"]. "<br>";
         }
     }
-
 
 $conn->close();
 
