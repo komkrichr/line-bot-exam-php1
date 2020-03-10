@@ -74,7 +74,7 @@
 </head>
 <body topmargin="10" leftmargin="0" marginheight="0" marginwidth="0" >
 <form name="frmdata" method="post" action="index.php">
-    
+<br><br>
 <?php
 $url = parse_url(getenv("mysql://b4eebb1ab31fba:8b0430ea@us-cdbr-iron-east-05.cleardb.net/heroku_a797b8e9f9df240?reconnect=true"));
 $server = "us-cdbr-iron-east-05.cleardb.net";
@@ -117,7 +117,7 @@ if ($conn->connect_error) {
 $conn->close();
 
 ?>
-
+<br><br>
 </form>
 </body>
 </html>
