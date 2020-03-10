@@ -16,7 +16,7 @@
     <style>
 	body {
 		font-family: 'Kanit';
-		font-size:16;
+		font-size:14;
 	}
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -108,8 +108,8 @@ if ($conn->connect_error) {
         while($row = $result->fetch_assoc()) {
             echo "<div class='card'>";
             //echo "<img src='images/".$row["product_id"].".jpg' style='width:100%'>";
-            echo "<h2>".$row["product_name"]."</h2>";
-            echo "<h3>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h3>";		
+            echo "<h3>".$row["product_name"]."</h3>";
+            echo "<h4>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h4>";		
             echo "</div>";
         }
     }
