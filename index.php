@@ -99,7 +99,7 @@ if ($conn->connect_error) {
     $sql = $sql." FROM product_price ";
     $sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
     $sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
-    $sql = $sql." order by product_order_no,product_id ";
+    $sql = $sql." order by product_order_no,product_id,product_size_name ";
     //echo $sql."<br>";
 
     $result = $conn->query($sql);
