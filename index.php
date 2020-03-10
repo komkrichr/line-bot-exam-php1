@@ -25,7 +25,7 @@ if ($conn->connect_error) {
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["product_id"]. " - Name: " . $row["product_price_id"]. " " . $row["product_price"]. "<br>";
+            echo "" . $row["product_name"]. " Size: " . $row["product_size_name"]. " " . $row["product_price"]. "<br>";
         }
     }
 
