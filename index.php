@@ -88,11 +88,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
 
-    $sql = "update product set product_name='ชานม Signature' where product_id=1"; 	
-    $result = $conn->query($sql);
+    //$sql = "update product set product_name='ชานม Signature' where product_id=1"; 	
+    //$result = $conn->query($sql);
 
-    $sql = "update product set product_name='ชาเขียวจัสมิน' where product_id=4";  	
-    $result = $conn->query($sql);
+    //$sql = "update product set product_name='ชาเขียวจัสมิน' where product_id=4";  	
+    //$result = $conn->query($sql);
 	
     //$sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
     //$sql = $sql." ,product_size.product_size_name,product_price.product_price ";
@@ -102,7 +102,7 @@ if ($conn->connect_error) {
     //$sql = $sql." order by product_order_no,product_id,product_size_name ";
     
     $sql = "SELECT product.product_id,product.product_name ";
-    $sql = $sql." FROM product_price ";
+    $sql = $sql." FROM product ";
     $sql = $sql." order by product_order_no ";
 
     $result = $conn->query($sql);
