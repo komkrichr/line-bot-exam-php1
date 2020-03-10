@@ -88,6 +88,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
 
+    $sql = "update product set product_name='ชานม Signature' where product_id=1"; 	
+    $result = $conn->query($sql);
+	
     $sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
     $sql = $sql." ,product_size.product_size_name,product_price.product_price ";
     $sql = $sql." FROM product_price ";
@@ -103,7 +106,7 @@ if ($conn->connect_error) {
             echo "<div class='card'>";
             //echo "<img src='images/".$row["product_id"].".jpg' style='width:100%'>";
             echo "<h2>".$row["product_name"]."</h2>";
-            echo "<h3>Size : ".$row["product_size_name"]." ".$row["product_price"]."</h3>";		
+            echo "<h3>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h3>";		
             echo "</div>";
         }
     }
@@ -115,3 +118,4 @@ $conn->close();
 </form>
 </body>
 </html>
+	
