@@ -14,9 +14,9 @@ if ($conn->connect_error) {
 }
     
 
-    //$sql = "SELECT product_id,product_price_id,product_price ";
+    $sql = "SELECT product_id,product_price_id,product_price ";
     //$sql = ." FROM product_price ";
-    //echo $sql;
+    echo $sql;
     //$sql = ." LEFT JOIN product on product.product_id=product_price.product_id ";
     //$result = $conn->query($sql);
     //if ($result->num_rows > 0) {
