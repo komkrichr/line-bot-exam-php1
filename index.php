@@ -12,11 +12,14 @@ $conn = new mysqli($server, $username, $password, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
-    
-    $sql = "SELECT product_price.product_id,product_price.product_price_id,product_price.product_price ";
-    $sql = $sql." product.product_name ";
+
+    $sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
+    $sql = $sql." ,product_size.product_size_name,product_price.product_price ";
     $sql = $sql." FROM product_price ";
     $sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
+    $sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
+    $sql = $sql." order by product_order_no,product_id ";
+    
     echo $sql."<br>";
 
     $result = $conn->query($sql);
