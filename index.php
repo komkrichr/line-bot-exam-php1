@@ -14,7 +14,10 @@ if ($conn->connect_error) {
 }
     
 
-    $sql = "SELECT * FROM product_price ";
+    $sql = "SELECT product_price.product_id,product_price.product_price_id,product_price.product_price ";
+    $sql = .",product.product_name";
+    $sql = ."FROM product_price ";
+    $sql = ."left join product on product_price.product_id=product.product_id ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
