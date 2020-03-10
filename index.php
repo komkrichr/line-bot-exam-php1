@@ -88,7 +88,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error."<br>");
 }
 
-    $sql = "update product set product_name='ชานม Signature' where product_id=1"; 	
+    $sql = "update product set product_name='ชานมไช่มุก Signature' where product_id=1"; 	
+    $result = $conn->query($sql);
+
+    $sql = "delete from product_price where product_id<>1"; 	
     $result = $conn->query($sql);
 	
     $sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
