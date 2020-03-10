@@ -16,9 +16,9 @@ if ($conn->connect_error) {
     $sql = "SELECT product_price.product_id,product_price.product_price_id,product_price.product_price ";
     $sql = $sql." product.product_name ";
     $sql = $sql." FROM product_price ";
-    $sql = $sql." LEFT JOIN product on product_price.product_id=product.product_id ";
+    $sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
+    echo $sql."<br>";
 
-    //echo $sql;
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
