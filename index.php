@@ -94,13 +94,16 @@ if ($conn->connect_error) {
     $sql = "update product set product_name='ชาเขียวจัสมิน' where product_id=4";  	
     $result = $conn->query($sql);
 	
-    $sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
-    $sql = $sql." ,product_size.product_size_name,product_price.product_price ";
+    //$sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
+    //$sql = $sql." ,product_size.product_size_name,product_price.product_price ";
+    //$sql = $sql." FROM product_price ";
+    //$sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
+    //$sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
+    //$sql = $sql." order by product_order_no,product_id,product_size_name ";
+    
+    $sql = "SELECT product.product_id,product.product_name ";
     $sql = $sql." FROM product_price ";
-    $sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
-    $sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
-    $sql = $sql." order by product_order_no,product_id,product_size_name ";
-    //echo $sql."<br>";
+    $sql = $sql." order by product_order_no ";
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -109,7 +112,7 @@ if ($conn->connect_error) {
             echo "<div class='card'>";
             echo "<img src='".$row["product_id"].".jpg' style='width:100%'>";
             echo "<h3>".$row["product_name"]."</h3>";
-            echo "<h4>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h4>";		
+            //echo "<h4>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h4>";		
             echo "</div>";
         }
     }
