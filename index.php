@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     $sql = "SELECT * FROM product_price ";
     $result = $conn->query($sql);
     while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-       echo $row["product_id"] ."<br>";
+       echo $row["product_id"];
     }
 $conn->close();
 
