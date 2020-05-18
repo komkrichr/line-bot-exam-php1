@@ -18,6 +18,17 @@
 		font-family: 'Kanit';
 		font-size:14;
 	}
+
+	table {
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+
+	th, td {
+	  text-align: left;
+	  padding: 8px;
+	}
+
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -108,11 +119,15 @@ if ($conn->connect_error) {
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
-	echo "<div>Code</div><div>Redrea  DateTime</div>";
+	echo "<div style=""overflow-x:auto;"">";
+	echo "<table>";
+	echo "<tr><th>Code</th><th>Redrea  DateTime</th></tr>";
         while($row = $result->fetch_assoc()) {
-            echo "<div>".$row["redream_code"]."</div>";		
-            echo "<div>".$row["redream_date"]."</div>";		
+            echo "<tr><td>".$row["redream_code"]."</td>";		
+            echo "<td>".$row["redream_date"]."</td></tr>";		
         }
+	echo "</table>";
+	echo "</div>";
     }
 
 $conn->close();
