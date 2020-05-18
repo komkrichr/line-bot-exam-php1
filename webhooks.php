@@ -204,10 +204,12 @@ if (!is_null($events['events'])) {
             
             if ($event['beacon']['type'] =='enter')
             {
-                $text = $text.'Check-in';
+                $text = 'กรุณากด เช็คอินร้านค้า';
             }else if ($event['beacon']['type'] =='leave'){
-                $text = $text.'Check-out';    
+                $text = 'กรุณากด เช็คเอาท์';    
             }
+
+            $text =$text. 'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
 
             // Build message to reply back
             $messages = [
@@ -238,6 +240,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  1234";
+echo "<br>Beacons  ABCD";
 
 
