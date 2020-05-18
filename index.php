@@ -122,7 +122,6 @@ if ($result->num_rows > 0) {
 	echo "</table>";
 	echo "</div>";
 }
-$conn->close();
 	
 $id=1;
 $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
@@ -134,7 +133,7 @@ if ($result1->num_rows > 0) {
 }
 $conn->close();
 	
-echo "def:".$id;
+echo "xxx:".$id;
 
 ?>
 <br><br>
