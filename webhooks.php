@@ -341,45 +341,42 @@ if (!is_null($events['events'])) {
                 $code=$msg_reply;
                 $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,$code,Now())";
                 if ($conn->query($sql) === TRUE) {
-                    
+                    SendLineNotify("Redream Complete:".$code);
                 }
             }else{
                 // Get text sent              
                 $sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
-                //$sql = "SELECT * FROM line_ai ";
                 $result = $conn->query($sql);
                 if ($result->num_rows >0) {
                     while($row = $result->fetch_assoc()) {
                         $text = $row["line_ai_answer"];
                     }                    
-                }else{
-                    SendLineNotify("BotTrain/" . $event['message']['text']);
-                    $text = "ฉันไม่รู่จัก ".$event['message']['text']. " แต่รู้ใหม ชานม Signature ใส่ไข่มุกอร่อยจริงๆนะ";
-                }
-                // Get replyToken
-                $replyToken = $event['replyToken'];
-                // Build message to reply back
-                $messages = [
-                    'type' => 'text',
-                    'text' => $text,
-                ];
-                // Make a POST Request to Messaging API to reply to sender
-                $url = 'https://api.line.me/v2/bot/message/reply';
-                $data = [
-                    'replyToken' => $replyToken,
-                    'messages' => [$messages]
-                ];
 
-                $post = json_encode($data);
-                $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                $result = curl_exec($ch);
-                curl_close($ch);
+                    // Get replyToken
+                    $replyToken = $event['replyToken'];
+                    // Build message to reply back
+                    $messages = [
+                        'type' => 'text',
+                        'text' => $text,
+                    ];
+                    // Make a POST Request to Messaging API to reply to sender
+                    $url = 'https://api.line.me/v2/bot/message/reply';
+                    $data = [
+                        'replyToken' => $replyToken,
+                        'messages' => [$messages]
+                    ];
+
+                    $post = json_encode($data);
+                    $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+                    $ch = curl_init($url);
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                    $result = curl_exec($ch);
+                    curl_close($ch);
+                }
             }
         }
         
