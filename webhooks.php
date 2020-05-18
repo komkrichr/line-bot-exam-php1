@@ -330,7 +330,7 @@ if (!is_null($events['events'])) {
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
                 $result = curl_exec($ch);
                 curl_close($ch);
-            }else if ((strpos($msg_reply, 'Redream') !== false) && (strpos($msg_reply, '/') !== false)) {
+            }elseif ((strpos($msg_reply, 'Redream') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $id=1;
                 $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
                 $result1 = $conn->query($sql);
@@ -342,6 +342,8 @@ if (!is_null($events['events'])) {
                 $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,$code,Now())";
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Redream Complete:".$code);
+                }else{
+                    SendLineNotify("Redream Error:".$code);
                 }
             }else{
                 // Get text sent              
@@ -473,6 +475,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons-104";
+echo "<br>Beacons  111";
 
 
