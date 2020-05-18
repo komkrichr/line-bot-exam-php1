@@ -122,8 +122,16 @@ if ($result->num_rows > 0) {
 	echo "</table>";
 	echo "</div>";
 }
-
 $conn->close();
+	
+$id=1;
+$sql = "SELECT max(redream_id) as redream_id FROM FROM redreams ";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+	$id=$row["redream_id"]+1;
+}
+$conn->close();	
+echo $id;
 
 ?>
 <br><br>
