@@ -353,14 +353,14 @@ if (!is_null($events['events'])) {
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
                 $result = curl_exec($ch);
                 curl_close($ch);
-            }elseif ((strpos($msg_reply, 'Themall') !== false) && (strpos($msg_reply, '/') !== false)) {
+            }elseif ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $code=$msg_reply;
-                $code = str_replace('Themall/','',$code);
+                $code = str_replace('The mall/','',$code);
                 $sql = "SELECT redream_date  FROM redreams where redream_code='$code' ";
                 $result1 = $conn->query($sql);
                 if ($result1->num_rows > 0) {
                      $row1 = $result1->fetch_assoc();
-                    SendLineNotify("รหัสเคยใช้งานแล้วเมื่อวันที่ ".$row1["redream_date"]);
+                    TheMallSendLineNotify("รหัสเคยใช้งานแล้วเมื่อวันที่ ".$row1["redream_date"]);
                 }else{
                     $id=1;
                     $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
@@ -372,7 +372,7 @@ if (!is_null($events['events'])) {
 
                     $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
                     if ($conn->query($sql) === TRUE) {
-                        SendLineNotify("ลงทะเบียนรับส่วนลดเรียบร้อยแล้ว:".$code);
+                        TheMallSendLineNotify("ลงทะเบียนรับส่วนลดเรียบร้อยแล้ว:".$code);
                     }else{
                         SendLineNotify("Redream Error:".$sql);
                     }
@@ -507,6 +507,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  1187";
+echo "<br>Beacons  1432";
 
 
