@@ -108,10 +108,10 @@ if ($conn->connect_error) {
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
+	echo "<div>Code</div><div>Redrea  DateTime</div>";
         while($row = $result->fetch_assoc()) {
-            echo "<div class='card'>";
-            echo "<h4>Code: ".$row["redream_code"]." Redream Date Time: ".$row["redream_date"]."</h4>";		
-            echo "</div>";
+            echo "<div><h4>".$row["redream_code"]."</h4></div>";		
+            echo "<div><h4>".$row["redream_date"]."</h4></div>";		
         }
     }
 
