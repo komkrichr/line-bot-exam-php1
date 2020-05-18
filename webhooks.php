@@ -217,11 +217,10 @@ if (!is_null($events['events'])) {
                 'text' => $text,
             ];
             // Make a POST Request to Messaging API to reply to sender
-            $replyToken = $event['replyToken'];
+            $replyToken = $event['beacon']['replyToken'];
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
-                //'messages' => [$jsonSpecialOffer]    
                 'messages' => [$messages]
             ];
             $post = json_encode($data);
@@ -235,12 +234,14 @@ if (!is_null($events['events'])) {
             $result = curl_exec($ch);
             curl_close($ch);
             echo $result . "";
-            
+
+            SendLineNotify("Visit: ".$text);            
+            SendLineNotify("replyToken: ".$replyToken);     
         }       
     }
 }
 
 $conn->close();
-echo "<br>Beacons  A-GO";
+echo "<br>Beacons  A-GO1";
 
 
