@@ -436,9 +436,9 @@ if (!is_null($events['events'])) {
 
                     if ($event['beacon']['type'] =='enter')
                     {
-                        $text = $text.' สวัสดีค่ะ ยินดีต้อนรับ';
+                        $text = $text.'Check-in';
                     }else if ($event['beacon']['type'] =='leave'){
-                        $text = $text.' โอกาสหน้าเชิญใหม่นะคะ';    
+                        $text = $text.'Check-out';    
                     }
 
                     // Build message to reply back
@@ -463,12 +463,12 @@ if (!is_null($events['events'])) {
                     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
                     $result = curl_exec($ch);
                     curl_close($ch);
-                    
                     echo $result . "";
                     SendLineNotify("send promotion".$promotion_id);
                 }else{
                     SendLineNotify("Error : " . $conn->error);
                 }
+                
             }
         }
        
@@ -476,6 +476,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  114";
+echo "<br>Beacons  115";
 
 
