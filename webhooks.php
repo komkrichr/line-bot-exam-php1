@@ -10,6 +10,29 @@ $username = "b4eebb1ab31fba";
 $password = "8b0430ea";
 $db = "heroku_a797b8e9f9df240";
 
+function TheMallSendLineNotify($string) {
+    //** Reply only when message sent is in 'text' format
+    $Token='eAuBBBthymE50g2lw9EV549cuqZLBtAwSRSURUxKCNo';
+    $name = $string;
+    $chOne = curl_init(); 
+    curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
+    //** SSL USE 
+    curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
+    curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
+    //**POST 
+    curl_setopt( $chOne, CURLOPT_POST, 1); 
+    //** Message 
+    curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name&imageThumbnail=$inputimage&imageFullsize=$inputimage"); 
+    //**curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=$name");   
+    //** follow redirects 
+    curl_setopt( $chOne, CURLOPT_FOLLOWLOCATION, 1); 
+    //**ADD header array 
+    $headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$Token.'', ); 
+    curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
+    //**RETURN 
+    curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
+    $result = curl_exec( $chOne );     
+}
 
 
 function SendLineNotify($string) {
@@ -330,7 +353,7 @@ if (!is_null($events['events'])) {
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
                 $result = curl_exec($ch);
                 curl_close($ch);
-            }elseif ((strpos($msg_reply, 'TheMall') !== false) && (strpos($msg_reply, '/') !== false)) {
+            }elseif ((strpos($msg_reply, 'Themall') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $id=1;
                 $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
                 $result1 = $conn->query($sql);
@@ -339,7 +362,7 @@ if (!is_null($events['events'])) {
                     $id = $row1["max_id"]+1;
                 }
                 $code=$msg_reply;
-                //$code = str_replace('TheMall/','',$code);
+                $code = str_replace('TheMall/','',$code);
                 $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Redream Complete:".$code);
