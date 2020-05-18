@@ -210,7 +210,7 @@ if (!is_null($events['events'])) {
             }
 
             $replyToken = $event['replyToken']; 
-            $text =$text. '             '.'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
+            $text =$text. '  '.'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
             
             // Build message to reply back
             $messages = [
