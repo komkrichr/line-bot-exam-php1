@@ -101,18 +101,16 @@ if ($conn->connect_error) {
     //$sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
     //$sql = $sql." order by product_order_no,product_id,product_size_name ";
     
-    $sql = "SELECT product.product_id,product.product_name ";
-    $sql = $sql." FROM product ";
-    $sql = $sql." order by product_order_no ";
+    $sql = "SELECT redream_id,redream_code,redream_date ";
+    $sql = $sql." FROM redreams ";
+    $sql = $sql." order by redream_id ";
 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class='card'>";
-            echo "<img src='".$row["product_id"].".jpg' style='width:100%'>";
-            echo "<h3>".$row["product_name"]."</h3>";
-            //echo "<h4>Size : ".$row["product_size_name"]." ".$row["product_price"]." บาท</h4>";		
+            echo "<h4>Size : ".$row["redream_code"]." ".$row["redream_date"]."</h4>";		
             echo "</div>";
         }
     }
