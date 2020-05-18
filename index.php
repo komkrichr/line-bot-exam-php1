@@ -110,7 +110,7 @@ if ($conn->connect_error) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<div class='card'>";
-            echo "<h4>:".$row["redream_code"]." ".$row["redream_date"]."</h4>";		
+            echo "<h4>Code: ".$row["redream_code"]." Redream Date Time: ".$row["redream_date"]."</h4>";		
             echo "</div>";
         }
     }
