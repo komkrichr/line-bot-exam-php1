@@ -243,6 +243,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  A-GO1";
+echo "<br>Beacons  A-GO18";
 
 
