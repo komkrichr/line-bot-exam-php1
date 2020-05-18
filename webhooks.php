@@ -311,49 +311,7 @@ if (!is_null($events['events'])) {
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $msg_reply=$event['message']['text'];
             $data = explode("/", $msg_reply);
-            if ((strpos($msg_reply, 'BotTrain') !== false) && (strpos($msg_reply, '/') !== false)) {
-                $line_ai_id="1";
-                $sql = "select IFNULL(max(line_ai_id),0)+1 as line_ai_id from line_ai";
-                $result = $conn->query($sql);
-                if ($result->num_rows >0) {
-                    while($row = $result->fetch_assoc()) {
-                        $line_ai_id = $row["line_ai_id"];
-                    } 
-                }
-                $sql = "insert into line_ai ";
-                $sql = $sql. " (line_ai_id,line_ai_question,line_ai_answer,create_date) values (" ;
-                $sql = $sql. $line_ai_id.",'".$data[1]."'";
-                $sql = $sql. " ,'".$data[2]."'";
-                $sql = $sql. " ,curdate())";
-                if ($conn->query($sql) === TRUE) {
-                    $text ="รับทราบ";
-                } else {
-                    $text ="เกิดปัญหาในการเรียนรู้";
-                }
-                // Get replyToken
-                $replyToken = $event['replyToken'];
-                // Build message to reply back
-                $messages = [
-                    'type' => 'text',
-                    'text' => $text,
-                ];
-                // Make a POST Request to Messaging API to reply to sender
-                $url = 'https://api.line.me/v2/bot/message/reply';
-                $data = [
-                    'replyToken' => $replyToken,
-                    'messages' => [$messages]
-                ];
-                $post = json_encode($data);
-                $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                $result = curl_exec($ch);
-                curl_close($ch);
-            }elseif ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false)) {
+            if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $code=$msg_reply;
                 $code = str_replace('The mall/','',$code);
                 $sql = "SELECT redream_date  FROM redreams where redream_code='$code' ";
@@ -376,40 +334,6 @@ if (!is_null($events['events'])) {
                     }else{
                         SendLineNotify("Redream Error:".$sql);
                     }
-                }
-            }else{
-                // Get text sent              
-                $sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
-                $result = $conn->query($sql);
-                if ($result->num_rows >0) {
-                    while($row = $result->fetch_assoc()) {
-                        $text = $row["line_ai_answer"];
-                    }                    
-
-                    // Get replyToken
-                    $replyToken = $event['replyToken'];
-                    // Build message to reply back
-                    $messages = [
-                        'type' => 'text',
-                        'text' => $text,
-                    ];
-                    // Make a POST Request to Messaging API to reply to sender
-                    $url = 'https://api.line.me/v2/bot/message/reply';
-                    $data = [
-                        'replyToken' => $replyToken,
-                        'messages' => [$messages]
-                    ];
-
-                    $post = json_encode($data);
-                    $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-                    $ch = curl_init($url);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                    $result = curl_exec($ch);
-                    curl_close($ch);
                 }
             }
         }
@@ -451,62 +375,11 @@ if (!is_null($events['events'])) {
                 SendLineNotify("Error : " . $conn->error);
             }
 
-            //*** PROMOTION SEND AND KEEP LOG DB ***//
-            $promotion_id ='1';
-            $sql = "SELECT * FROM line_beam_user_log where line_id='".$event['source']['userId']."'";
-            $sql = $sql. " and line_beam_promotion_id=".$promotion_id;
-            $result = $conn->query($sql);
-            if ($result->num_rows ==0) {     
-                $sql =  "insert into line_beam_user_log ";
-                $sql = $sql . " (line_id,line_beam_promotion_id,create_date) ";
-                $sql = $sql . " values('".$event['source']['userId']."',".$promotion_id.",curdate()) ";
-                if ($conn->query($sql) === TRUE) {
-                    $replyToken = $event['replyToken'];
-                    $text = $event['beacon']['hwid'];
-                    $text = $text.' '.$event['source']['userId'];
-
-                    if ($event['beacon']['type'] =='enter')
-                    {
-                        $text = $text.'Check-in';
-                    }else if ($event['beacon']['type'] =='leave'){
-                        $text = $text.'Check-out';    
-                    }
-
-                    // Build message to reply back
-                    $messages = [
-                        'type' => 'text',
-                        'text' => $text,
-                    ];
-                    // Make a POST Request to Messaging API to reply to sender
-                    $url = 'https://api.line.me/v2/bot/message/reply';
-                    $data = [
-                        'replyToken' => $replyToken,
-                        'messages' => [$jsonSpecialOffer]    
-                        //'messages' => [$messages]
-                    ];
-                    $post = json_encode($data);
-                    $headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-                    $ch = curl_init($url);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-                    $result = curl_exec($ch);
-                    curl_close($ch);
-                    echo $result . "";
-                    SendLineNotify("send promotion".$promotion_id);
-                }else{
-                    SendLineNotify("Error : " . $conn->error);
-                }
-                
-            }
-        }
-       
+        }       
     }
 }
 
 $conn->close();
-echo "<br>Beacons  1432";
+echo "<br>Beacons  1444";
 
 
