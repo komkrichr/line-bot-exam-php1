@@ -238,6 +238,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  1444";
+echo "<br>Beacons  1234";
 
 
