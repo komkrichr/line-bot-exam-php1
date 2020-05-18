@@ -131,13 +131,13 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$row = $result->fetch_assoc();
-		echo =$row["max_id"];
-		$idecho =$row["max_id"];+1;
+		echo $row["max_id"];
+		$id = $row["max_id"];+1;
 	}
 }
 $result -> free_result();
 $conn->close();	
-echo "xcxc:".$id;
+echo "aaa:".$id;
 
 ?>
 <br><br>
