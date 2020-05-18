@@ -1,19 +1,19 @@
 <html>
 
 <head>
-	<title>Freshme</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freshme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<script language="javascript" src="js/jsfunction.js"></script>
-	<script language="javascript" src="js/keypress.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script language="javascript" src="js/jsfunction.js"></script>
+<script language="javascript" src="js/keypress.js"></script>
   
-    <style>
+<style>
 	body {
 		font-family: 'Kanit';
 		font-size:14;
@@ -28,24 +28,26 @@
 	  text-align: left;
 	  padding: 8px;
 	}
+	tr:nth-child(even) {background-color: #f2f2f2;}
 
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
+	/* Remove the navbar's default margin-bottom and rounded borders */ 
+	.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
 	}
-		
+
+	/* Add a gray background color and some padding to the footer */
+	footer {
+	background-color: #f2f2f2;
+	padding: 25px;
+	}
+
 	.company_logo {
 	  max-width: 300px;
 	  margin: auto;
 	  text-align: left;
 	}
+	
 	.card {
 	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	  max-width: 300px;
@@ -80,8 +82,9 @@
 	button:hover, a:hover {
 	  opacity: 0.7;
 	}
-	
-  </style>
+
+</style>
+
 </head>
 <body topmargin="10" leftmargin="0" marginheight="0" marginwidth="0" >
 <form name="frmdata" method="post" action="index.php">
