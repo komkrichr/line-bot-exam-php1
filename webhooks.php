@@ -217,6 +217,7 @@ if (!is_null($events['events'])) {
                 'text' => $text,
             ];
             // Make a POST Request to Messaging API to reply to sender
+            $replyToken = $event['replyToken'];
             $url = 'https://api.line.me/v2/bot/message/reply';
             $data = [
                 'replyToken' => $replyToken,
@@ -230,6 +231,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  ABBB";
+echo "<br>Beacons  AAAZ";
 
 
