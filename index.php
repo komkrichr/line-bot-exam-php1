@@ -119,7 +119,7 @@ if ($conn->connect_error) {
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
-	echo "<div style=""overflow-x:auto;"">";
+	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
 	echo "<tr><th>Code</th><th>Redrea  DateTime</th></tr>";
         while($row = $result->fetch_assoc()) {
