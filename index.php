@@ -121,9 +121,12 @@ if ($conn->connect_error) {
         // output data of each row
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
-	echo "<tr><th>Code</th><th>Redrea  DateTime</th></tr>";
+	echo "<tr><th>No</th><th>Code</th><th>Redrea  DateTime</th></tr>";
+	$count=0;
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>".$row["redream_code"]."</td>";		
+	    $count++;
+	    echo "<tr><td>".$count."</td>";
+            echo "<td>".$row["redream_code"]."</td>";		
             echo "<td>".$row["redream_date"]."</td></tr>";		
         }
 	echo "</table>";
