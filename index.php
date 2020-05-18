@@ -96,42 +96,29 @@ $db = "heroku_a797b8e9f9df240";
 $conn = new mysqli($server, $username, $password, $db);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error."<br>");
+	die("Connection failed: " . $conn->connect_error."<br>");
 }
 
-    //$sql = "update product set product_name='ชานม Signature' where product_id=1"; 	
-    //$result = $conn->query($sql);
+$sql = "SELECT redream_id,redream_code,redream_date ";
+$sql = $sql." FROM redreams ";
+$sql = $sql." order by redream_id ";
 
-    //$sql = "update product set product_name='ชาเขียวจัสมิน' where product_id=4";  	
-    //$result = $conn->query($sql);
-	
-    //$sql = "SELECT product_price.product_id,product.product_name,product_price.product_size_id ";
-    //$sql = $sql." ,product_size.product_size_name,product_price.product_price ";
-    //$sql = $sql." FROM product_price ";
-    //$sql = $sql." LEFT JOIN product on product.product_id=product_price.product_id ";
-    //$sql = $sql." LEFT JOIN product_size on product_size.product_size_id=product_price.product_size_id ";
-    //$sql = $sql." order by product_order_no,product_id,product_size_name ";
-    
-    $sql = "SELECT redream_id,redream_code,redream_date ";
-    $sql = $sql." FROM redreams ";
-    $sql = $sql." order by redream_id ";
-
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+	// output data of each row
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
 	echo "<tr><th>No</th><th>Code</th><th>Redrea  DateTime</th></tr>";
 	$count=0;
-        while($row = $result->fetch_assoc()) {
+	while($row = $result->fetch_assoc()) {
 	    $count++;
 	    echo "<tr><td>".$count."</td>";
-            echo "<td>".$row["redream_code"]."</td>";		
-            echo "<td>".$row["redream_date"]."</td></tr>";		
-        }
+	    echo "<td>".$row["redream_code"]."</td>";		
+	    echo "<td>".$row["redream_date"]."</td></tr>";		
+	}
 	echo "</table>";
 	echo "</div>";
-    }
+}
 
 $conn->close();
 
