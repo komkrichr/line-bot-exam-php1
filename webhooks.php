@@ -210,7 +210,7 @@ if (!is_null($events['events'])) {
             }
 
             $replyToken = $event['replyToken']; 
-            $text =$text. 'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
+            $text =$text. '%0D%0A'.'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
             
             // Build message to reply back
             $messages = [
@@ -243,6 +243,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  A-GO18";
+echo "<br>Beacons  A-GO19";
 
 
