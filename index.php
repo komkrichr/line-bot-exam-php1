@@ -125,14 +125,14 @@ if ($result->num_rows > 0) {
 $conn->close();
 	
 $id=1;
-$sql = "SELECT max(redream_id) as 'redream_id'  FROM redreams";
-$result1 = $conn->query($sql);
-if ($result1->num_rows > 0) {
-	$row1 = $result1->fetch_assoc();
-	$id=$row1["redream_id"]+1;
+$sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+	$row = $result->fetch_assoc();
+	$id=$row["max_id"]+1;
 }
 $conn->close();	
-echo "Rows:".$id;
+echo "xcxc:".$id;
 
 ?>
 <br><br>
