@@ -354,20 +354,28 @@ if (!is_null($events['events'])) {
                 $result = curl_exec($ch);
                 curl_close($ch);
             }elseif ((strpos($msg_reply, 'Themall') !== false) && (strpos($msg_reply, '/') !== false)) {
-                $id=1;
-                $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
-                $result1 = $conn->query($sql);
-                if ($result1->num_rows > 0) {
-                    $row1 = $result1->fetch_assoc();
-                    $id = $row1["max_id"]+1;
-                }
                 $code=$msg_reply;
                 $code = str_replace('Themall/','',$code);
-                $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
-                if ($conn->query($sql) === TRUE) {
-                    SendLineNotify("Redream Complete:".$code);
+                $sql = "SELECT redream_date  FROM redreams where redream_code='$code' ";
+                $result1 = $conn->query($sql);
+                if ($result1->num_rows > 0) {
+                     $row1 = $result1->fetch_assoc();
+                    SendLineNotify("รหัสเคยใช้งานแล้วเมื่อวันที่ ".$row1["redream_date"]);
                 }else{
-                    SendLineNotify("Redream Error:".$sql);
+                    $id=1;
+                    $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
+                    $result1 = $conn->query($sql);
+                    if ($result1->num_rows > 0) {
+                        $row1 = $result1->fetch_assoc();
+                        $id = $row1["max_id"]+1;
+                    }
+
+                    $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
+                    if ($conn->query($sql) === TRUE) {
+                        SendLineNotify("ลงทะเบียนรับส่วนลดเรียบร้อยแล้ว:".$code);
+                    }else{
+                        SendLineNotify("Redream Error:".$sql);
+                    }
                 }
             }else{
                 // Get text sent              
@@ -499,6 +507,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  117";
+echo "<br>Beacons  1187";
 
 
