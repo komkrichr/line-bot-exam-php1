@@ -131,7 +131,7 @@ if ($result->num_rows > 0) {
 	$id=$row["redream_id"]+1;
 }
 $conn->close();	
-echo $id;
+echo "AAA".$id;
 
 ?>
 <br><br>
