@@ -127,14 +127,15 @@ $conn->close();
 	
 $id=1;
 $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-	$row = $result->fetch_assoc();
-	$id = $row["max_id"]+1;
+$result1 = $conn->query($sql);
+if ($result1->num_rows > 0) {
+	$row1 = $result1->fetch_assoc();
+	$id = $row1["max_id"]+1;
 }
-$result -> free_result();
-$conn->close();	
-echo "aaa:".$id;
+$result1 -> free_result();
+$conn->close();
+	
+echo "abc:".$id;
 
 ?>
 <br><br>
