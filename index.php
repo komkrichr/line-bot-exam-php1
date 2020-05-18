@@ -129,10 +129,10 @@ $sql = "SELECT max(redream_id) as 'redream_id'  FROM redreams";
 $result1 = $conn->query($sql);
 if ($result1->num_rows > 0) {
 	$row = $result->fetch_assoc();
-	$id=$row["redream_id"]+1;
+	$id=$row1["redream_id"]+1;
 }
 $conn->close();	
-echo "AAA".$id;
+echo "ABC".$id;
 
 ?>
 <br><br>
