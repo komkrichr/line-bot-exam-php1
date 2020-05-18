@@ -343,7 +343,7 @@ if (!is_null($events['events'])) {
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Redream Complete:".$code);
                 }else{
-                    SendLineNotify("Redream Error:".$code);
+                    SendLineNotify("Redream Error:".$sql);
                 }
             }else{
                 // Get text sent              
@@ -475,6 +475,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  111";
+echo "<br>Beacons  112";
 
 
