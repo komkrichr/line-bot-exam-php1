@@ -362,7 +362,7 @@ if (!is_null($events['events'])) {
                     $id = $row1["max_id"]+1;
                 }
                 $code=$msg_reply;
-                $code = str_replace('TheMall/','',$code);
+                $code = str_replace('Themall/','',$code);
                 $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Redream Complete:".$code);
