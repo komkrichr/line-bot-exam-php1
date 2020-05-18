@@ -339,7 +339,7 @@ if (!is_null($events['events'])) {
                     $id = $row1["max_id"]+1;
                 }
                 $code=$msg_reply;
-                $code = str_replace($code, "TheMall/", "");
+                $code = str_replace('TheMall/','',$code);
                 $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,'$code',Now())";
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Redream Complete:".$code);
@@ -476,6 +476,6 @@ if (!is_null($events['events'])) {
 }
 
 $conn->close();
-echo "<br>Beacons  115";
+echo "<br>Beacons  116";
 
 
