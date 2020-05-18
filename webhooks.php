@@ -259,7 +259,6 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
-        
         //*** GET USER PROFIE AND SAVE DB **** //
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
@@ -331,6 +330,19 @@ if (!is_null($events['events'])) {
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
                 $result = curl_exec($ch);
                 curl_close($ch);
+            }else if ((strpos($msg_reply, 'Redream') !== false) && (strpos($msg_reply, '/') !== false)) {
+                $id=1;
+                $sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
+                $result1 = $conn->query($sql);
+                if ($result1->num_rows > 0) {
+                    $row1 = $result1->fetch_assoc();
+                    $id = $row1["max_id"]+1;
+                }
+                $code=$msg_reply;
+                $sql ="insert into redreams(redream_id,redream_code,redream_date) values ( $id,$code,Now())";
+                if ($conn->query($sql) === TRUE) {
+                    
+                }
             }else{
                 // Get text sent              
                 $sql = "SELECT * FROM line_ai where line_ai_question like'%".$event['message']['text']."%'";
