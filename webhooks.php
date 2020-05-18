@@ -197,7 +197,7 @@ if (!is_null($events['events'])) {
             $sql = $sql . "(line_id,hwid,create_date) ";
             $sql = $sql . "values('".$event['source']['userId']."','".$event['beacon']['hwid']."',curdate()) ";
             if ($conn->query($sql) === TRUE) {
-                 SendLineNotify("user visit");
+                 //SendLineNotify("user visit");
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
