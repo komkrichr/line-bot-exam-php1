@@ -205,13 +205,16 @@ if (!is_null($events['events'])) {
             if ($event['beacon']['type'] =='enter')
             {
                 $text = 'กรุณากด เช็คอินร้านค้า';
+                $text =$text. '  '.'https://qr.thaichana.com/callback?appId=0001&shopId=S0000007846&type=checkin&token=&mode=line';
             }else if ($event['beacon']['type'] =='leave'){
                 $text = 'กรุณากด เช็คเอาท์';    
+                $text =$text. '  '.'https://qr.thaichana.com/callback?appId=0001&shopId=S0000007846&type=checkout&token=&mode=line';
             }
 
             $replyToken = $event['replyToken']; 
-            $text =$text. '  '.'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
-            
+            //$text =$text. '  '.'https://qr.thaichana.com/?appId=0001&shopId=S0000007846';
+
+
             // Build message to reply back
             $messages = [
                 'type' => 'text',
