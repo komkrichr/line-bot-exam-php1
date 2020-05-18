@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title>Freshme BU</title>
+	<title>Freshme</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
