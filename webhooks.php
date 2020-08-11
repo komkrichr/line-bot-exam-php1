@@ -119,6 +119,7 @@ if (!is_null($events['events'])) {
         if ($result->num_rows >0) {
             $group="Y";
         }
+        SendLineNotify($group);
         
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
