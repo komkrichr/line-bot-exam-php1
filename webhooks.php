@@ -111,7 +111,7 @@ if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
         //*** GET USER PROFIE AND SAVE DB **** //
-        SendLineNotify("Hi");
+        //SendLineNotify("Hi");
 
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
@@ -133,7 +133,7 @@ if (!is_null($events['events'])) {
             $sql = $sql . ")";
 
             if ($conn->query($sql) === TRUE) {
-                SendLineNotify("new user register ".$event['source']['userId']);
+                SendLineNotify("Register ".$event['source']['userId']." complete.");
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
@@ -150,7 +150,7 @@ if (!is_null($events['events'])) {
                 $sql .=",last_name='".$ar[1]."'";
                 $sql .=" where line_id='".$event['source']['userId']."'";
                 if ($conn->query($sql) === TRUE) {
-                    SendLineNotify("new user register ".$event['source']['userId']);
+                    SendLineNotify("Update Profile ".$event['source']['userId']." complete.");
                 } else {
                     SendLineNotify("Error : " . $conn->error);
                 }
