@@ -114,7 +114,6 @@ if (!is_null($events['events'])) {
         //*** GET USER PROFIE AND SAVE DB **** //
         //SendLineNotify($event['source']['groupId']);
         
-        
         $sql = "SELECT * FROM line_groups where group_status='A' and group_id='".$event['source']['groupId']."'";
         $result = $conn->query($sql);
         if ($result->num_rows >0) {
@@ -233,6 +232,7 @@ if (!is_null($events['events'])) {
                     $sql .= ")";
                 }else{
                     $sql = " update time_stamps set end_datetime=CURRENT_TIMESTAMP() ";
+                    $sql .= " ,work_minute=TIMEDIFF(start_datetime,end_datetime)";
                     $sql .= " where working_date=curdate() and line_id='".$userId."'";
                 }
                    
