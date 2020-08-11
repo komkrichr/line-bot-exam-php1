@@ -122,9 +122,9 @@ if ($result->num_rows > 0) {
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
 	echo "<tr><th>No</th>";
-	echo "<th>display_name</th>";
-	echo "<th>first_name</th>";
-	echo "<th>line_id</th>";
+	echo "<th>Display</th>";
+	echo "<th>Name</th>";
+	echo "<th>ID</th>";
 	echo "</tr>";
 	
 	$count=0;
