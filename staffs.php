@@ -104,7 +104,7 @@ if ($conn->connect_error) {
 
 if ($_GET["ClearMembers"]=="Y")
 {
-	$sql = "truncate table line_users";
+	$sql = "truncate table line_staffs";
         if ($conn->query($sql) === TRUE) {
             echo "Clear All Data";
         } else {
@@ -122,7 +122,7 @@ if ($_GET["ClearGroups"]=="Y")
 }
 	
 $sql = "SELECT * ";
-$sql = $sql." FROM line_users ";
+$sql = $sql." FROM line_staffs ";
 $sql = $sql." order by first_name+last_name ";
 
 $result = $conn->query($sql);
