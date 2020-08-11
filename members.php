@@ -102,9 +102,9 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error."<br>");
 }
 
-$sql = "SELECT redream_id,redream_code,redream_date ";
-$sql = $sql." FROM redreams ";
-$sql = $sql." order by redream_id ";
+$sql = "SELECT * ";
+$sql = $sql." FROM line_users ";
+$sql = $sql." order by first_name+last_name ";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -116,23 +116,14 @@ if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 	    $count++;
 	    echo "<tr><td>".$count."</td>";
-	    echo "<td>".$row["redream_code"]."</td>";		
-	    echo "<td>".$row["redream_date"]."</td></tr>";		
+	    echo "<td>".$row["first_name"]." ".$row["first_name"]."</td>";		
+	    echo "<td>".$row["line_id"]."</td></tr>";	
+	    echo "<td>".$row["hwid"]."</td></tr>";	
+	    echo "<td>".$row["display_name"]."</td></tr>";	
 	}
 	echo "</table>";
 	echo "</div>";
 }
-	
-$id=1;
-$sql = "SELECT max(redream_id) as 'max_id'  FROM redreams";
-$result1 = $conn->query($sql);
-if ($result1->num_rows > 0) {
-	$row1 = $result1->fetch_assoc();
-	$id = $row1["max_id"]+1;
-}
-$conn->close();
-	
-echo "Rows:".$id;
 
 ?>
 <br><br>
