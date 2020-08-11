@@ -210,24 +210,32 @@ if (!is_null($events['events'])) {
             if ((strpos($msg_reply, '-TimeStamp/') !== false) && ($group=="Y")) {
                 $time=$msg_reply;
                 $time = str_replace('-TimeStamp/','',$time);
-                $sql = " insert into time_stamps (line_id,working_date,start_datetime,end_datetime,schedule_start_datetime,schedule_end_datetime";
-                $sql .= ",rate_amount,mulltiple_amount,rate_type,total_amount,ot_amount,work_minute,grand_total_amount)";
-                $sql .= " values (";
-                $sql .= " '".$event['source']['userId']."'";
-                $sql .= " ,curdate() ";
-                $sql .= " ,CURRENT_TIMESTAMP() ";
-                $sql .= " ,CURRENT_TIMESTAMP() ";
-                $sql .= " ,CURRENT_TIMESTAMP() ";
-                $sql .= " ,CURRENT_TIMESTAMP() ";
-                $sql .= " ,400";
-                $sql .= " ,1";
-                $sql .= " ,'F' ";
-                $sql .= " ,400 ";
-                $sql .= " ,0 ";
-                $sql .= " ,480";
-                $sql .= " ,400";
-                $sql .= ")";
                 
+                $sql = "SELECT * FROM time_stamps where working_date=curdate() and line_id='".$userId."'";
+                $result = $conn->query($sql);
+                if ($result->num_rows ==0) {                
+                    $sql = " insert into time_stamps (line_id,working_date,start_datetime,end_datetime,schedule_start_datetime,schedule_end_datetime";
+                    $sql .= ",rate_amount,mulltiple_amount,rate_type,total_amount,ot_amount,work_minute,grand_total_amount)";
+                    $sql .= " values (";
+                    $sql .= " '".$event['source']['userId']."'";
+                    $sql .= " ,curdate() ";
+                    $sql .= " ,CURRENT_TIMESTAMP() ";
+                    $sql .= " ,CURRENT_TIMESTAMP() ";
+                    $sql .= " ,CURRENT_TIMESTAMP() ";
+                    $sql .= " ,CURRENT_TIMESTAMP() ";
+                    $sql .= " ,400";
+                    $sql .= " ,1";
+                    $sql .= " ,'F' ";
+                    $sql .= " ,400 ";
+                    $sql .= " ,0 ";
+                    $sql .= " ,480";
+                    $sql .= " ,400";
+                    $sql .= ")";
+                }else{
+                    $sql = " update time_stamps set end_datetime=CURRENT_TIMESTAMP() ";
+                    $sql .= " where working_date=curdate() and line_id='".$userId."'";
+                }
+                   
                 if ($conn->query($sql) === TRUE) {
                     SendLineNotify("Time Stamp".$event['source']['userId']." complete.");
                 } else {
