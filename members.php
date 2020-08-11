@@ -111,14 +111,19 @@ if ($result->num_rows > 0) {
 	// output data of each row
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
-	echo "<tr><th>No</th><th>Name</th><th>Line ID</th<th>Display Name</th></tr>";
+	echo "<tr><th>No</th>";
+	echo "<th>display_name</th>";
+	echo "<th>first_name</th>";
+	echo "<th>hwid</th>";
+	echo "</tr>";
+	
 	$count=0;
 	while($row = $result->fetch_assoc()) {
 	    $count++;
 	    echo "<tr><td>".$count."</td>";
   	    echo "<td>".$row["display_name"]."</td></tr>";	
 	    echo "<td>".$row["first_name"]." ".$row["first_name"]."</td>";		
-	    echo "<td>".$row["line_id"]."</td>";	
+	    //echo "<td>".$row["line_id"]."</td>";	
 	    echo "<td>".$row["hwid"]."</td></tr>";	
 	}
 	echo "</table>";
