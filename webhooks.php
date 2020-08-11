@@ -116,10 +116,11 @@ if (!is_null($events['events'])) {
         
         
         $sql = "SELECT * FROM line_groups where group_status='A' and group_id='".$event['source']['groupId']."'";
+        $result = $conn->query($sql);
         if ($result->num_rows >0) {
             $group="Y";
         }
-        SendLineNotify($sql);
+        //SendLineNotify($sql);
         
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
