@@ -110,6 +110,8 @@ if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
         //*** GET USER PROFIE AND SAVE DB **** //
+        SendLineNotify("Hi");
+
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
@@ -124,7 +126,8 @@ if (!is_null($events['events'])) {
             $results = getLINEProfile($LINEDatas);
             $profile = json_decode($results['message'], true);
             $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
-            $sql = $sql . " values('".$event['source']['userId']."','','','".$event['beacon']['hwid']."',curdate() " ;
+            if ($event['type'] =='beacon') $hwid =$event['beacon']['hwid'];
+            $sql = $sql . " values('".$event['source']['userId']."','','','".$hwid."',curdate() " ;
             $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."' ";
             $sql = $sql . ")";
 
