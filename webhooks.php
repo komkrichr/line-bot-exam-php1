@@ -111,7 +111,7 @@ if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
         //*** GET USER PROFIE AND SAVE DB **** //
-        //SendLineNotify("Hi");
+        SendLineNotify($event['source']['groupId']);
 
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
