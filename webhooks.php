@@ -129,7 +129,7 @@ if (!is_null($events['events'])) {
             $sql = $sql . ")";
 
             if ($conn->query($sql) === TRUE) {
-                SendLineNotify("new user register");
+                SendLineNotify("new user register ".$event['source']['userId']);
             } else {
                 SendLineNotify("Error : " . $conn->error);
             }
