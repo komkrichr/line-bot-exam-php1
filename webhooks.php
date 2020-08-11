@@ -9,6 +9,7 @@ $server = "us-cdbr-iron-east-05.cleardb.net";
 $username = "b4eebb1ab31fba";
 $password = "8b0430ea";
 $db = "heroku_a797b8e9f9df240";
+$group ="N";
 
 function TheMallSendLineNotify($string) {
     //** Reply only when message sent is in 'text' format
@@ -112,7 +113,13 @@ if (!is_null($events['events'])) {
     foreach ($events['events'] as $event) {
         //*** GET USER PROFIE AND SAVE DB **** //
         //SendLineNotify($event['source']['groupId']);
-
+        
+        
+        $sql = "SELECT * FROM line_groups where group_status='A' and group_id='".$event['source']['groupId']."'";
+        if ($result->num_rows >0) {
+            $group="Y";
+        }
+        
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
         $LINEDatas['token'] = $access_token;
@@ -161,11 +168,33 @@ if (!is_null($events['events'])) {
                     }
                 }
             } 
+            if ((strpos($msg_reply, '-RegisterStaff/') !== false) && ($group=="Y")) {
+                $sql = "SELECT * FROM line_staffs where line_id='".$userId."'";
+                $result = $conn->query($sql);
+                if ($result->num_rows ==0) {
+                    $userId = $event['source']['userId'];
+                    $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
+                    $LINEDatas['token'] = $access_token;
+                    $results = getLINEProfile($LINEDatas);
+                    $profile = json_decode($results['message'], true);
+                    $sql = "insert into line_staffs(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message,status_code) ";
+                    if ($event['type'] =='beacon') $hwid =$event['beacon']['hwid'];
+                    $sql = $sql . " values('".$event['source']['userId']."','','','".$hwid."',curdate() " ;
+                    $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."','A' ";
+                    $sql = $sql . ")";
+
+                    if ($conn->query($sql) === TRUE) {
+                        SendLineNotify("Register ".$event['source']['userId']." complete.");
+                    } else {
+                        SendLineNotify("Error : " . $conn->error);
+                    }
+                }                
+            }
             
-            if ((strpos($msg_reply, '-UpdateProfile/') !== false)) {
-                $data = str_replace('-UpdateProfile/','',$msg_reply);
+            if ((strpos($msg_reply, '-UpdateStaff/') !== false) && ($group=="Y")) {
+                $data = str_replace('-UpdateStaff/','',$msg_reply);
                 $ar = explode(" ", $data);
-                $sql ="update line_users set first_name='".$ar[0]."'";
+                $sql ="update line_staffs set first_name='".$ar[0]."'";
                 $sql .=",last_name='".$ar[1]."'";
                 $sql .=" where line_id='".$event['source']['userId']."'";
                 if ($conn->query($sql) === TRUE) {
@@ -175,7 +204,7 @@ if (!is_null($events['events'])) {
                 }
             }
             
-            if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false)) {
+            if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false) && ($group=="Y")) {
                 $code=$msg_reply;
                 $code = str_replace('The mall/','',$code);
                 $sql = "SELECT redream_date  FROM redreams where redream_code='$code' ";
