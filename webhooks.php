@@ -207,6 +207,12 @@ if (!is_null($events['events'])) {
                 }
             }
             
+            if ((strpos($msg_reply, '-TimeStamp/') !== false) && ($group=="Y")) {
+                $time=$msg_reply;
+                $time = str_replace('-TimeStam/','',$time);
+                SendLineNotify($time);
+            }
+            
             if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false) && ($group=="Y")) {
                 $code=$msg_reply;
                 $code = str_replace('The mall/','',$code);
