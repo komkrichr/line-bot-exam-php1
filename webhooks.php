@@ -126,10 +126,10 @@ if (!is_null($events['events'])) {
             $LINEDatas['token'] = $access_token;
             $results = getLINEProfile($LINEDatas);
             $profile = json_decode($results['message'], true);
-            $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message) ";
+            $sql = "insert into line_users(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message,status_code) ";
             if ($event['type'] =='beacon') $hwid =$event['beacon']['hwid'];
             $sql = $sql . " values('".$event['source']['userId']."','','','".$hwid."',curdate() " ;
-            $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."' ";
+            $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."','A' ";
             $sql = $sql . ")";
 
             if ($conn->query($sql) === TRUE) {
