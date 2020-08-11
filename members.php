@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
 	// output data of each row
 	echo "<div style='overflow-x:auto;'>";
 	echo "<table>";
-	echo "<tr><th>No</th><th>Code</th><th>Redream  DateTime</th></tr>";
+	echo "<tr><th>No</th><th>Name</th><th>Line ID</th<th>Display Name</th></tr>";
 	$count=0;
 	while($row = $result->fetch_assoc()) {
 	    $count++;
