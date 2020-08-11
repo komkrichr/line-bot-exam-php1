@@ -111,7 +111,7 @@ if (!is_null($events['events'])) {
     // Loop through each event
     foreach ($events['events'] as $event) {
         //*** GET USER PROFIE AND SAVE DB **** //
-        SendLineNotify($event['source']['groupId']);
+        //SendLineNotify($event['source']['groupId']);
 
         $userId = $event['source']['userId'];
         $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
@@ -142,6 +142,25 @@ if (!is_null($events['events'])) {
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $msg_reply=$event['message']['text'];
             $data = explode("/", $msg_reply);
+            
+            if ((strpos($msg_reply, '-RegisterGroup/') !== false)) {
+                $data = str_replace('-RegisterGroup/','',$msg_reply);
+                if ($data=='Y')
+                {
+                    $sql = "SELECT * FROM line_groups where group_id='".$event['source']['groupId']."'";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows ==0) {
+                        $sql = "insert into line_groups(group_id,group_name,group_status) ";
+                        $sql = $sql . " values('".$event['source']['groupId']."','','A' " ;
+                        $sql = $sql . ")";
+                        if ($conn->query($sql) === TRUE) {
+                            SendLineNotify("Register group ".$event['source']['groupId']." complete.");
+                        } else {
+                            SendLineNotify("Error : " . $conn->error);
+                        }                    
+                    }
+                }
+            } 
             
             if ((strpos($msg_reply, '-UpdateProfile/') !== false)) {
                 $data = str_replace('-UpdateProfile/','',$msg_reply);
