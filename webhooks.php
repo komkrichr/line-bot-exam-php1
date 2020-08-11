@@ -214,7 +214,7 @@ if (!is_null($events['events'])) {
                 $sql .= ",rate_amount,mulltiple_amount,rate_type,total_amount,ot_amount,work_minute,grand_total_amount)";
                 $sql .= " values (";
                 $sql .= " '".$event['source']['userId']."'";
-                $sql .= " ,CURR_DATE()";
+                $sql .= " ,curdate() ";
                 $sql .= " ,CURRENT_TIMESTAMP() ";
                 $sql .= " ,CURRENT_TIMESTAMP() ";
                 $sql .= " ,CURRENT_TIMESTAMP() ";
