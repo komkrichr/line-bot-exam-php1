@@ -37,6 +37,7 @@ function TheMallSendLineNotify($string) {
 
 function SendLineNotify($string) {
     //** Reply only when message sent is in 'text' format
+    //botdev group
     $Token='O0rzEarg2qtBbDTWfxefXF4usrHdrlTHzs9yNvtNVYh';
     $name = $string;
     $chOne = curl_init(); 
@@ -141,6 +142,20 @@ if (!is_null($events['events'])) {
         if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
             $msg_reply=$event['message']['text'];
             $data = explode("/", $msg_reply);
+            
+            if ((strpos($msg_reply, '-UpdateProfile/') !== false)) {
+                $data = str_replace('-UpdateProfile/','',$msg_reply);
+                $ar = explode(" ", $data);
+                $sql ="update line_users set first_name='".$ar[0]."'";
+                $sql .=",last_name='".$ar[1]."'";
+                $sql .=" where line_id='".$event['source']['userId']."'";
+                if ($conn->query($sql) === TRUE) {
+                    SendLineNotify("new user register ".$event['source']['userId']);
+                } else {
+                    SendLineNotify("Error : " . $conn->error);
+                }
+            }
+            
             if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false)) {
                 $code=$msg_reply;
                 $code = str_replace('The mall/','',$code);
