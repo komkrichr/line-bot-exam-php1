@@ -102,6 +102,16 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error."<br>");
 }
 
+if ($_GET["ClearData"]=="Y")
+{
+	$sql = "truncate table line_users";
+        if ($conn->query($sql) === TRUE) {
+            echo "Clear All Data";
+        } else {
+            echo "Error : " . $conn->error;
+        }	
+}
+	
 $sql = "SELECT * ";
 $sql = $sql." FROM line_users ";
 $sql = $sql." order by first_name+last_name ";
