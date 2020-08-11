@@ -210,7 +210,28 @@ if (!is_null($events['events'])) {
             if ((strpos($msg_reply, '-TimeStamp/') !== false) && ($group=="Y")) {
                 $time=$msg_reply;
                 $time = str_replace('-TimeStamp/','',$time);
-                SendLineNotify($time);
+                $sql = " insert into time_stamps (line_id,start_datetime,end_datetime,schedule_start_datetime,schedule_end_datetime,rate_amount,rate_type,total_amount,ot_amount,work_minute,grand_total_amount)";
+                $sql .= " values (";
+                $sql .= " '".$event['source']['userId']."'";
+                $sql .= " ,CURRENT_TIMESTAMP() ";
+                $sql .= " ,CURRENT_TIMESTAMP() ";
+                $sql .= " ,CURRENT_TIMESTAMP() ";
+                $sql .= " ,CURRENT_TIMESTAMP() ";
+                $sql .= " ,400";
+                $sql .= " ,'A' ";
+                $sql .= " ,400 ";
+                $sql .= " ,0 ";
+                $sql .= " ,480";
+                $sql .= " ,400";
+                $sql .= ")";
+                
+                if ($conn->query($sql) === TRUE) {
+                    SendLineNotify("Time Stamp".$event['source']['userId']." complete.");
+                } else {
+                    SendLineNotify("Error : " . $conn->error);
+                    SendLineNotify($sql);
+                }
+
             }
             
             if ((strpos($msg_reply, 'The mall') !== false) && (strpos($msg_reply, '/') !== false) && ($group=="Y")) {
