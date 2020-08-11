@@ -233,6 +233,7 @@ if (!is_null($events['events'])) {
                 }else{
                     $sql = " update time_stamps set end_datetime=CURRENT_TIMESTAMP() ";
                     $sql .= " ,work_minute=TIMEDIFF(start_datetime,end_datetime)";
+                    $sql .= " ,ot_amount=TIMEDIFF(schedule_end_datetime,end_datetime)";
                     $sql .= " where working_date=curdate() and line_id='".$userId."'";
                 }
                    
