@@ -172,6 +172,8 @@ if (!is_null($events['events'])) {
                 $sql = "SELECT * FROM line_staffs where line_id='".$userId."'";
                 $result = $conn->query($sql);
                 if ($result->num_rows ==0) {
+                    $data = str_replace('-RegisterStaff/','',$msg_reply);
+                    $ar = explode(" ", $data);
                     $userId = $event['source']['userId'];
                     $LINEDatas['url'] = "https://api.line.me/v2/bot/profile/".$userId;
                     $LINEDatas['token'] = $access_token;
@@ -179,12 +181,11 @@ if (!is_null($events['events'])) {
                     $profile = json_decode($results['message'], true);
                     $sql = "insert into line_staffs(line_id,first_name,last_name,hwid,create_date,display_name,picture_url,status_message,status_code) ";
                     if ($event['type'] =='beacon') $hwid =$event['beacon']['hwid'];
-                    $sql = $sql . " values('".$event['source']['userId']."','','','".$hwid."',curdate() " ;
+                    $sql = $sql . " values('".$event['source']['userId']."','".$ar[0]."','".$ar[1]."','".$hwid."',curdate() " ;
                     $sql = $sql .",'".$profile['displayName']."','".$profile['pictureUrl']."','".$profile['statusMessage']."','A' ";
                     $sql = $sql . ")";
-
                     if ($conn->query($sql) === TRUE) {
-                        SendLineNotify("Register ".$event['source']['userId']." complete.");
+                        SendLineNotify("Register Staff".$event['source']['userId']." complete.");
                     } else {
                         SendLineNotify("Error : " . $conn->error);
                     }
@@ -198,7 +199,7 @@ if (!is_null($events['events'])) {
                 $sql .=",last_name='".$ar[1]."'";
                 $sql .=" where line_id='".$event['source']['userId']."'";
                 if ($conn->query($sql) === TRUE) {
-                    SendLineNotify("Update Profile ".$event['source']['userId']." complete.");
+                    SendLineNotify("Update Staff ".$event['source']['userId']." complete.");
                 } else {
                     SendLineNotify("Error : " . $conn->error);
                 }
