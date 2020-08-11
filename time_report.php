@@ -123,11 +123,11 @@ if ($result->num_rows > 0) {
 		echo "<tr><td>".$count."</td>";
 		echo "<td>".$row["line_id"]."</td>";
 		echo "<td>".$row["working_date"]."</td>";
-
 		echo "<td>".$row["schedule_start_datetime"]."</td>";
 		echo "<td>".$row["schedule_end_datetime"]."</td>";
 		echo "<td>".$row["start_datetime"]."</td>";
 		echo "<td>".$row["end_datetime"]."</td>";
+		echo "<td>".$row["work_minute"]."</td>";
 		echo "<td>".$row["ot_amount"]."</td>";
 		echo "<td>".$row["mulltiple_amount"]."</td>";
 		echo "<td>".$row["grand_total_amount"]."</td></tr>";	
