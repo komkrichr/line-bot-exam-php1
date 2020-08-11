@@ -114,7 +114,7 @@ if ($result->num_rows > 0) {
 	echo "<tr><th>No</th>";
 	echo "<th>display_name</th>";
 	echo "<th>first_name</th>";
-	echo "<th>hwid</th>";
+	echo "<th>line_id</th>";
 	echo "</tr>";
 	
 	$count=0;
@@ -123,8 +123,7 @@ if ($result->num_rows > 0) {
 	    echo "<tr><td>".$count."</td>";
   	    echo "<td>".$row["display_name"]."</td>";	
 	    echo "<td>".$row["first_name"]." ".$row["first_name"]."</td>";		
-	    //echo "<td>".$row["line_id"]."</td>";	
-	    echo "<td>".$row["hwid"]."</td></tr>";	
+	    echo "<td>".$row["line_id"]."</td></tr>";	
 	}
 	echo "</table>";
 	echo "</div>";
