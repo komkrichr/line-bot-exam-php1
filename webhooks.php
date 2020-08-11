@@ -209,7 +209,7 @@ if (!is_null($events['events'])) {
             
             if ((strpos($msg_reply, '-TimeStamp/') !== false) && ($group=="Y")) {
                 $time=$msg_reply;
-                $time = str_replace('-TimeStam/','',$time);
+                $time = str_replace('-TimeStamp/','',$time);
                 SendLineNotify($time);
             }
             
